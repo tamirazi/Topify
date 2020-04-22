@@ -1,0 +1,36 @@
+.list-container {
+    
+    .list-item {
+        margin-top: 5px;
+        padding: 5px;
+        display: flex;
+        position: relative;
+        min-height: 60px;
+
+        h3 {
+            margin: 0;
+        }
+
+        .img {
+            max-width: 60px;
+            max-height: 60px;
+            background-color: khaki;
+            width: 100%;
+    
+        }
+
+        .info {
+            display: flex;
+            width: 100%;
+            .text {
+                width: 100%;
+            }
+            .duration {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+    }
+}

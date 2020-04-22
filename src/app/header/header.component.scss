@@ -1,0 +1,30 @@
+.profile_image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+h1 {
+    text-align: center;
+    display: block;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 90%;
+
+    li {
+        margin-left: 10px;
+        cursor: pointer;
+
+        &.active {
+            text-decoration: underline;
+        }
+    }
+
+    
+}
