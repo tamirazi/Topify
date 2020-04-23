@@ -47,7 +47,9 @@ ul {
         margin-left: 20px;
 
         &.active {
-            text-decoration: underline;
+            // text-decoration: underline;
+            border-bottom: 2px solid #2E2E2E;
+            padding-bottom: 3px;
             font-weight: 600;
         }
     }
