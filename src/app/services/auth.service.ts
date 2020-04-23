@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { authUrl, environment} from 'src/environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class AuthService {
   token: string;
 
