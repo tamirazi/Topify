@@ -15,7 +15,6 @@ export class ListComponent implements OnInit {
     this.spotify.api('/me/top/tracks?limit=20').subscribe( res => {
       console.log(res);
       res.items.forEach(item => {
-        
         this.tracks.push( {
           trackname: item.name,
           artist: item.artists[0].name,
