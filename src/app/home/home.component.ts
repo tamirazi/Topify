@@ -10,15 +10,18 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent implements OnInit {
   constructor(
-    private aurhService: AuthService,
+    private authService: AuthService,
     private router: Router) { }
 
   ngOnInit(): void {
+    if (!this.authService.isLogedin()) {
+      this.router.navigate(['/']);
+    }
   }
 
   logout() {
     console.log('logout');
-    this.aurhService.logout();
+    this.authService.logout();
     this.router.navigate(['']);
   }
 

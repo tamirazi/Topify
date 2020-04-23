@@ -1,7 +1,9 @@
-<div #userimg class="profile_image"></div>
-<h1>{{username}}</h1>
+<div class="header-container">
+  <div #userimg class="profile_image"></div>
+  <h1>{{username}}</h1>
 
-<ul >
-    <li [routerLink]="['/AllTime']" routerLinkActive="active" >All Time</li>
-    <li [routerLink]="['/Recent']" routerLinkActive="active" >Recent</li>
-</ul>
+  <ul>
+    <li class="active" [routerLink]="['/AllTime']" routerLinkActive="active">All Time</li>
+    <li [routerLink]="['/Recent']" routerLinkActive="active">Recent</li>
+  </ul>
+</div>

@@ -1,9 +1,11 @@
 <div class="dashboard-card">
-    <div #artistImg class="img"></div>
+    <div class="img-con">
+        <div #artistImg class="img"></div>
+    </div>
     <div class="info">
         <h1>Top Artist</h1>
         <h3>{{topArtistName}}</h3>
-        <h6>{{topArtistFollowers | followers}}</h6>
+        <h6>{{topArtistFollowers | followers}} <span>Followers</span></h6>
     </div>
 </div>
 
