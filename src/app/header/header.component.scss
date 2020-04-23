@@ -3,6 +3,8 @@
     width: 100px;
     border-radius: 50%;
     background-color: black;
+    background-position: center;
+    background-size: contain;
 }
 
 h1 {
@@ -16,10 +18,10 @@ ul {
     margin: 0;
     padding: 0;
     width: 90%;
+    cursor: pointer;
 
     li {
         margin-left: 10px;
-        cursor: pointer;
 
         &.active {
             text-decoration: underline;

@@ -1,9 +1,23 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import { clientId } from '../environments/env';
 
 export const environment = {
-  production: false
+  production: false,
+  API_URL: 'https://api.spotify.com/v1',
+  SPOTIFY_AUTHORIZE_URL: 'https://accounts.spotify.com/authorize',
+  SPOTIFY_AUTH_SCOPES: 'user-read-recently-played user-top-read playlist-modify-public',
+  SPOTIFY_CLIENT_ID: clientId.SPOTIFY_CLIENT_ID,
+  CALLBACK_URL: `${window.location.origin}/login`,
+};
+
+export const authUrl = {
+  url : environment.SPOTIFY_AUTHORIZE_URL + '?' +
+  'client_id=' + environment.SPOTIFY_CLIENT_ID +
+  '&response_type=token' +
+  '&redirect_uri=' + environment.CALLBACK_URL +
+  '&scope=user-read-private user-read-email user-top-read'
 };
 
 /*

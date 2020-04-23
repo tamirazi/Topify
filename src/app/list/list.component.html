@@ -1,13 +1,13 @@
 <div class="list-container">
     <div class="list-item" *ngFor="let item of tracks">
-        <div class="img"></div>
+        <div class="img" [ngStyle]="{'background-image': 'url(' + item.img + ')'}"></div>
         <div class="info">
             <div class="text">
-                <h3 class="artist-name">Drake</h3>
-                <h3 class="track-name">In My Feelings</h3>
+                <h3 class="artist-name">{{item.artist}}</h3>
+                <h3 class="track-name">{{item.trackname}}</h3>
             </div>
             <div class="duration">
-                <h3 class="track-duration">04:32</h3>
+                <h3 class="track-duration">{{item.duration}}</h3>
             </div>
         </div>
         <hr>
