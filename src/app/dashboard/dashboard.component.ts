@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { TopArtists } from '../models/models.model';
+import { TopArtists } from '../models/spotify.model';
 
 @Component({
   selector: 'app-dashboard',

@@ -19,8 +19,7 @@ export class AppComponent implements OnInit {
   title = 'Topify';
 
   constructor(
-    private authService: AuthService,
-    private activatedRoute: ActivatedRoute) {}
+    private authService: AuthService) {}
 
 
   ngOnInit(): void {

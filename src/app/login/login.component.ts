@@ -12,18 +12,18 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private activetedRoute: ActivatedRoute) { }
 
   login() {
-    console.log('login');
     this.authService.authorizeUser();
   }
 
   ngOnInit(): void {
-
+    // user already logedin redirect him to home page
     this.authService.user.subscribe(user => {
       if (!!user){
         this.router.navigate(['/home']);
       }
     });
-    // if someone get here and his already logedin, redirect him
+
+    // this is handke to redirect from spotify with a token
     this.activetedRoute.fragment.subscribe( params => {
       if (params){
         const fragments =  params.split('&').map(item => item.split('='));
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       }
     });
 
+    // this handle when the user denied spotify permmisions
     this.activetedRoute.queryParamMap.subscribe(query => {
       if (query.has('error')) {
         this.deniedPermision = true;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { TopTracks, Track } from '../models/models.model';
+import { TopTracks, Track } from '../models/spotify.model';
 
 @Component({
   selector: 'app-list',
