@@ -1,7 +1,28 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
-import { authUrl, environment} from 'src/environments/environment';
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient,
+  HttpHeaders
+} from '@angular/common/http';
+import {
+  authUrl,
+  environment
+} from 'src/environments/environment';
 
+import {
+  AuthUser
+} from '../models/authuser.model';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+
+export interface AuthResponseData {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+  state: string;
+  error ?: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,39 +30,70 @@ import { authUrl, environment} from 'src/environments/environment';
 
 
 export class AuthService {
-  token: string;
+  user = new BehaviorSubject<AuthUser>(null);
+  private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   authorizeUser() {
     window.location.href = authUrl.url;
   }
 
-  isLogedin() {
-    const accessToken = window.localStorage.getItem('accessToken');
-    if (!accessToken) {
-      return false;
-    }
-    return true;
+  login(token: string, expiresIn: number) {
+    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    const user = new AuthUser(token, expirationDate);
+    this.user.next(user);
+    this.autoLogout(expiresIn * 1000);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
-  saveLogin(token: string, expires: string) {
-    window.localStorage.setItem('accessToken', token);
-    window.localStorage.setItem('expires_in', expires);
+
+  autoLogin() {
+
+    const userData: {
+      // tslint:disable-next-line:variable-name
+       _token: string,
+      // tslint:disable-next-line:variable-name
+       _tokenExpirationDate: Date,
+    } = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
+      return;
+    }
+
+    const loadedUser = new AuthUser(userData._token, userData._tokenExpirationDate);
+
+    if (loadedUser.token) {
+      this.user.next(loadedUser);
+      const expirationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
+      this.autoLogout(expirationDuration);
+    }
+
+  }
+
+  autoLogout(expirationDuration: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
   }
 
   logout() {
-    window.localStorage.removeItem('accessToken');
-    window.localStorage.removeItem('expires_in');
-  }
-
-  api(endpoint: string) {
-    if (this.isLogedin()) {
-      return this.http.get(environment.API_URL + endpoint ,
-        {
-          headers: new HttpHeaders({Authorization: 'Bearer ' + window.localStorage.getItem('accessToken')})
-        });
+    this.user.next(null);
+    this.router.navigate(['/']);
+    localStorage.removeItem('userData');
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
     }
-    return null;
+    this.tokenExpirationTimer = null;
+  }
+  api(endpoint: string) {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    return this.http.get(environment.API_URL + endpoint, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + userData._token
+      })
+    });
+
   }
 
 
