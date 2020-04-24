@@ -1,15 +1,15 @@
 <div class="list-container">
-    <div class="list-item" *ngFor="let item of tracks">
-        <div class="img" [ngStyle]="{'background-image': 'url(' + item.img + ')'}"></div>
-        <div class="info">
-            <div class="text">
-                <h3 class="artist-name">{{item.artist}}</h3>
-                <h3 class="track-name">{{item.trackname}}</h3>
-            </div>
-            <div class="duration">
-                <h3 class="track-duration">{{item.duration | duration}}</h3>
-            </div>
+    <div class="list-item" *ngFor="let track of tracks">
+      <div class="img" [ngStyle]="{'background-image': 'url(' + track.album.images[0].url + ')'}"></div>
+      <div class="info">
+        <div class="text">
+          <h3 class="artist-name">{{track.artists[0].name}}</h3>
+          <h3 class="track-name">{{track.name}}</h3>
         </div>
-        <hr>
+        <div class="duration">
+          <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
+        </div>
+      </div>
+      <hr>
     </div>
 </div>

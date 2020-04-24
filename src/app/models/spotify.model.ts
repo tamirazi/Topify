@@ -41,6 +41,10 @@ export interface Track {
     duration_ms: number;
     popularity: number;
     name: string;
+    external_urls: {
+        spotify: string;
+    };
+    uri: string;
 }
 
 export interface Album {
@@ -50,6 +54,9 @@ export interface Album {
     images: Image[];
     label: string;
     name: string;
+    external_urls: {
+        spotify: string;
+    };
     popularity: number;
     release_date: string;
     tracks: Track[];

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { TopTracks, Track } from '../models/spotify.model';
+import { SpotifyService } from '../services/spotify.service';
 
 @Component({
   selector: 'app-list',
@@ -9,20 +10,13 @@ import { TopTracks, Track } from '../models/spotify.model';
 })
 export class ListComponent implements OnInit {
 
-  tracks = [];
-  constructor(private spotify: AuthService) { }
+  tracks: Track[];
+  constructor(private spotify: SpotifyService) { }
 
   ngOnInit(): void {
-    this.spotify.api('/me/top/tracks?limit=20')?.subscribe( (res: TopTracks) => {
-      console.log(res);
-      res.items.forEach((item: Track) => {
-        this.tracks.push( {
-          trackname: item.name,
-          artist: item.artists[0].name,
-          duration: item.duration_ms,
-          img: item.album.images[0].url
-        } );
-      });
+    this.spotify.getMyTopTracks(3).subscribe( (tracks) => {
+      this.tracks = tracks;
+      tracks.forEach( track => console.log(track));
     });
   }
 
