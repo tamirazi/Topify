@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { TopTracks, Track } from '../models/spotify.model';
+import { Track, Artist } from '../models/spotify.model';
 import { SpotifyService } from '../services/spotify.service';
 
 @Component({
@@ -14,9 +13,8 @@ export class ListComponent implements OnInit {
   constructor(private spotify: SpotifyService) { }
 
   ngOnInit(): void {
-    this.spotify.getMyTopTracks(3).subscribe( (tracks) => {
+    this.spotify.getMyTopTracks(20).subscribe( (tracks: Track[]) => {
       this.tracks = tracks;
-      tracks.forEach( track => console.log(track));
     });
   }
 

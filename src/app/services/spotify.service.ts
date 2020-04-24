@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 import {environment} from 'src/environments/environment';
-import {TopTracks, Track} from '../models/spotify.model';
+import {TopTracks, Track, TopArtists} from '../models/spotify.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -17,6 +17,16 @@ export class SpotifyService {
       limit = 20;
     }
     return this.api('/me/top/tracks?limit=' + limit).pipe( map((res: TopTracks ) => res.items));
+  }
+
+  getMyTopArtists(limit?: number) {
+    if (!limit) {
+      limit = 20;
+    }
+    return this.api('/me/top/artists?limit=' + limit).pipe( map((res: TopArtists ) => res.items));
+  }
+
+  getMyTopAlbum(){
   }
 
   private api(endpoint: string) {
