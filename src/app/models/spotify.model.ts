@@ -25,6 +25,7 @@ export interface Artist {
     genres: string[];
     images: Image[];
     name: string;
+    href: string;
     popularity: number;
     external_urls: {
         spotify: string;
@@ -45,9 +46,12 @@ export interface Track {
         spotify: string;
     };
     uri: string;
+    href: string;
 }
 
 export interface Album {
+    id: string;
+    href: string;
     album_type: string;
     artist: Artist[];
     genres: string[];
@@ -59,5 +63,7 @@ export interface Album {
     };
     popularity: number;
     release_date: string;
-    tracks: Track[];
+    tracks: {
+        items: Track[];
+    };
 }
