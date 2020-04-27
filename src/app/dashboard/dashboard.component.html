@@ -1,11 +1,11 @@
 <div class="dashboard-card">
     <div class="img-con">
-        <div #artistImg class="img"></div>
+        <div *ngIf="image" class="img" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
     </div>
     <div class="info">
-        <h1>Top Artist</h1>
-        <h3>{{topArtistName}}</h3>
-        <h6>{{topArtistFollowers | followers}} <span>Followers</span></h6>
+        <h1>{{time}} {{type}}</h1>
+        <h3>{{result}}</h3>
+        <h6>{{description}}</h6>
     </div>
 </div>
 

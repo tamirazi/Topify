@@ -12,16 +12,12 @@ import { User } from '../models/spotify.model';
 
 
 export class HeaderComponent implements OnInit {
-  username = 'MeaslyKhan';
-  @ViewChild('userimg', {static: true}) userImg: ElementRef;
+  @Input() username: string;
 
-  constructor(private spotify: AuthService, private renderer: Renderer2) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.spotify.api('/me').subscribe( (userInfo: User) => {
-      this.username = userInfo.display_name;
-      this.renderer.setStyle(this.userImg.nativeElement , 'background-image' , `url(${userInfo.images[0].url})`);
-    });
+
   }
 
 }

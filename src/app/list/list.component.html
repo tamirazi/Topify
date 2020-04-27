@@ -1,15 +1,50 @@
-<div class="list-container">
-    <div class="list-item" *ngFor="let track of tracks">
-      <div class="img" [ngStyle]="{'background-image': 'url(' + track.album.images[0].url + ')'}"></div>
+<div class="list-container"  *ngIf="type==='Artist'">
+    <div class="list-item" *ngFor="let artist of list">
+      <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div>
       <div class="info">
         <div class="text">
-          <h3 class="artist-name">{{track.artists[0].name}}</h3>
-          <h3 class="track-name">{{track.name}}</h3>
+          <h3 class="artist-name">{{artist.name}}</h3>
+          <h3 *ngFor="let genre of artist.genres" class="track-name">{{genre}}, </h3>
         </div>
         <div class="duration">
-          <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
+          <h3 class="track-duration">{{artist.followers.total | followers}}</h3>
         </div>
       </div>
       <hr>
     </div>
+</div>
+
+
+
+<div class="list-container"  *ngIf="type==='Track'">
+  <div class="list-item" *ngFor="let track of list">
+    <div class="img" [ngStyle]="{'background-image': 'url(' + track.album.images[0].url + ')'}"></div>
+    <div class="info">
+      <div class="text">
+        <h3 class="artist-name">{{track.name}}</h3>
+        <h3 class="track-name">{{track.artists[0].name}}</h3>
+      </div>
+      <div class="duration">
+        <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
+
+
+<div class="list-container"  *ngIf="type==='Album'">
+  <div class="list-item" *ngFor="let track of list">
+    <div class="img" [ngStyle]="{'background-image': 'url(' + imageUrlToAllListItem + ')'}"></div>
+    <div class="info">
+      <div class="text">
+        <h3 class="artist-name">{{track.name}}</h3>
+        <h3 class="track-name">{{track.artists[0].name}}</h3>
+      </div>
+      <div class="duration">
+        <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
+      </div>
+    </div>
+    <hr>
+  </div>
 </div>

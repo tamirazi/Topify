@@ -53,7 +53,7 @@ export interface Album {
     id: string;
     href: string;
     album_type: string;
-    artist: Artist[];
+    artists: Artist[];
     genres: string[];
     images: Image[];
     label: string;

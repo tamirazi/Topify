@@ -14,45 +14,85 @@ import {
   Track,
   TopArtists,
   Album,
-  Artist
+  Artist,
+  User
 } from '../models/spotify.model';
 import {
-  map
+  map, mergeMap
 } from 'rxjs/operators';
-import { stringify } from 'querystring';
-import { kStringMaxLength } from 'buffer';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+
+export interface AppData {
+  time: string;
+  type: string;
+  image_url: string;
+  result: string;
+  description: string;
+  list: Artist[] | Track[];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpotifyService {
 
+  appData = new Subject<AppData>();
+
   constructor(private http: HttpClient) {}
 
-  getMyTopTracks(limit?: number) {
+  getUsername() {
+    return this.api('/me');
+  }
+
+  fetchMyTopTracks(limit?: number) {
     if (!limit) {
       limit = 20;
     }
-    return this.api('/me/top/tracks?limit=' + limit).pipe(map((res: TopTracks) => res.items));
+    this.api('/me/top/tracks?limit=' + limit).subscribe((res: TopTracks) => {
+      this.appData.next({
+        type: 'Track',
+        time: 'Top',
+        result: res.items[0].name,
+        description: res.items[0].artists[0].name,
+        image_url: res.items[0].album.images[0].url,
+        list: res.items
+      });
+    });
   }
 
-  getMyTopArtists(limit?: number): Observable<Artist[]> {
+  fetchMyTopArtists(limit?: number) {
     if (!limit) {
       limit = 20;
     }
-    return this.api('/me/top/artists?limit=' + limit).pipe(map((res: TopArtists) => res.items));
+    this.api('/me/top/artists?limit=' + limit).subscribe((res: TopArtists) => {
+      this.appData.next({
+        type: 'Artist',
+        time: 'Top',
+        result: res.items[0].name,
+        description: res.items[0].genres[0],
+        image_url: res.items[0].images[0].url,
+        list: res.items
+      });
+    });
   }
 
-  getMyTopAlbum(): Observable<Observable<Album>> {
-    return this.api('/me/top/tracks').pipe(map((tracks: TopTracks) => {
+  fetchMyTopAlbum() {
+    this.api('/me/top/tracks').subscribe((tracks: TopTracks) => {
       const albumsIds = [];
       tracks.items.forEach( track => {
         albumsIds.push(track.album.id);
       });
-      // return this.topAlbumId(albumsIds);
-      return this.getAlbum(this.topElementInArray(albumsIds));
-    }));
+      this.getAlbum(this.topElementInArray(albumsIds)).subscribe( (res: Album) => {
+        this.appData.next({
+          type: 'Album',
+          time: 'Top',
+          result: res.name,
+          description: res.artists[0].name,
+          image_url: res.images[0].url,
+          list: res.tracks.items
+        });
+      });
+    });
   }
 
   getMyTopGenre(): Observable<string> {
@@ -89,7 +129,6 @@ export class SpotifyService {
     return maxEl;
 
   }
-
 
   private api(endpoint: string) {
     const userData = JSON.parse(localStorage.getItem('userData'));

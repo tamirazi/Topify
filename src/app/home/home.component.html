@@ -6,9 +6,19 @@
   
   <div class="logo" (click)="logout()"></div>
   
-  <app-header class="flex-col-center"></app-header>
-  <app-dashboard class="flex-col-center"></app-dashboard>
-  <app-list></app-list>
+  <app-header [username]='username' class="flex-col-center"></app-header>
+  <app-dashboard 
+  class="flex-col-center"
+  [time]="time"
+  [type]="type"
+  [result]="result"
+  [description]="description"
+  [image]="image">
+  </app-dashboard>
+  <app-list
+  [type]="type"
+  [list]="list"
+  [imageUrlToAllListItem]="image"></app-list>
   <div class="footer">
     <h3>footer</h3>
   </div>

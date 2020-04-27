@@ -1,12 +1,8 @@
 import {
   Component,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
+  OnInit} from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
 
-import { map, take} from 'rxjs/operators';
 
 
 @Component({
@@ -18,8 +14,7 @@ export class AppComponent implements OnInit {
 
   title = 'Topify';
 
-  constructor(
-    private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
 
   ngOnInit(): void {
