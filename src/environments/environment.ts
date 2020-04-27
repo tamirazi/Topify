@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   API_URL: 'https://api.spotify.com/v1',
   SPOTIFY_AUTHORIZE_URL: 'https://accounts.spotify.com/authorize',
-  SPOTIFY_AUTH_SCOPES: 'user-read-recently-played user-top-read playlist-modify-public',
+  SPOTIFY_AUTH_SCOPES: 'user-read-recently-played user-top-read playlist-modify-public user-read-private user-read-email',
   SPOTIFY_CLIENT_ID: clientId.SPOTIFY_CLIENT_ID,
   CALLBACK_URL: `${window.location.origin}/login`,
 };
@@ -17,7 +17,7 @@ export const authUrl = {
   'client_id=' + environment.SPOTIFY_CLIENT_ID +
   '&response_type=token' +
   '&redirect_uri=' + environment.CALLBACK_URL +
-  '&scope=user-read-private user-read-email user-top-read'
+  '&scope=' + environment.SPOTIFY_AUTH_SCOPES
 };
 
 /*

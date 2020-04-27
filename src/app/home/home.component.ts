@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+
 import { AuthService } from '../services/auth.service';
-import { SpotifyService, AppData } from '../services/spotify.service';
+import { SpotifyService } from '../services/spotify.service';
+import { AppData } from '../models/appData.model';
 import { User, Artist, Track } from '../models/spotify.model';
 
 
@@ -29,8 +31,9 @@ export class HomeComponent implements OnInit {
       console.log(user);
       this.username = user.display_name;
     });
-    this.spotify.fetchMyTopArtists();
-
+    this.spotify.fetchMyTopAlbum();
+    // this.spotify.fetchMyRecentTopArtist();
+    // this.spotify.fetchMyRecentTopTracks();
     this.spotify.appData.subscribe( (res: AppData) => {
       console.log(res);
       this.time = res.time;

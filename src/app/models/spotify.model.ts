@@ -30,6 +30,8 @@ export interface Artist {
     external_urls: {
         spotify: string;
     };
+    id: string;
+    artists?: Artist[];
 }
 
 export interface TopTracks {
@@ -47,6 +49,8 @@ export interface Track {
     };
     uri: string;
     href: string;
+    track?: Track;
+    id: string;
 }
 
 export interface Album {

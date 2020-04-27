@@ -1,35 +1,13 @@
-import {
-  Injectable
-} from '@angular/core';
-import {
-  HttpHeaders,
-  HttpClient
-} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpHeaders, HttpClient} from '@angular/common/http';
+import { map} from 'rxjs/operators';
+import { Observable, Subject} from 'rxjs';
 
-import {
-  environment
-} from 'src/environments/environment';
-import {
-  TopTracks,
-  Track,
-  TopArtists,
-  Album,
-  Artist,
-  User
-} from '../models/spotify.model';
-import {
-  map, mergeMap
-} from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import {environment} from 'src/environments/environment';
+import {TopTracks, Track, TopArtists, Album, Artist } from '../models/spotify.model';
+import { AppData, AppDataObject, CONSTS } from '../models/appData.model';
 
-export interface AppData {
-  time: string;
-  type: string;
-  image_url: string;
-  result: string;
-  description: string;
-  list: Artist[] | Track[];
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +15,8 @@ export interface AppData {
 export class SpotifyService {
 
   appData = new Subject<AppData>();
-
-  constructor(private http: HttpClient) {}
+  private token: string;
+  constructor(private http: HttpClient) { }
 
   getUsername() {
     return this.api('/me');
@@ -50,8 +28,8 @@ export class SpotifyService {
     }
     this.api('/me/top/tracks?limit=' + limit).subscribe((res: TopTracks) => {
       this.appData.next({
-        type: 'Track',
-        time: 'Top',
+        type: CONSTS.TRACK,
+        time: CONSTS.TOP,
         result: res.items[0].name,
         description: res.items[0].artists[0].name,
         image_url: res.items[0].album.images[0].url,
@@ -66,8 +44,8 @@ export class SpotifyService {
     }
     this.api('/me/top/artists?limit=' + limit).subscribe((res: TopArtists) => {
       this.appData.next({
-        type: 'Artist',
-        time: 'Top',
+        type: CONSTS.ARTIST,
+        time: CONSTS.TOP,
         result: res.items[0].name,
         description: res.items[0].genres[0],
         image_url: res.items[0].images[0].url,
@@ -79,13 +57,13 @@ export class SpotifyService {
   fetchMyTopAlbum() {
     this.api('/me/top/tracks').subscribe((tracks: TopTracks) => {
       const albumsIds = [];
-      tracks.items.forEach( track => {
+      tracks.items.forEach(track => {
         albumsIds.push(track.album.id);
       });
-      this.getAlbum(this.topElementInArray(albumsIds)).subscribe( (res: Album) => {
+      this.api('/albums/' + this.topElementInArray(albumsIds)).subscribe((res: Album) => {
         this.appData.next({
-          type: 'Album',
-          time: 'Top',
+          type: CONSTS.ALBUM,
+          time: CONSTS.TOP,
           result: res.name,
           description: res.artists[0].name,
           image_url: res.images[0].url,
@@ -98,45 +76,93 @@ export class SpotifyService {
   getMyTopGenre(): Observable<string> {
     return this.api('/me/top/artists').pipe(map((artists: TopArtists) => {
       const genres = [];
-      artists.items.forEach( artist => {
-        artist.genres.forEach( genre => genres.push(genre));
+      artists.items.forEach(artist => {
+        artist.genres.forEach(genre => genres.push(genre));
       });
       // return this.topAlbumId(albumsIds);
       return this.topElementInArray(genres);
     }));
   }
 
-  private getAlbum(id: string): Observable<any> {
-    return this.api('/albums/' + id);
+
+  fetchMyRecentTopTracks() {
+    this.api('/me/player/recently-played').pipe(map((res: TopTracks) => {
+      const list: Track[] = [];
+      const tracksNames = [];
+      res.items.forEach(track => {
+        list.push(track.track);
+        tracksNames.push(track.track.name);
+      });
+      const topTrackName = this.topElementInArray(tracksNames);
+      const img = list.filter(track => track.name === topTrackName)[0].album.images[0].url;
+      return new AppDataObject(
+        CONSTS.RECENT,
+        CONSTS.TRACK,
+        img,
+        topTrackName,
+        'test',
+        list
+      );
+
+    })).subscribe((res: AppDataObject) => {
+      this.appData.next(res);
+    });
   }
 
-  private  topElementInArray(array: string[]): string {
+  fetchMyRecentTopArtist() {
+    this.api('/me/player/recently-played').subscribe((res: TopTracks) => {
+      const artistsIds = [];
+      res.items.forEach(track => {
+        artistsIds.push(track.track.artists[0].id);
+      });
+      this.api('/artists?ids=' + artistsIds.join(','))
+        // this.api('/artists?ids=' + [...new Set(artistsIds)].join(','))
+        .pipe(map((al: any) => al.artists)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
+        .subscribe((artists: Artist[]) => {
+          const topArtistId = this.topElementInArray(artistsIds);
+          const topArtist: Artist = artists.find(artist => artist.id === topArtistId);
+          this.appData.next(new AppDataObject(
+            CONSTS.RECENT,
+            CONSTS.ARTIST,
+            topArtist.images[0].url,
+            topArtist.name,
+            topArtist.followers.total.toString(),
+            artists
+          ));
+        });
+    });
+
+  }
+
+  private topElementInArray(array: string[]): string {
     const modeMap = {};
     let maxEl = array[0];
     let maxCount = 1;
     array.forEach(id => {
-      if (modeMap[id] === null) {
+      if (!modeMap[id]) {
         modeMap[id] = 1;
-      }else {
+      } else {
         modeMap[id]++;
       }
-      if (modeMap[id] > maxCount)
-      {
-          maxEl = id;
-          maxCount = modeMap[id];
+      if (modeMap[id] > maxCount) {
+        maxEl = id;
+        maxCount = modeMap[id];
       }
     });
     return maxEl;
-
   }
 
   private api(endpoint: string) {
-    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (!this.token) {
+      const userData = JSON.parse(localStorage.getItem('userData'));
+      this.token = userData._token;
+    }
     return this.http.get(environment.API_URL + endpoint, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + userData._token
+        Authorization: 'Bearer ' + this.token
       })
     });
 
   }
+
 }
