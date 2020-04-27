@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       console.log(user);
       this.username = user.display_name;
     });
-    this.spotify.fetchMyTopAlbum();
+    // this.spotify.fetchMyTopGenre();
     // this.spotify.fetchMyRecentTopArtist();
     // this.spotify.fetchMyRecentTopTracks();
     this.spotify.appData.subscribe( (res: AppData) => {

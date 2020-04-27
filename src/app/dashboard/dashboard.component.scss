@@ -65,35 +65,3 @@
     }
 
 }
-
-ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-
-    li {
-        padding: 1em 1.5em 1.5em 1em;
-        position: relative;
-
-        &::before {
-            content: '';
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: #070707;
-            border-radius: 50%;
-        }
-
-        &:hover {
-            cursor: pointer;
-        }
-        &:hover:before {
-            background: hotpink;
-        }
-    }
-    .active:before {
-        background: greenyellow;
-    }
-}

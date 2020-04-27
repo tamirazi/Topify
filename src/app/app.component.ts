@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit} from '@angular/core';
+
 import { AuthService } from './services/auth.service';
 
 
@@ -13,6 +14,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
 
   title = 'Topify';
+  username: string;
 
   constructor(private authService: AuthService) {}
 

@@ -73,15 +73,27 @@ export class SpotifyService {
     });
   }
 
-  getMyTopGenre(): Observable<string> {
-    return this.api('/me/top/artists').pipe(map((artists: TopArtists) => {
+  fetchMyTopGenre() {
+    this.api('/me/top/artists').subscribe((artists: TopArtists) => {
       const genres = [];
       artists.items.forEach(artist => {
         artist.genres.forEach(genre => genres.push(genre));
       });
-      // return this.topAlbumId(albumsIds);
-      return this.topElementInArray(genres);
-    }));
+      const topGenre = this.topElementInArray(genres);
+      this.api('/recommendations?seed_genres=' + topGenre + ',' + genres.find(genre => genre !== topGenre))
+      .pipe( map( (res: any) => res.tracks))
+      .subscribe( (tracks: Track[]) => {
+        console.log(tracks);
+        this.appData.next({
+          type: CONSTS.GENRE,
+          time: CONSTS.TOP,
+          result: topGenre,
+          description: 'nice genre :)',
+          image_url: artists.items[0].images[0].url,
+          list: tracks
+        });
+      });
+    });
   }
 
 
@@ -149,6 +161,7 @@ export class SpotifyService {
         maxCount = modeMap[id];
       }
     });
+    // console.log(modeMap);
     return maxEl;
   }
 

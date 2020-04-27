@@ -16,7 +16,7 @@
 
 
 
-<div class="list-container"  *ngIf="type==='Track'">
+<div class="list-container"  *ngIf="type==='Track' || type==='Genre'">
   <div class="list-item" *ngFor="let track of list">
     <div class="img" [ngStyle]="{'background-image': 'url(' + track.album.images[0].url + ')'}"></div>
     <div class="info">

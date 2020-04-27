@@ -3,6 +3,7 @@ export const CONSTS = {
     ARTIST: 'Artist',
     TRACK: 'Track',
     ALBUM: 'Album',
+    GENRE: 'Genre',
     TOP: 'Top',
     RECENT: 'Recent'
 
