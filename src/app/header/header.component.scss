@@ -31,7 +31,7 @@ h1 {
 }
 
 ul {
-    position: absolute;
+    // position: absolute;
     left: calc(5%);
     bottom: 0;
     list-style: none;
@@ -47,7 +47,7 @@ ul {
         margin-left: 20px;
 
         &.active {
-            // text-decoration: underline;
+            text-decoration: underline;
             border-bottom: 2px solid #2E2E2E;
             padding-bottom: 3px;
             font-weight: 600;

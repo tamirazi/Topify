@@ -1,12 +1,33 @@
-<ul class="nav">
+<ul class="menu">
     <li></li>
     <li></li>
     <li></li>
   </ul>
   
   <div class="logo" (click)="logout()"></div>
+
+  <div class="header-container">
+    <!-- <div #userimg class="profile_image"></div> -->
+    <h1>{{username}}</h1>
   
-  <app-header [username]='username' class="flex-col-center"></app-header>
+    <ul class="nav">
+      <li class="nav-item active"
+      [routerLink]="['/home', 'top', type]"
+      [ngClass]="{active: time === 'top'}">All Time</li>
+      <li class="nav-item"
+      [routerLink]="['/home', 'recent', type]"
+      [ngClass]="{active: time === 'recent'}">Recent</li>
+    </ul>
+
+    <ul class="nav">
+      <li class="nav-item active" [routerLink]="['/home', time, 'artists']" [ngClass]="{active: type === 'artists'}">Artist</li>
+      <li class="nav-item" [routerLink]="['/home', time, 'tracks']" [ngClass]="{active: type === 'tracks'}">Track</li>
+      <li class="nav-item" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Album</li>
+      <li class="nav-item" [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Genre</li>
+    </ul>
+  </div>
+  
+  <!-- <app-header [username]='username' class="flex-col-center"></app-header> -->
   <app-dashboard 
   class="flex-col-center"
   [time]="time"

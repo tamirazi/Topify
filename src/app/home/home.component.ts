@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 import { SpotifyService } from '../services/spotify.service';
@@ -24,9 +24,15 @@ export class HomeComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private activadetRoute: ActivatedRoute,
     private spotify: SpotifyService) { }
 
   ngOnInit(): void {
+
+    this.activadetRoute.params.subscribe( (res: any) => {
+      this.type = res.type;
+      this.time = res.time;
+    });
     this.spotify.getUsername().subscribe( (user: User) => {
       console.log(user);
       this.username = user.display_name;
