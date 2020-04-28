@@ -29,11 +29,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('home OnInit');
-    
     this.activadetRoute.params.subscribe( (res: any) => {
       this.list = [];
-      this.type = this.capitalize(res.type);
-      this.time = this.capitalize(res.time);
+      this.type = res.type;
+      this.time = res.time;
       this.spotify.fetch(this.time, this.type);
     });
     this.spotify.getUsername().subscribe( (user: User) => {

@@ -1,11 +1,11 @@
 import {Track, Artist} from '../models/spotify.model';
 export const CONSTS = {
-    ARTIST: 'Artist',
-    TRACK: 'Track',
-    ALBUM: 'Album',
-    GENRE: 'Genre',
-    TOP: 'Top',
-    RECENT: 'Recent'
+    ARTIST: 'artist',
+    TRACK: 'track',
+    ALBUM: 'album',
+    GENRE: 'genre',
+    TOP: 'top',
+    RECENT: 'recent'
 
 };
 

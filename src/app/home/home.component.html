@@ -12,18 +12,18 @@
   
     <ul class="nav">
       <li class="nav-item active"
-      [routerLink]="['/home', 'Top', type]"
-      [ngClass]="{active: time === 'Top'}">All Time</li>
+      [routerLink]="['/home', 'top', type]"
+      [ngClass]="{active: time === 'top'}">All Time</li>
       <li class="nav-item"
-      [routerLink]="['/home', 'Recent', type]"
-      [ngClass]="{active: time === 'Recent'}">Recent</li>
+      [routerLink]="['/home', 'recent', type]"
+      [ngClass]="{active: time === 'recent'}">Recent</li>
     </ul>
 
     <ul class="nav">
-      <li class="nav-item active" [routerLink]="['/home', time, 'Artist']" [ngClass]="{active: type === 'Artist'}">Artist</li>
-      <li class="nav-item" [routerLink]="['/home', time, 'Track']" [ngClass]="{active: type === 'Track'}">Track</li>
-      <li class="nav-item" [routerLink]="['/home', time, 'Album']" [ngClass]="{active: type === 'Album'}">Album</li>
-      <li class="nav-item" [routerLink]="['/home', time, 'Genre']" [ngClass]="{active: type === 'Genre'}">Genre</li>
+      <li class="nav-item active" [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Artist</li>
+      <li class="nav-item" [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Track</li>
+      <li class="nav-item" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Album</li>
+      <li class="nav-item" [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Genre</li>
     </ul>
   </div>
   

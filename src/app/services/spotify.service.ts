@@ -136,7 +136,7 @@ export class SpotifyService {
 
 
   fetchMyRecentTopTracks() {
-    this.api('/me/player/recently-played').pipe(map((res: TopTracks) => {
+    this.api('/me/player/recently-played?limit=50').pipe(map((res: TopTracks) => {
       const list: Track[] = [];
       const tracksNames = [];
       res.items.forEach(track => {
@@ -160,12 +160,12 @@ export class SpotifyService {
   }
 
   fetchMyRecentTopArtist() {
-    this.api('/me/player/recently-played').subscribe((res: TopTracks) => {
+    this.api('/me/player/recently-played?limit=50').subscribe((res: TopTracks) => {
       const artistsIds = [];
       res.items.forEach(track => {
         artistsIds.push(track.track.artists[0].id);
       });
-      this.api('/artists?ids=' + artistsIds.join(','))
+      this.api('/artists?ids=' + [...new Set(artistsIds)].join(','))
         // this.api('/artists?ids=' + [...new Set(artistsIds)].join(','))
         .pipe(map((al: any) => al.artists)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
         .subscribe((artists: Artist[]) => {

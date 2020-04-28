@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { Duration } from './pipes/duration.pipe';
 import { FollowersPipe } from './pipes/followers.pipe';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FollowersPipe } from './pipes/followers.pipe';
     LoginComponent,
     HomeComponent,
     Duration,
-    FollowersPipe
+    FollowersPipe,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
