@@ -28,16 +28,20 @@ export class HomeComponent implements OnInit {
     private spotify: SpotifyService) { }
 
   ngOnInit(): void {
-
+    console.log('home OnInit');
+    
     this.activadetRoute.params.subscribe( (res: any) => {
-      this.type = res.type;
-      this.time = res.time;
+      this.list = [];
+      this.type = this.capitalize(res.type);
+      this.time = this.capitalize(res.time);
+      this.spotify.fetch(this.time, this.type);
     });
     this.spotify.getUsername().subscribe( (user: User) => {
       console.log(user);
       this.username = user.display_name;
     });
     // this.spotify.fetchMyTopGenre();
+    // this.spotify.fetchMyRecentTopTracks();
     // this.spotify.fetchMyRecentTopArtist();
     // this.spotify.fetchMyRecentTopTracks();
     this.spotify.appData.subscribe( (res: AppData) => {
@@ -49,6 +53,10 @@ export class HomeComponent implements OnInit {
       this.description = res.description;
       this.list = res.list;
     });
+  }
+
+  capitalize(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
   }
 
   logout() {

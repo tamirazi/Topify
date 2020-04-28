@@ -18,6 +18,44 @@ export class SpotifyService {
   private token: string;
   constructor(private http: HttpClient) { }
 
+  fetch(time: string, type: string) {
+    switch (time) {
+      case CONSTS.TOP:
+        switch (type) {
+          case CONSTS.ARTIST:
+            this.fetchMyTopArtists();
+            break;
+          case CONSTS.TRACK:
+            this.fetchMyTopTracks();
+            break;
+          case CONSTS.ALBUM:
+            this.fetchMyTopAlbum();
+            break;
+          case CONSTS.GENRE:
+            this.fetchMyTopGenre();
+            break;
+        }
+        break;
+      case CONSTS.RECENT:
+        switch (type) {
+          case CONSTS.ARTIST:
+            this.fetchMyRecentTopArtist();
+            break;
+          case CONSTS.TRACK:
+            this.fetchMyRecentTopTracks();
+            break;
+          case 'album':
+            break;
+          case 'genre':
+            break;
+        }
+        break;
+
+      default:
+
+    }
+  }
+
   getUsername() {
     return this.api('/me');
   }
