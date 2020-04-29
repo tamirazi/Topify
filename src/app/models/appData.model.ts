@@ -10,8 +10,8 @@ export const CONSTS = {
 };
 
 export interface AppData {
-    time: string;
-    type: string;
+    // time: string;
+    // type: string;
     image_url: string;
     result: string;
     description: string;
@@ -19,8 +19,7 @@ export interface AppData {
 }
 export  class AppDataObject implements AppData {
 
-    constructor(public time: string,
-                public type: string,
+    constructor(
                 // tslint:disable-next-line:variable-name
                 public image_url: string,
                 public result: string,

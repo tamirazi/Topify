@@ -39,23 +39,13 @@ export class HomeComponent implements OnInit {
       console.log(user);
       this.username = user.display_name;
     });
-    // this.spotify.fetchMyTopGenre();
-    // this.spotify.fetchMyRecentTopTracks();
-    // this.spotify.fetchMyRecentTopArtist();
-    // this.spotify.fetchMyRecentTopTracks();
     this.spotify.appData.subscribe( (res: AppData) => {
       console.log(res);
-      this.time = res.time;
-      this.type = res.type;
       this.result = res.result;
       this.image = res.image_url;
       this.description = res.description;
       this.list = res.list;
     });
-  }
-
-  capitalize(s) {
-    return s.charAt(0).toUpperCase() + s.slice(1);
   }
 
   logout() {

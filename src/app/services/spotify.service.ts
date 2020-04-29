@@ -44,9 +44,11 @@ export class SpotifyService {
           case CONSTS.TRACK:
             this.fetchMyRecentTopTracks();
             break;
-          case 'album':
+          case CONSTS.ALBUM:
+            this.fetchMyRecentTopAlbum();
             break;
-          case 'genre':
+          case CONSTS.GENRE:
+            this.fetchMyRecentTopGenre();
             break;
         }
         break;
@@ -66,8 +68,6 @@ export class SpotifyService {
     }
     this.api('/me/top/tracks?limit=' + limit).subscribe((res: TopTracks) => {
       this.appData.next({
-        type: CONSTS.TRACK,
-        time: CONSTS.TOP,
         result: res.items[0].name,
         description: res.items[0].artists[0].name,
         image_url: res.items[0].album.images[0].url,
@@ -82,8 +82,6 @@ export class SpotifyService {
     }
     this.api('/me/top/artists?limit=' + limit).subscribe((res: TopArtists) => {
       this.appData.next({
-        type: CONSTS.ARTIST,
-        time: CONSTS.TOP,
         result: res.items[0].name,
         description: res.items[0].genres[0],
         image_url: res.items[0].images[0].url,
@@ -100,8 +98,6 @@ export class SpotifyService {
       });
       this.api('/albums/' + this.topElementInArray(albumsIds)).subscribe((res: Album) => {
         this.appData.next({
-          type: CONSTS.ALBUM,
-          time: CONSTS.TOP,
           result: res.name,
           description: res.artists[0].name,
           image_url: res.images[0].url,
@@ -121,10 +117,7 @@ export class SpotifyService {
       this.api('/recommendations?seed_genres=' + topGenre + ',' + genres.find(genre => genre !== topGenre))
       .pipe( map( (res: any) => res.tracks))
       .subscribe( (tracks: Track[]) => {
-        console.log(tracks);
         this.appData.next({
-          type: CONSTS.GENRE,
-          time: CONSTS.TOP,
           result: topGenre,
           description: 'nice genre :)',
           image_url: artists.items[0].images[0].url,
@@ -146,8 +139,6 @@ export class SpotifyService {
       const topTrackName = this.topElementInArray(tracksNames);
       const img = list.filter(track => track.name === topTrackName)[0].album.images[0].url;
       return new AppDataObject(
-        CONSTS.RECENT,
-        CONSTS.TRACK,
         img,
         topTrackName,
         'test',
@@ -166,14 +157,11 @@ export class SpotifyService {
         artistsIds.push(track.track.artists[0].id);
       });
       this.api('/artists?ids=' + [...new Set(artistsIds)].join(','))
-        // this.api('/artists?ids=' + [...new Set(artistsIds)].join(','))
         .pipe(map((al: any) => al.artists)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
         .subscribe((artists: Artist[]) => {
           const topArtistId = this.topElementInArray(artistsIds);
           const topArtist: Artist = artists.find(artist => artist.id === topArtistId);
           this.appData.next(new AppDataObject(
-            CONSTS.RECENT,
-            CONSTS.ARTIST,
             topArtist.images[0].url,
             topArtist.name,
             topArtist.followers.total.toString(),
@@ -182,6 +170,49 @@ export class SpotifyService {
         });
     });
 
+  }
+
+  fetchMyRecentTopAlbum() {
+    this.api('/me/player/recently-played?limit=20').subscribe((res: TopTracks) => {
+      const albumsIds = [];
+      res.items.forEach(track => {
+        albumsIds.push(track.track.album.id);
+      });
+      this.api('/albums?ids=' + [...new Set(albumsIds)].join(','))
+        .pipe(map((al: any) => al.albums)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
+        .subscribe((albums: Album[]) => {
+          const topAlbumId = this.topElementInArray(albumsIds);
+          const topAlbum: Album = albums.find(album => album.id === topAlbumId);
+          this.appData.next(new AppDataObject(
+            topAlbum.images[0].url,
+            topAlbum.name,
+            topAlbum.artists[0].name,
+            topAlbum.tracks.items
+          ));
+        });
+    });
+  }
+
+  fetchMyRecentTopGenre() {
+    this.api('/me/player/recently-played?limit=50').subscribe((res: TopTracks) => {
+      const artistsIds = [];
+      res.items.forEach(track => {
+        artistsIds.push(track.track.artists[0].id);
+      });
+      const topArtistId = this.topElementInArray(artistsIds);
+      this.api('/artists/' + topArtistId ).subscribe( (artist: Artist) => {
+        this.api('/recommendations?seed_genres=' + artist.genres[0])
+        .pipe(map((al: any) => al.tracks)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
+        .subscribe((tracks: Track[]) => {
+          this.appData.next({
+            result: artist.genres[0],
+            description: 'nice genre :)',
+            image_url: artist.images[0].url,
+            list: tracks
+          });
+        });
+      });
+    });
   }
 
   private topElementInArray(array: string[]): string {
