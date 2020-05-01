@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
-import { map} from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable, Subject} from 'rxjs';
 
 import {environment} from 'src/environments/environment';
@@ -15,7 +15,6 @@ import { AppData, AppDataObject, CONSTS } from '../models/appData.model';
 export class SpotifyService {
 
   appData = new Subject<AppData>();
-  private token: string;
   constructor(private http: HttpClient) { }
 
   fetch(time: string, type: string) {
@@ -201,7 +200,7 @@ export class SpotifyService {
       });
       const topArtistId = this.topElementInArray(artistsIds);
       this.api('/artists/' + topArtistId ).subscribe( (artist: Artist) => {
-        this.api('/recommendations?seed_genres=' + artist.genres[0])
+        this.api('/recommendations?seed_genres=' + artist.genres[0] + '&seed_artists=' + topArtistId)
         .pipe(map((al: any) => al.tracks)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
         .subscribe((tracks: Track[]) => {
           this.appData.next({
@@ -235,16 +234,7 @@ export class SpotifyService {
   }
 
   private api(endpoint: string) {
-    if (!this.token) {
-      const userData = JSON.parse(localStorage.getItem('userData'));
-      this.token = userData._token;
-    }
-    return this.http.get(environment.API_URL + endpoint, {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.token
-      })
-    });
-
+    return this.http.get(environment.API_URL + endpoint).pipe( tap(res => console.log(res)));
   }
 
 }

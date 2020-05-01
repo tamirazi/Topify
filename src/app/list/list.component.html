@@ -38,8 +38,8 @@
 
 
 <div class="list-container"  *ngIf="type==='album'">
-  <div class="list-item" *ngFor="let track of list">
-    <div class="img" [ngStyle]="{'background-image': 'url(' + imageUrlToAllListItem + ')'}"></div>
+  <div class="list-item" *ngFor="let track of list;index as i">
+    <div class="img" >{{i + 1}}.</div>
     <div class="info">
       <div class="text">
         <h3 class="artist-name">{{track.name}}</h3>

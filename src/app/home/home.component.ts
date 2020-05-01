@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
     private spotify: SpotifyService) { }
 
   ngOnInit(): void {
-    console.log('home OnInit');
     this.activadetRoute.params.subscribe( (res: any) => {
       this.list = [];
       this.type = res.type;
@@ -36,11 +35,11 @@ export class HomeComponent implements OnInit {
       this.spotify.fetch(this.time, this.type);
     });
     this.spotify.getUsername().subscribe( (user: User) => {
-      console.log(user);
+      // console.log(user);
       this.username = user.display_name;
     });
     this.spotify.appData.subscribe( (res: AppData) => {
-      console.log(res);
+      // console.log(res);
       this.result = res.result;
       this.image = res.image_url;
       this.description = res.description;

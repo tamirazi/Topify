@@ -71,3 +71,12 @@ export interface Album {
         items: Track[];
     };
 }
+
+export interface SpotifyError {
+    error: {
+        error: {
+            status: number;
+            message: string;
+        }
+    };
+}
