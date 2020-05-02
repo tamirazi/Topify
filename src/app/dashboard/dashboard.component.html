@@ -1,10 +1,44 @@
-<div class="dashboard-card">
-    <div class="img-con">
+<div class="dashboard-container">
+    <!-- <div class="img-con">
         <div *ngIf="image" class="img" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
     </div>
     <div class="info">
         <h1>{{time}} {{type}}</h1>
         <h3>{{result}}</h3>
         <h6>{{description}}</h6>
+    </div> -->
+    <div class="left">
+        <div class="user">
+            <h3>Hello,</h3>
+            <h1>{{username}}</h1>
+            <ul class="type-nav">
+                <li class="nav-item active" [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Artist</li>
+                <li class="nav-item" [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Track</li>
+                <li class="nav-item" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Album</li>
+                <li class="nav-item" [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Genre</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="right">
+        <div class="bg">
+
+        </div>
+        <div *ngIf="image" class="img" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
+        <div class="info">
+            <div class="h3">{{result}}</div>
+            <div class="h3">{{description}}</div>
+        </div>
+
+
+    </div>
+
+    <div class="bottom">
+        <ul class="time-nav">
+            <li class="nav-item active" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
+            <li class="nav-item" [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
+        </ul>
+
     </div>
 </div>

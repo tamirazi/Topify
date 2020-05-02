@@ -6,25 +6,8 @@
 
 <div class="logo" (click)="logout()"></div>
 
-<div class="header-container">
-    <!-- <div #userimg class="profile_image"></div> -->
-    <h1>{{username}}</h1>
-
-    <ul class="nav">
-        <li class="nav-item active" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
-        <li class="nav-item" [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
-    </ul>
-
-    <ul class="nav">
-        <li class="nav-item active" [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Artist</li>
-        <li class="nav-item" [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Track</li>
-        <li class="nav-item" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Album</li>
-        <li class="nav-item" [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Genre</li>
-    </ul>
-</div>
-
 <!-- <app-header [username]='username' class="flex-col-center"></app-header> -->
-<app-dashboard class="flex-col-center" [time]="time" [type]="type" [result]="result" [description]="description" [image]="image">
+<app-dashboard [username]="username" [time]="time" [type]="type" [result]="result" [description]="description" [image]="image">
 </app-dashboard>
 <app-list [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
 <div class="footer">

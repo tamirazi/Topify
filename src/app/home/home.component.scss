@@ -67,36 +67,8 @@ app-list {
         font-size: 1.5em;
     }
 
-    .nav {
-        // position: absolute;
-        left: calc(5%);
-        bottom: 0;
-        list-style: none;
-        display: flex;
-        margin: 0;
-        padding: 0;
-        width: 90%;
-        cursor: pointer;
-    
-        .nav-item {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            margin-left: 20px;
-    
-            &.active {
-                // text-decoration: underline;
-                border-bottom: 2px solid #2E2E2E;
-                padding-bottom: 3px;
-                font-weight: 600;
-            }
-        }
-    
-        
-    }
+
 }
-
-
-
 
 
 

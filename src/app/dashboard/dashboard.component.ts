@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   @Input() result: string;
   @Input() description: string;
   @Input() image: string;
+  @Input() username: string;
   constructor() { }
 
   ngOnInit(): void {}
