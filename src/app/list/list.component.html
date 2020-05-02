@@ -1,4 +1,18 @@
 <div class="list-container"  *ngIf="type==='artist'">
+  <div class="first-item" *ngIf="list.length > 0">
+    <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
+    <div class="info">
+      <div class="text">
+        <h3>make a playlist</h3>
+        <p>from a random track </p>
+        <br>
+      </div>
+      <div class="duration">
+        <a href="#"><h3 class="track-duration">save</h3></a>
+      </div>
+    </div>
+    <hr>
+  </div>
     <div class="list-item" *ngFor="let artist of list">
       <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div>
       <div class="info">
@@ -6,7 +20,7 @@
           <h3 class="artist-name">{{artist.name}}</h3>
           <h3 *ngFor="let genre of artist.genres" class="track-name">{{genre}}, </h3>
           <br>
-          <a [href]= "artist.uri | safeUrl">open in spotify</a>
+          <a [href]= "artist.uri | safeUrl">spotify</a>
         </div>
         <div class="duration">
           <h3 class="track-duration">{{artist.followers.total | followers}}</h3>
@@ -19,6 +33,20 @@
 
 
 <div class="list-container"  *ngIf="type==='track' || type==='genre'">
+  <div class="first-item" *ngIf="list.length > 0">
+    <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
+    <div class="info">
+      <div class="text">
+        <h3>make a playlist {{totalDuration | duration}}</h3>
+        <p>from a random track </p>
+        <br>
+      </div>
+      <div class="duration">
+        <a href="#"><h3 class="track-duration">save</h3></a>
+      </div>
+    </div>
+    <hr>
+  </div>
   <div class="list-item" *ngFor="let track of list">
     <div class="img" [ngStyle]="{'background-image': 'url(' + track.album.images[0].url + ')'}"></div>
     <div class="info">
@@ -26,7 +54,7 @@
         <h3 class="artist-name">{{track.name}}</h3>
         <h3 class="track-name">{{track.artists[0].name}}</h3>
         <br>
-        <a [href]= "track.uri | safeUrl">open in spotify</a>
+        <a [href]= "track.uri | safeUrl">spotify</a>
       </div>
       <div class="duration">
         <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
@@ -38,13 +66,28 @@
 
 
 <div class="list-container"  *ngIf="type==='album'">
+  <div class="first-item" *ngIf="list.length > 0">
+    <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
+    <div class="info">
+      <div class="text">
+        <h3>make a playlist {{totalDuration | duration}}</h3>
+        <p>from a random track </p>
+        <br>
+      </div>
+      <div class="duration">
+        <a href="#"><h3 class="track-duration">save</h3></a>
+      </div>
+    </div>
+    <hr>
+  </div>
   <div class="list-item" *ngFor="let track of list;index as i">
     <div class="img" >{{i + 1}}.</div>
     <div class="info">
       <div class="text">
         <h3 class="artist-name">{{track.name}}</h3>
         <h3 class="track-name">{{track.artists[0].name}}</h3>
-        <a [href]= "track.uri | safeUrl">open in spotify</a>
+        <br>
+        <a [href]= "track.uri | safeUrl">spotify</a>
       </div>
       <div class="duration">
         <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
