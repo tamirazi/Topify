@@ -1,0 +1,29 @@
+
+.slick-container {
+    margin-left: 10%;
+    h1 {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+    }
+}
+.slick-slide { 
+    h1{
+        opacity: .6;
+        font-weight: 400;
+        transform: opacity .5s;
+    }
+}
+
+.slick-current {
+    h1{
+        font-weight: 600;
+        opacity: 1;
+        transform: opacity .5s;
+    }
+
+}
+
+

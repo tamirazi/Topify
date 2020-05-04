@@ -1,3 +1,5 @@
+<div class="loading flex-col-center" *ngIf="list.length === 0 || !list">Loading</div>
+
 <div class="list-container"  *ngIf="type==='artist'">
   <div class="first-item" *ngIf="list.length > 0">
     <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
