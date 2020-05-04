@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       this.username = user.display_name;
     });
     this.spotify.appData.subscribe( (res: AppData) => {
-      // console.log(res);
+      console.log(res);
       this.result = res.result;
       this.image = res.image_url;
       this.description = res.description;

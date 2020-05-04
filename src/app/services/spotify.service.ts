@@ -234,7 +234,7 @@ export class SpotifyService {
   }
 
   private api(endpoint: string) {
-    return this.http.get(environment.API_URL + endpoint).pipe( tap(res => console.log(res)));
+    return this.http.get(environment.API_URL + endpoint);
   }
 
 }

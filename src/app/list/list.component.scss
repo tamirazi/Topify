@@ -8,6 +8,13 @@
         position: relative;
         min-height: 60px;
 
+        a {
+            text-decoration: inherit;
+            width: 100%;
+            color: inherit;
+            cursor: auto;
+        }
+
         h3 {
             margin: 0;
         }
