@@ -16,6 +16,7 @@ import { FollowersPipe } from './pipes/followers.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ApiInterceptor } from './services/http-interceptor';
 import { SlickNavComponent } from './slick-nav/slick-nav.component';
+import { WelcomeComponent } from './home/welcome/welcome.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SlickNavComponent } from './slick-nav/slick-nav.component';
     Duration,
     FollowersPipe,
     SafeUrlPipe,
-    SlickNavComponent
+    SlickNavComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

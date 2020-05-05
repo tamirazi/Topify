@@ -5,7 +5,7 @@ import { TopArtists } from '../models/spotify.model';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss', './dashboardDesktop.component.scss']
 })
 export class DashboardComponent implements OnInit {
   @Input() type: string;

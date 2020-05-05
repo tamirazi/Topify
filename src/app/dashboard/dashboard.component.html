@@ -3,16 +3,14 @@
         <div class="user">
             <h3>Hello,</h3>
             <h1>{{username}}</h1>
-            <!-- <ul class="type-nav">
+            <ul class="type-nav">
                 <li class="nav-item active" [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Artist</li>
                 <li class="nav-item" [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Track</li>
                 <li class="nav-item" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Album</li>
                 <li class="nav-item" [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Genre</li>
-            </ul> -->
+            </ul>
         </div>
         <app-slick-nav [type]="type" [time]="time"></app-slick-nav>
-
-
     </div>
 
     <div class="right">
@@ -28,7 +26,7 @@
 
     </div>
 
-    <div class="bottom">
+    <div class="time-nav-container">
         <ul class="time-nav">
             <li class="nav-item active" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
             <li class="nav-item" [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>

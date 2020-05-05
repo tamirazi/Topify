@@ -10,7 +10,7 @@ import { User, Artist, Track } from '../models/spotify.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss', './homeDesktop.component.scss']
 })
 export class HomeComponent implements OnInit {
   username: string;
@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   description: string;
   image: string;
   list: Artist[] | Track[];
+  userImageUrl: string;
 
   constructor(
     private authService: AuthService,
@@ -35,8 +36,9 @@ export class HomeComponent implements OnInit {
       this.spotify.fetch(this.time, this.type);
     });
     this.spotify.getUsername().subscribe( (user: User) => {
-      // console.log(user);
+      console.log(user);
       this.username = user.display_name;
+      this.userImageUrl = user.images[0].url;
     });
     this.spotify.appData.subscribe( (res: AppData) => {
       console.log(res);
