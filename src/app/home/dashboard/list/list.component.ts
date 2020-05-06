@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Track, Artist, Album } from '../models/spotify.model';
+import { Track, Artist, Album } from '../../../models/spotify.model';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +7,6 @@ import { Track, Artist, Album } from '../models/spotify.model';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnChanges {
-  
   @Input() list: Track[] | Artist[];
   @Input() imageUrlToAllListItem: string = null;
   @Input() type: string;
@@ -21,7 +20,6 @@ export class ListComponent implements OnInit, OnChanges {
         this.totalDuration += element.duration_ms;
       });
     }
-    
   }
 
   ngOnInit(): void {

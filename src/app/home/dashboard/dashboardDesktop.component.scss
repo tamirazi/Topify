@@ -1,0 +1,135 @@
+@media only screen and (min-width: 768px) {
+
+    app-slick-nav,
+    .mobile-list,
+    .user {
+        display: none;
+    }
+
+    .desktop-list {
+        display: block;
+        width: 100%;
+        max-width: 600px;
+        max-height: 525px;
+        overflow-y: scroll;
+    }
+
+    .type-nav {
+        display: block;
+        width: auto;
+
+        .nav-item {
+            color: white;
+            font-size: 30px;
+            font-weight: 300;
+            opacity: .7;
+            transition: opacity .3s;
+            &.active {
+                border-bottom: 0;
+                padding-bottom: 0;
+                font-weight: 600;
+                opacity: 1;
+                transition: opacity .3s;
+            }
+
+            &:hover {
+                opacity: 1;
+                transition: opacity .2s;
+            }
+        }
+    }
+
+
+
+    .time-nav {
+        margin-top: 1em;
+        .nav-item {
+            &:nth-child(2) {
+                margin-left: 50px;
+            }
+
+            &.active {
+                padding-bottom: 0;
+
+            }
+        }
+
+    }
+
+    .page {
+        position: relative;
+        scroll-snap-align: start;
+        flex-direction: column-reverse;
+        height: 100vh;
+        justify-content: flex-end;
+
+        .container {
+            margin-top: 0;
+            max-width: 1300px;
+            width: 100%;
+            height: 90%;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+
+            .left {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
+
+            .right {
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                height: 100%;
+
+                .res-container {
+                    position: relative;
+                    top: -10%;
+
+                    .img {
+                        max-width: 350px;
+                        max-height: 350px;
+                        width: 17vw;
+                        height: 17vw;
+                        border-radius: 10px;
+                    }
+
+                    .info {
+                        font-size: 27px;
+                        color: white;
+                    }
+                }
+
+
+            }
+
+        }
+
+        .bottom-strip {
+            z-index: 1;
+            display: block;
+            width: 100%;
+            height: 5%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #FDF5F3;
+        }
+    }
+
+    .bg {
+        width: 39vw;
+        height: 30vh;
+        background-color: #596D67;
+        position: absolute;
+        z-index: -1;
+        top: 35%;
+        left: 0;
+    }
+}
+

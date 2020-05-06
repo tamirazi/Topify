@@ -1,0 +1,119 @@
+
+.time-nav-container, .mobile-list {
+    width: 100%;
+}
+
+.time-nav, .type-nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    cursor: pointer;
+
+    .nav-item {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        &.active {
+            border-bottom: 2px solid #2E2E2E;
+            padding-bottom: 3px;
+            font-weight: 600;
+        }
+    }
+}
+
+.time-nav {
+    .nav-item {
+        &:nth-child(2) {
+            margin-left: 50px;
+        }
+    }
+}
+
+.desktop-list, .type-nav, .bottom-strip {
+    display: none;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+
+    .container {
+        margin-top: 10%;
+        max-width: 1300px;
+        width: 100%;
+        height: min-content;
+        display: flex;
+        justify-content: center;
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: min-content;
+
+            app-slick-nav {
+                width: 150px;
+            }
+
+            .user {
+
+                h1,
+                h3 {
+                    margin: 0;
+                }
+
+                h3 {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 400;
+                }
+
+                h1 {
+                    font-family: 'Teko', sans-serif;
+                }
+            }
+        }
+
+        .right {
+            width: 100%;
+            height: min-content;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .img {
+                z-index: 1;
+                width: 150px;
+                height: 150px;
+                position: relative;
+                border-radius: 5px;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .info {
+                position: relative;
+                font-family: 'Teko', sans-serif;
+            }
+        }
+
+    }
+}
+
+.bg {
+    width: 39vw;
+    height: 30vh;
+    background-color: #596D67;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+}

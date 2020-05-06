@@ -1,6 +1,5 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef, Input } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { TopArtists, Artist, Track } from '../models/spotify.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { Artist, Track } from '../../models/spotify.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,5 +26,5 @@ export class DashboardComponent implements OnInit {
         behavior: 'smooth'
       });
     }
-  } 
+  }
 }
