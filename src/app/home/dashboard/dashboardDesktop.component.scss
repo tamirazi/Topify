@@ -5,7 +5,6 @@
     .user {
         display: none;
     }
-
     .desktop-list {
         display: block;
         width: 100%;
@@ -13,7 +12,18 @@
         max-height: 525px;
         overflow-y: scroll;
     }
-
+    .time-nav-container {
+        height: 10%;
+        display: flex;
+        .time-nav {
+            margin-top: 1em;
+            .nav-item {
+                &.active {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
     .type-nav {
         display: block;
         width: auto;
@@ -39,22 +49,6 @@
         }
     }
 
-
-
-    .time-nav {
-        margin-top: 1em;
-        .nav-item {
-            &:nth-child(2) {
-                margin-left: 50px;
-            }
-
-            &.active {
-                padding-bottom: 0;
-
-            }
-        }
-
-    }
 
     .page {
         position: relative;
@@ -101,7 +95,7 @@
 
                     .info {
                         font-size: 27px;
-                        color: white;
+                        color: black;
                     }
                 }
 
