@@ -40,7 +40,7 @@
                 }
     
                 .description{
-                    font-size: 2vw;
+                    font-size: 1.5vw;
                 }
             }
         }
@@ -52,9 +52,9 @@
             position: relative;
 
             .user-photo {
-                max-width: 300px;
-                max-height: 300px;
-                width: 25vw;
+                // max-width: 300px;
+                // max-height: 300px;
+                width: 18vw;
                 background-color: black;
                 border-radius: 10px;
             }
@@ -117,8 +117,11 @@ span {
     position: absolute;
     right: 0;
     top: 0;
-    height: 80%;
-    width: 40vw;
+    height: 35vw;
+    min-height: 60%;
+    width: 33vw;
     background-color: #82CA9C;
+    opacity: 0.8;
+
 }
 

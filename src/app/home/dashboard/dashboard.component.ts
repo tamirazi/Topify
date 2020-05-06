@@ -1,5 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Artist, Track } from '../../models/spotify.model';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +18,10 @@ export class DashboardComponent implements OnInit {
   @Input() image: string;
   @Input() username: string;
   @Input() list: Artist[] | Track[];
-  constructor() { }
+
+  isMobile: boolean;
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {}
 
@@ -26,5 +33,15 @@ export class DashboardComponent implements OnInit {
         behavior: 'smooth'
       });
     }
+  }
+  logout() {
+    console.log('logout');
+    this.authService.logout();
+    this.router.navigate(['']);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isMobile = event.target.innerWidth < 768;
   }
 }

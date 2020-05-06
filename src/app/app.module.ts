@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +37,8 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    LazyLoadImageModule
   ],
   providers: [
     {

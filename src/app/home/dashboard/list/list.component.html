@@ -16,7 +16,7 @@
     <hr>
   </div>
     <div class="list-item" *ngFor="let artist of list">
-      <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div>
+      <div class="img" [lazyLoad]="artist.images[0].url"></div>
       <div class="info">
         <a [href]= "artist.uri | safeUrl">
         <div class="text">
@@ -52,7 +52,7 @@
     <hr>
   </div>
   <div class="list-item" *ngFor="let track of list">
-    <div class="img" [ngStyle]="{'background-image': 'url(' + track.album.images[0].url + ')'}"></div>
+    <div class="img" [lazyLoad]="track.album.images[0].url"></div>
     <div class="info">
       <div class="text">
         <h3 class="artist-name">{{track.name}}</h3>

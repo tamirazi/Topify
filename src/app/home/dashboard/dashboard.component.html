@@ -1,16 +1,23 @@
 <div class="page">
     <div class="container">
+        <ul class="menu">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        
+        <div class="logo" (click)="logout()"></div>
         <div class="left">
-            <div class="user">
+            <div class="user" *ngIf="isMobile">
                 <h3>Hello,</h3>
                 <h1>{{username}}</h1>
             </div>
-            <app-slick-nav [type]="type" [time]="time"></app-slick-nav>
-            <app-list class="desktop-list" [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
+            <app-slick-nav *ngIf="isMobile" [type]="type" [time]="time"></app-slick-nav>
+            <app-list *ngIf="!isMobile" class="desktop-list" [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
         </div>
     
         <div class="right">
-            <ul class="type-nav">
+            <ul class="type-nav" *ngIf="!isMobile">
                 <li class="nav-item active" [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Top Artist</li>
                 <li class="nav-item" [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Top Track</li>
                 <li class="nav-item" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Top Album</li>
@@ -33,7 +40,7 @@
             <li class="nav-item" (click)="scrollToBottom()" [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
         </ul>
     </div>
-    <app-list class="mobile-list" [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
+    <app-list class="mobile-list" *ngIf="isMobile" [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
     
     <div class="bottom-strip"></div>
     <div class="bg"></div>

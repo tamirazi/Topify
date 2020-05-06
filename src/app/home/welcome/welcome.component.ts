@@ -19,6 +19,6 @@ export class WelcomeComponent implements OnInit {
       top: 1000,
       behavior: 'smooth'
     });
-  } 
+  }
 
 }

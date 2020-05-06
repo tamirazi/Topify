@@ -2,48 +2,7 @@
 app-welcome {
     display: none; 
 }
-.menu {
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    padding-right: 20px;
-    padding-top: 15px;
-    cursor: pointer;
 
-    li {
-        padding: 5px;
-        position: relative;
-
-        &::before {
-            content: '';
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: #070707;
-            border-radius: 50%;
-        }
-    }
-}
-
-
-
-.logo {
-    z-index: 1;
-    min-width: 30px;
-    min-height: 30px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: black;
-    margin-left: 15px;
-    margin-top: 15px;
-    cursor: pointer;
-    border-radius: 50%;
-}
 
 .footer {
     text-align: center;

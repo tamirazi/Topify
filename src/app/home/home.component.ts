@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import {  Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
@@ -12,6 +12,8 @@ import { User, Artist, Track } from '../models/spotify.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss', './homeDesktop.component.scss']
 })
+
+
 export class HomeComponent implements OnInit {
   username: string;
   time: string;
@@ -22,11 +24,7 @@ export class HomeComponent implements OnInit {
   list: Artist[] | Track[];
   userImageUrl: string;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private activadetRoute: ActivatedRoute,
-    private spotify: SpotifyService) { }
+  constructor(private activadetRoute: ActivatedRoute, private spotify: SpotifyService) { }
 
   ngOnInit(): void {
     this.activadetRoute.params.subscribe( (res: any) => {
@@ -49,10 +47,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  logout() {
-    console.log('logout');
-    this.authService.logout();
-    this.router.navigate(['']);
-  }
+
 
 }
