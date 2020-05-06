@@ -1,3 +1,7 @@
+app-list {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
 .dashboard-container {
     height: 45vh;
     width: 100%;
@@ -43,7 +47,7 @@
         flex-direction: column;
         justify-content: center;
 
-        .bg {
+        .mobile-bg {
             position: absolute;
             z-index: 0;
             height: 90%;

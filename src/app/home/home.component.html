@@ -6,9 +6,9 @@
 
 <div class="logo" (click)="logout()"></div>
 <app-welcome [username]="username" [image]="userImageUrl" [time]="time"></app-welcome>
-<app-dashboard [username]="username" [time]="time" [type]="type" [result]="result" [description]="description" [image]="image">
+<app-dashboard [username]="username" [time]="time" [type]="type" [result]="result" [description]="description" [image]="image" [list]="list">
 </app-dashboard>
-<!-- <app-list [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
-<div class="footer">
+<app-list [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
+<!-- <div class="footer">
     <h3>footer</h3>
 </div> -->

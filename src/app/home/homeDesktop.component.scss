@@ -3,4 +3,22 @@
         display: block;
         height: 90vh;
     }
+
+    app-list {
+        max-height: 520px;
+        width: 40vw;
+        position: absolute;
+        top: 100vh;
+        left: 50vw;
+        overflow-y: scroll;
+
+    }
+
+    .menu, .logo {
+        position: fixed;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
 }

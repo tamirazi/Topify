@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef, Input } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { TopArtists } from '../models/spotify.model';
+import { TopArtists, Artist, Track } from '../models/spotify.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,15 +14,18 @@ export class DashboardComponent implements OnInit {
   @Input() description: string;
   @Input() image: string;
   @Input() username: string;
+  @Input() list: Artist[] | Track[];
   constructor() { }
 
   ngOnInit(): void {}
 
   scrollToBottom() {
-    window.scrollTo({
-      top: 1000,
-      behavior: 'smooth'
-    });
+    // do scroll only on desktop
+    if (window.innerWidth > 768) {
+      window.scrollTo({
+        top: 1000,
+        behavior: 'smooth'
+      });
+    }
   } 
-
 }
