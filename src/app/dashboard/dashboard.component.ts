@@ -18,4 +18,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  scrollToBottom() {
+    window.scrollTo({
+      top: 1000,
+      behavior: 'smooth'
+    });
+  } 
+
 }

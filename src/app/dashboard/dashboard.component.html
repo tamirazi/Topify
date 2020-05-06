@@ -28,8 +28,8 @@
 
     <div class="time-nav-container">
         <ul class="time-nav">
-            <li class="nav-item active" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
-            <li class="nav-item" [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
+            <li class="nav-item active" (click)="scrollToBottom()" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
+            <li class="nav-item" (click)="scrollToBottom()" [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
         </ul>
 
     </div>
