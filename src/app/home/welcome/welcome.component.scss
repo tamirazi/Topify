@@ -9,7 +9,7 @@
 
     .container {
         max-width: 1300px;
-        width: 80%;
+        width: 100%;
         height: 100%;
         display: flex;
         justify-content: space-evenly;
@@ -30,17 +30,19 @@
                     margin: 0;
                     font-family: 'Teko', sans-serif;
                     margin-bottom: .1em;
-                    font-size: 8vw;
+                    font-size: 14vh;
                 }
                 h3 {
                     margin: 0;
-                    font-family: 'Montserrat', sans-serif;
+                    margin-bottom: -12px;
+                    font-family: "Montserrat", sans-serif;
                     font-weight: 300;
-                    font-size: 2vw
+                    font-size: 17px;
+                    color: #3c3c3c;
                 }
     
                 .description{
-                    font-size: 1.5vw;
+                    line-height: 1.8;
                 }
             }
         }
@@ -50,13 +52,16 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            margin-left: -100px;
 
             .user-photo {
                 // max-width: 300px;
                 // max-height: 300px;
-                width: 18vw;
+                width: 38vh;
+                height: 50vh;
                 background-color: black;
                 border-radius: 10px;
+                margin-top: 45px;
             }
 
 
@@ -108,20 +113,18 @@ span {
 .top-color {
     position: absolute;
     width: 100%;
-    height: 5%;
+    height: 45px;
     background-color: #FDF5F3;
 }
 
 .bg-rect {
-    max-width: 736px;
+    max-width: 740px;
     position: absolute;
     right: 0;
     top: 0;
-    height: 35vw;
-    min-height: 60%;
-    width: 33vw;
+    height: 80vh;
+    width: 35vw;
     background-color: #82CA9C;
-    opacity: 0.8;
-
+    opacity: 1;
 }
 
