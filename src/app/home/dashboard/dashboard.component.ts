@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
 
   createPlaylist(event) {
     console.log('dashboard working on new playlist...');
-    const playListName = `${this.time.toLocaleUpperCase()} ${this.type.toLocaleUpperCase()} Topify`;    
+    const playListName = `${this.time.toLocaleUpperCase()} ${this.type.toLocaleUpperCase()} Topify`;
     // if (this.playList) {
     //   this.spotify.createPlaylistFromTracks(this.userId, playListName, this.list as Track[]);
     // }else {
