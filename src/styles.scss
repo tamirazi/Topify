@@ -12,6 +12,7 @@ body {
 }
 * {
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 .container {
     height: 100%;

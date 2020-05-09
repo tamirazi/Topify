@@ -49,6 +49,7 @@
                     font-weight: 300;
                     display: inline;
                 }
+
             }
             .duration {
                 display: flex;
@@ -83,11 +84,11 @@
 
     }
 
-    .list-item {
-        &:hover {
-            transform: scale(1.03);
-        }
-    }
+    // .list-item {
+    //     &:hover {
+    //         transform: scale(1.03);
+    //     }
+    // }
 }
 
 
