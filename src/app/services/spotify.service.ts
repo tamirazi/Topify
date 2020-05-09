@@ -107,7 +107,7 @@ export class SpotifyService {
   }
 
   fetchMyTopGenre() {
-    this.api('/me/top/artists').subscribe((artists: TopArtists) => {
+    this.api('/me/top/artists?limit=50').subscribe((artists: TopArtists) => {
       const genres = [];
       const artistsIds = [];
       artists.items.forEach(artist => {
