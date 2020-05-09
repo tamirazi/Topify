@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
@@ -31,7 +32,7 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
     FollowersPipe,
     SafeUrlPipe,
     SlickNavComponent,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
