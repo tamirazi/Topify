@@ -1,12 +1,9 @@
 @media only screen and (min-width: 768px) {
-    .menu, .logo {
+    .header {
+        width: 100%;
+        max-width: 1300px;
         position: fixed;
-    }
-    .menu {
-        right: 15vw;
-    }
-    .logo {
-        left: 15vw;
+        top: 0;
     }
     app-slick-nav,
     .mobile-list,
