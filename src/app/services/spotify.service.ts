@@ -109,16 +109,19 @@ export class SpotifyService {
   fetchMyTopGenre() {
     this.api('/me/top/artists').subscribe((artists: TopArtists) => {
       const genres = [];
+      const artistsIds = [];
       artists.items.forEach(artist => {
         artist.genres.forEach(genre => genres.push(genre));
+        artistsIds.push(artist.id);
       });
+      const topArtist = this.topElementInArray(artistsIds);
       const topGenre = this.topElementInArray(genres);
-      this.api('/recommendations?seed_genres=' + topGenre + ',' + genres.find(genre => genre !== topGenre))
+      this.api('/recommendations?seed_genres=' + topGenre + ',' + genres.find(genre => genre !== topGenre) + ',seed_artists=' + topArtist)
       .pipe( map( (res: any) => res.tracks))
       .subscribe( (tracks: Track[]) => {
         this.appData.next({
           result: topGenre,
-          description: 'nice genre :)',
+          description: '',
           image_url: artists.items[0].images[0].url,
           list: tracks
         });
@@ -205,7 +208,7 @@ export class SpotifyService {
         .subscribe((tracks: Track[]) => {
           this.appData.next({
             result: artist.genres[0],
-            description: 'nice genre :)',
+            description: '',
             image_url: artist.images[0].url,
             list: tracks
           });
