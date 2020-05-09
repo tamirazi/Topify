@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="right">
-            <img [src]="image" alt="" class="user-photo">
+            <div class="user-photo" [lazyLoad]="image"></div>
         </div>
     </div>
     <span (click)="scrollToBottom()">&#9660;</span>

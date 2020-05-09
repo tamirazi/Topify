@@ -7,13 +7,14 @@ export class FollowersPipe implements PipeTransform {
 
   transform(value: number, ...args: unknown[]): unknown {
     let followers: string;
+    followers = value.toString();
     if (value >= 1000000)
     {
-      followers = this.float2int((value / 1000000)) + 'M';
+      followers = (value / 1000000).toFixed(1).toString() + 'M';
     }
     else if (value >= 1000)
     {
-      followers = this.float2int(( value / 1000)) + 'K';
+      followers = ( value / 1000).toFixed(1).toString() + 'K';
     }
     return followers;
   }
