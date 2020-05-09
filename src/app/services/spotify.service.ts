@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
-import { Observable, Subject} from 'rxjs';
+import { Observable, Subject, forkJoin} from 'rxjs';
 
 import {environment} from 'src/environments/environment';
-import {TopTracks, Track, TopArtists, Album, Artist } from '../models/spotify.model';
+import {TopTracks, Track, TopArtists, Album, Artist, ArtistTopTracks } from '../models/spotify.model';
 import { AppData, AppDataObject, CONSTS } from '../models/appData.model';
 
 
@@ -61,21 +61,22 @@ export class SpotifyService {
     return this.api('/me');
   }
 
-  fetchMyTopTracks(limit?: number) {
+  private fetchMyTopTracks(limit?: number) {
     if (!limit) {
-      limit = 20;
+      limit = 50;
     }
     this.api('/me/top/tracks?limit=' + limit).subscribe((res: TopTracks) => {
       this.appData.next({
         result: res.items[0].name,
         description: res.items[0].artists[0].name,
         image_url: res.items[0].album.images[0].url,
-        list: res.items
+        list: res.items,
+        playList: res.items
       });
     });
   }
 
-  fetchMyTopArtists(limit?: number) {
+  private fetchMyTopArtists(limit?: number) {
     if (!limit) {
       limit = 20;
     }
@@ -84,12 +85,13 @@ export class SpotifyService {
         result: res.items[0].name,
         description: res.items[0].genres[0],
         image_url: res.items[0].images[0].url,
-        list: res.items
+        list: res.items,
+        playList: null
       });
     });
   }
 
-  fetchMyTopAlbum() {
+  private fetchMyTopAlbum() {
     this.api('/me/top/tracks').subscribe((tracks: TopTracks) => {
       const albumsIds = [];
       tracks.items.forEach(track => {
@@ -100,13 +102,14 @@ export class SpotifyService {
           result: res.name,
           description: res.artists[0].name,
           image_url: res.images[0].url,
-          list: res.tracks.items
+          list: res.tracks.items,
+          playList: res.tracks.items
         });
       });
     });
   }
 
-  fetchMyTopGenre() {
+  private fetchMyTopGenre() {
     this.api('/me/top/artists?limit=50').subscribe((artists: TopArtists) => {
       const genres = [];
       const artistsIds = [];
@@ -123,14 +126,15 @@ export class SpotifyService {
           result: topGenre,
           description: '',
           image_url: artists.items[0].images[0].url,
-          list: tracks
+          list: tracks,
+          playList: tracks
         });
       });
     });
   }
 
 
-  fetchMyRecentTopTracks() {
+  private fetchMyRecentTopTracks() {
     this.api('/me/player/recently-played?limit=50').pipe(map((res: TopTracks) => {
       const list: Track[] = [];
       const tracksNames = [];
@@ -144,6 +148,7 @@ export class SpotifyService {
         img,
         topTrackName,
         'test',
+        list,
         list
       );
 
@@ -152,7 +157,7 @@ export class SpotifyService {
     });
   }
 
-  fetchMyRecentTopArtist() {
+  private fetchMyRecentTopArtist() {
     this.api('/me/player/recently-played?limit=50').subscribe((res: TopTracks) => {
       const artistsIds = [];
       res.items.forEach(track => {
@@ -167,14 +172,15 @@ export class SpotifyService {
             topArtist.images[0].url,
             topArtist.name,
             topArtist.followers.total.toString(),
-            artists
+            artists,
+            null
           ));
         });
     });
 
   }
 
-  fetchMyRecentTopAlbum() {
+  private fetchMyRecentTopAlbum() {
     this.api('/me/player/recently-played?limit=20').subscribe((res: TopTracks) => {
       const albumsIds = [];
       res.items.forEach(track => {
@@ -189,13 +195,14 @@ export class SpotifyService {
             topAlbum.images[0].url,
             topAlbum.name,
             topAlbum.artists[0].name,
+            topAlbum.tracks.items,
             topAlbum.tracks.items
           ));
         });
     });
   }
 
-  fetchMyRecentTopGenre() {
+  private fetchMyRecentTopGenre() {
     this.api('/me/player/recently-played?limit=50').subscribe((res: TopTracks) => {
       const artistsIds = [];
       res.items.forEach(track => {
@@ -210,7 +217,8 @@ export class SpotifyService {
             result: artist.genres[0],
             description: '',
             image_url: artist.images[0].url,
-            list: tracks
+            list: tracks,
+            playList: tracks
           });
         });
       });
@@ -238,6 +246,59 @@ export class SpotifyService {
 
   private api(endpoint: string) {
     return this.http.get(environment.API_URL + endpoint);
+  }
+
+  private getTodayDate() {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+
+    const todayStr = mm + '/' + dd + '/' + yyyy;
+    return todayStr;
+  }
+
+  createPlaylistFromTracks(userId: string, playListName: string, tracks: Track[]) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+
+    const description = `Created by Topify on ${this.getTodayDate()}`;
+    const body = {
+      name: playListName,
+      description
+    };
+    this.http.post( environment.API_URL + '/users/' + userId + '/playlists', body , httpOptions)
+    .subscribe( (res: any) => {
+      const uris = [];
+      tracks.forEach(track => {
+        uris.push(track.uri);
+      });
+      const addTracksBody = {
+        uris
+      };
+      this.http.post( res.tracks.href, addTracksBody, httpOptions).subscribe( (playlist: any) => {
+        console.log(playlist);
+      });
+    });
+  }
+
+  createPlaylistFromArtist(userId: string, playListName: string, artists: Artist[]){
+    const playList: Track[] = [];
+    const requests = [];
+    artists.forEach(artist => {
+      requests.push(this.api('/artists/' + artist.id + '/top-tracks?country=IL'));
+    });
+    forkJoin(requests).subscribe( (artistsTopTracks: ArtistTopTracks[]) => {
+      artistsTopTracks.forEach(artist => {
+        const tracksIndex = Math.floor(Math.random() * artist.tracks.length);
+        playList.push(artist.tracks[tracksIndex]);
+      });
+
+      this.createPlaylistFromTracks(userId, playListName, playList);
+    });
   }
 
 }

@@ -15,7 +15,7 @@
                 <h1>{{username}}</h1>
             </div>
             <app-slick-nav *ngIf="isMobile" [type]="type" [time]="time"></app-slick-nav>
-            <app-list *ngIf="!isMobile" class="desktop-list" [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
+            <app-list *ngIf="!isMobile" class="desktop-list" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
         </div>
     
         <div class="right">
@@ -42,7 +42,7 @@
             <li class="nav-item" (click)="scrollToBottom()" [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
         </ul>
     </div>
-    <app-list class="mobile-list" *ngIf="isMobile" [type]="type" [list]="list" [imageUrlToAllListItem]="image"></app-list>
+    <app-list class="mobile-list" *ngIf="isMobile" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
     
     <div class="bottom-strip"></div>
     <div class="bg"></div>

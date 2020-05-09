@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Track, Artist, Album } from '../../../models/spotify.model';
 
 @Component({
@@ -10,6 +10,8 @@ export class ListComponent implements OnInit, OnChanges {
   @Input() list: Track[] | Artist[];
   @Input() imageUrlToAllListItem: string = null;
   @Input() type: string;
+  @Output() savePlaylistEmitter = new EventEmitter();
+
   totalDuration = 0;
 
   constructor() {}
@@ -24,6 +26,11 @@ export class ListComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     console.log('list oninit');
+
+  }
+
+  savePlayList() {
+    this.savePlaylistEmitter.emit('new Playlist');
   }
 
 }

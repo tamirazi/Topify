@@ -16,12 +16,14 @@ import { User, Artist, Track } from '../models/spotify.model';
 
 export class HomeComponent implements OnInit {
   username: string;
+  userId: string;
   time: string;
   type: string;
   result: string;
   description: string;
   image: string;
   list: Artist[] | Track[];
+  playList: Track[];
   userImageUrl: string;
 
   constructor(private activadetRoute: ActivatedRoute, private spotify: SpotifyService) { }
@@ -36,6 +38,7 @@ export class HomeComponent implements OnInit {
     this.spotify.getUsername().subscribe( (user: User) => {
       console.log(user);
       this.username = user.display_name;
+      this.userId = user.id;
       this.userImageUrl = user.images[0].url;
     });
     this.spotify.appData.subscribe( (res: AppData) => {
@@ -44,7 +47,10 @@ export class HomeComponent implements OnInit {
       this.image = res.image_url;
       this.description = res.description;
       this.list = res.list;
+      this.playList = res.playList;
     });
+
+
   }
 
 

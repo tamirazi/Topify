@@ -3,6 +3,7 @@ export interface User {
     images: Image[];
     country: string;
     email: string;
+    id: string;
     followers: {
         total: number;
     };
@@ -36,6 +37,10 @@ export interface Artist {
 
 export interface TopTracks {
     items: Track[];
+}
+
+export interface ArtistTopTracks {
+    tracks: Track[];
 }
 
 export interface Track {

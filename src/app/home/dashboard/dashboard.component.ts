@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Artist, Track } from '../../models/spotify.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 
 @Component({
@@ -17,11 +18,14 @@ export class DashboardComponent implements OnInit {
   @Input() description: string;
   @Input() image: string;
   @Input() username: string;
+  @Input() userId: string;
   @Input() list: Artist[] | Track[];
+  @Input() playList: Track[];
+
 
   isMobile: boolean;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private spotify: SpotifyService) { }
 
   ngOnInit(): void {}
 
@@ -38,6 +42,16 @@ export class DashboardComponent implements OnInit {
     console.log('logout');
     this.authService.logout();
     this.router.navigate(['']);
+  }
+
+  createPlaylist(event) {
+    console.log('dashboard working on new playlist...');
+    const playListName = `${this.time.toLocaleUpperCase()} ${this.type.toLocaleUpperCase()} Topify`;    
+    // if (this.playList) {
+    //   this.spotify.createPlaylistFromTracks(this.userId, playListName, this.list as Track[]);
+    // }else {
+    //   this.spotify.createPlaylistFromArtist(this.userId, playListName, this.list as Artist[]);
+    // }
   }
 
   @HostListener('window:resize', ['$event'])

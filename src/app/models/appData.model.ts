@@ -16,6 +16,7 @@ export interface AppData {
     result: string;
     description: string;
     list: Artist[] | Track[];
+    playList: Track[];
 }
 export  class AppDataObject implements AppData {
 
@@ -24,6 +25,7 @@ export  class AppDataObject implements AppData {
                 public image_url: string,
                 public result: string,
                 public description: string,
-                public list: Artist[] | Track[]
+                public list: Artist[] | Track[],
+                public playList: Track[]
                 ){}
 }
