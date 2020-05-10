@@ -4,7 +4,7 @@ import { map, tap } from 'rxjs/operators';
 import { Observable, Subject, forkJoin} from 'rxjs';
 
 import {environment} from 'src/environments/environment';
-import {TopTracks, Track, TopArtists, Album, Artist, ArtistTopTracks } from '../models/spotify.model';
+import {TopTracks, Track, TopArtists, Album, Artist, ArtistTopTracks, SpotifyError } from '../models/spotify.model';
 import { AppData, AppDataObject, CONSTS } from '../models/appData.model';
 
 
@@ -15,6 +15,7 @@ import { AppData, AppDataObject, CONSTS } from '../models/appData.model';
 export class SpotifyService {
 
   appData = new Subject<AppData>();
+  error = new Subject<SpotifyError>();
   constructor(private http: HttpClient) { }
 
   fetch(time: string, type: string) {
@@ -73,6 +74,8 @@ export class SpotifyService {
         list: res.items,
         playList: res.items
       });
+    }, err => {
+      this.error.next(err);
     });
   }
 
@@ -88,6 +91,8 @@ export class SpotifyService {
         list: res.items,
         playList: null
       });
+    }, err => {
+      this.error.next(err);
     });
   }
 
@@ -106,6 +111,8 @@ export class SpotifyService {
           playList: res.tracks.items
         });
       });
+    }, err => {
+      this.error.next(err);
     });
   }
 
@@ -130,6 +137,8 @@ export class SpotifyService {
           playList: tracks
         });
       });
+    }, err => {
+      this.error.next(err);
     });
   }
 
@@ -154,6 +163,8 @@ export class SpotifyService {
 
     })).subscribe((res: AppDataObject) => {
       this.appData.next(res);
+    }, err => {
+      this.error.next(err);
     });
   }
 
@@ -176,6 +187,8 @@ export class SpotifyService {
             null
           ));
         });
+    }, err => {
+      this.error.next(err);
     });
 
   }
@@ -199,6 +212,8 @@ export class SpotifyService {
             topAlbum.tracks.items
           ));
         });
+    }, err => {
+      this.error.next(err);
     });
   }
 
@@ -222,6 +237,8 @@ export class SpotifyService {
           });
         });
       });
+    }, err => {
+      this.error.next(err);
     });
   }
 
@@ -245,7 +262,7 @@ export class SpotifyService {
   }
 
   private api(endpoint: string) {
-    return this.http.get(environment.API_URL + endpoint);
+    return this.http.get(environment.API_URL + endpoint );
   }
 
   private getTodayDate() {
@@ -282,6 +299,8 @@ export class SpotifyService {
       this.http.post( res.tracks.href, addTracksBody, httpOptions).subscribe( (playlist: any) => {
         console.log(playlist);
       });
+    }, err => {
+      this.error.next(err);
     });
   }
 
@@ -298,6 +317,8 @@ export class SpotifyService {
       });
 
       this.createPlaylistFromTracks(userId, playListName, playList);
+    }, err => {
+      this.error.next(err);
     });
   }
 

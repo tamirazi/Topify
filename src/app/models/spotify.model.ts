@@ -78,6 +78,8 @@ export interface Album {
 }
 
 export interface SpotifyError {
+    status: number;
+    message: string;
     error: {
         error: {
             status: number;

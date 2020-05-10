@@ -1,10 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import {  Router, ActivatedRoute } from '@angular/router';
+import {  ActivatedRoute } from '@angular/router';
 
-import { AuthService } from '../services/auth.service';
 import { SpotifyService } from '../services/spotify.service';
 import { AppData } from '../models/appData.model';
-import { User, Artist, Track } from '../models/spotify.model';
+import { User, Artist, Track, SpotifyError } from '../models/spotify.model';
 
 
 @Component({
@@ -25,6 +24,9 @@ export class HomeComponent implements OnInit {
   list: Artist[] | Track[];
   playList: Track[];
   userImageUrl: string;
+  isError = false;
+  errStatus: number;
+  errMsg: string;
 
   constructor(private activadetRoute: ActivatedRoute, private spotify: SpotifyService) { }
 
@@ -50,7 +52,24 @@ export class HomeComponent implements OnInit {
       this.playList = res.playList;
     });
 
+    this.spotify.error.subscribe( (err: SpotifyError) => {
+      console.log(err);
+      this.isError = true;
+      if (err.error) {
+        this.errStatus = err.error.error.status;
+        this.errMsg = err.error.error.message;
+      }else {
+        this.errMsg = err.message;
+        this.errStatus = err.status;
+      }
 
+    });
+
+
+  }
+
+  onHandleAlert() {
+    this.isError = !this.isError;
   }
 
 

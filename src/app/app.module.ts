@@ -21,6 +21,7 @@ import { SlickNavComponent } from './slick-nav/slick-nav.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './home/dashboard/menu/menu.component';
+import { AlertComponent } from './home/dashboard/alert/alert.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MenuComponent } from './home/dashboard/menu/menu.component';
     WelcomeComponent,
     AboutComponent,
     MenuComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
