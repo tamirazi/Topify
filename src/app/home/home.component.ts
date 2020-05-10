@@ -53,16 +53,11 @@ export class HomeComponent implements OnInit {
     });
 
     this.spotify.error.subscribe( (err: SpotifyError) => {
-      console.log(err);
       this.isError = true;
       if (err.error) {
         this.errStatus = err.error.error.status;
         this.errMsg = err.error.error.message;
-      }else {
-        this.errMsg = err.message;
-        this.errStatus = err.status;
       }
-
     });
 
 

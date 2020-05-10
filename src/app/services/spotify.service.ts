@@ -86,6 +86,7 @@ export class SpotifyService {
     this.api('/me/top/artists?limit=' + limit).subscribe((res: TopArtists) => {
       this.appData.next({
         result: res.items[0].name,
+        // description: res.items[0].followers.total.toString(),
         description: res.items[0].genres[0],
         image_url: res.items[0].images[0].url,
         list: res.items,
@@ -156,7 +157,7 @@ export class SpotifyService {
       return new AppDataObject(
         img,
         topTrackName,
-        'test',
+        list.find( track => track.name === topTrackName).artists[0].name,
         list,
         list
       );
@@ -182,7 +183,7 @@ export class SpotifyService {
           this.appData.next(new AppDataObject(
             topArtist.images[0].url,
             topArtist.name,
-            topArtist.followers.total.toString(),
+            topArtist.genres[0],
             artists,
             null
           ));
