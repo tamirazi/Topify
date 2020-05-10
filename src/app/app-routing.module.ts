@@ -5,17 +5,18 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './services/auth.guard';
+import { AboutComponent } from './about/about.component';
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'login', component: LoginComponent },
+  {path: 'about', component: AboutComponent},
   {path: 'home', redirectTo: 'home/top/artist',  canActivate: [AuthGuard] },
   {path: 'home/:time', redirectTo: 'home/top/artist',  canActivate: [AuthGuard] },
   {path: 'home/:time/:type', component: HomeComponent,  canActivate: [AuthGuard] },
   {path: '**', redirectTo: '/login'},
-  // {path: 'about', component: AppComponent},
 ];
 
 @NgModule({

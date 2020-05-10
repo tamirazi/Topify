@@ -19,6 +19,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ApiInterceptor } from './services/http-interceptor';
 import { SlickNavComponent } from './slick-nav/slick-nav.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
+import { AboutComponent } from './about/about.component';
+import { MenuComponent } from './home/dashboard/menu/menu.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
     SafeUrlPipe,
     SlickNavComponent,
     WelcomeComponent,
+    AboutComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   @Input() list: Artist[] | Track[];
   @Input() playList: Track[];
 
-
+  showMenu = false;
   isMobile: boolean;
 
   constructor(private authService: AuthService, private router: Router, private spotify: SpotifyService) { }
@@ -38,11 +38,7 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
-  logout() {
-    console.log('logout');
-    this.authService.logout();
-    this.router.navigate(['']);
-  }
+
 
   createPlaylist(event) {
     console.log('dashboard working on new playlist...');
@@ -52,6 +48,10 @@ export class DashboardComponent implements OnInit {
     // }else {
     //   this.spotify.createPlaylistFromArtist(this.userId, playListName, this.list as Artist[]);
     // }
+  }
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
   }
 
   @HostListener('window:resize', ['$event'])

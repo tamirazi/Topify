@@ -1,12 +1,13 @@
 <div class="page">
+    <app-menu *ngIf="showMenu"></app-menu>
     <div class="header">
-        <ul class="menu">
+        <ul (click)="toggleMenu()" class="menu">
             <li></li>
             <li></li>
             <li></li>
         </ul>
         
-        <div class="logo" (click)="logout()"></div>
+        <div class="logo"></div>
     </div>
     <div class="container">
         <div class="left">
