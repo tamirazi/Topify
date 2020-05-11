@@ -27,7 +27,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, private spotify: SpotifyService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isMobile =  window.innerWidth < 768;
+  }
 
   scrollToBottom() {
     // do scroll only on desktop
