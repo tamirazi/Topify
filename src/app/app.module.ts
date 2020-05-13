@@ -22,6 +22,8 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './home/dashboard/menu/menu.component';
 import { AlertComponent } from './home/dashboard/alert/alert.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { AlertComponent } from './home/dashboard/alert/alert.component';
     AppRoutingModule,
     HttpClientModule,
     SlickCarouselModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {
