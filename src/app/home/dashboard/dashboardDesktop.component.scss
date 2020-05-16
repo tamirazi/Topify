@@ -1,20 +1,17 @@
+
 @media only screen and (min-width: 768px) {
     .header {
-        width: 95%;
-        max-width: 950px;
+        width: 80%;
+        max-width: 1500px;
         position: fixed;
         top: 0;
-    }
-    app-slick-nav,
-    .mobile-list,
-    .user {
-        display: none;
     }
     .desktop-list {
         display: block;
         width: 100%;
         max-height: 515px;
         overflow-y: scroll;
+        border-radius: 20px;
 
     }
     .time-nav-container {
@@ -30,22 +27,23 @@
         }
     }
     .type-nav {
+        list-style: none;
         display: block;
         width: auto;
 
         .nav-item {
+            cursor: pointer;
             color: black;
             // font-size: 2vw;
             font-size: 19px;
-
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 300;
             opacity: .7;
             transition: opacity .3s;
             &.active {
                 &::before{
                     content: '\25FC';
-                    position: absolute;
-                    left: -35px;
                     transform: scale(.5);
                     opacity: .7;
                 }
@@ -73,17 +71,20 @@
 
         .desktop-container {
             background-color: white;
-            border: black 1px solid;
-            border-radius: 7px;
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+            border-radius: 20px;
             margin-top: 0;
-            max-width: 950px;
+            max-width: 1500px;
+            max-height: 700px;
             width: 80%;
-            height: 80%;
+            height: 67vh;
             display: flex;
             flex-direction: row;
             justify-content: center;
 
             .left {
+                border: black 5px  solid;
+                border-radius: 20px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -92,6 +93,7 @@
             }
 
             .right {
+                // max-width: 640px;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -100,23 +102,33 @@
                 .res-container {
                     display: flex;
                     flex-direction: row-reverse;
-
+                    align-self: center;
+                    justify-content: space-around;
+                    width: 100%;
+                    position: relative;
+                    bottom: -25%;
 
                     .img {
                         max-width: 350px;
                         max-height: 350px;
-                        width: 15vw;
-                        height: 15vw;
+                        width: 20vw;
+                        height: 20vw;
                         border-radius: 6px;
+                        background-position: center;
+                        background-size: cover;
                         filter: drop-shadow(0px 0px 15px rgba(0,0,0,0.05));
                     }
 
                     .info {
-                        font-size: 22px;
+                        font-family: 'Teko', sans-serif;
+                        font-size: 3em;
                         color: black;
                         text-transform: capitalize;
                         line-height: 0.9;
                         font-weight: 500;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
                     }
 
                     .h3-description{
@@ -133,7 +145,7 @@
     }
 
     .bg {
-        background-color: #f9ad81;
+        background-color: #DC8B8A;
         position: absolute;
         z-index: -1;
         left: 0;

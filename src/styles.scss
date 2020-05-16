@@ -11,10 +11,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 
 }
-* {
-    scroll-snap-type: y proximity;
-    scroll-behavior: smooth;
-}
+
 .container {
     height: 100%;
 }
@@ -25,15 +22,6 @@ body {
     align-items: center;
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {

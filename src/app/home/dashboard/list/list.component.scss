@@ -1,16 +1,10 @@
 
-@media only screen and (min-width: 768px) { 
-    .list-item, .first-item {
-        scroll-snap-align: start;
-    }
-}
 .list-container {
     background-color: white;
     padding: 0 1.5em;
     .list-item, .first-item {
         scroll-snap-align: start;
         margin-top: 5px;
-        padding: 5px;
         display: flex;
         position: relative;
         min-height: 60px;
@@ -88,6 +82,13 @@
 
     }
 
+}
+
+
+@media only screen and (min-width: 768px) { 
+    .list-container {
+        padding: 0 3.5em;
+    }
 }
 
 

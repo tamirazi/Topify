@@ -32,17 +32,7 @@
 
 
 <div class="list-container" *ngIf="type==='album'">
-    <div (click)="savePlayList()" class="first-item" *ngIf="list.length > 0">
-        <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
-        <div class="info">
-            <div class="text">
-                <h3>Playlist time: {{totalDuration | duration}}</h3>
-                <p>Make a playlist from this list</p>
-                <br>
-            </div>
-        </div>
-        <hr>
-    </div>
+
     <div class="list-item" *ngFor="let track of list;index as i">
         <div class="img">{{i + 1}}.</div>
         <div class="info">
@@ -58,5 +48,16 @@
             </div>
         </div>
         <hr>
+    </div>
+
+    <div (click)="savePlayList()" class="first-item" *ngIf="list.length > 0">
+        <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
+        <div class="info">
+            <div class="text">
+                <h3>Playlist time: {{totalDuration | duration}}</h3>
+                <p>Make a playlist from this list</p>
+                <br>
+            </div>
+        </div>
     </div>
 </div>
