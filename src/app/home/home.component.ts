@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   isError = false;
   errStatus: number;
   errMsg: string;
+  index: number;
 
   constructor(private activadetRoute: ActivatedRoute, private spotify: SpotifyService) { }
 
@@ -64,6 +65,10 @@ export class HomeComponent implements OnInit {
 
   onHandleAlert() {
     this.isError = !this.isError;
+  }
+
+  setIndex(elm) {
+    this.index = elm % 3;
   }
 
 

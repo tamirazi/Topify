@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Artist, Track } from '../../models/spotify.model';
@@ -22,8 +22,11 @@ export class DashboardComponent implements OnInit {
   @Input() list: Artist[] | Track[];
   @Input() playList: Track[];
 
+  @Output() indexHandler = new EventEmitter<number>();
+
   showMenu = false;
   isMobile: boolean;
+  index = 0;
 
   constructor(private authService: AuthService, private router: Router, private spotify: SpotifyService) { }
 
@@ -59,5 +62,12 @@ export class DashboardComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.isMobile = event.target.innerWidth < 768;
+  }
+
+  downIndex() {
+    this.indexHandler.emit(--this.index);
+  }
+  upIndex() {
+    this.indexHandler.emit(++this.index);
   }
 }
