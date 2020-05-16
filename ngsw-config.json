@@ -25,18 +25,5 @@
         ]
       }
     }
-  ],
-  "dataGroups": [
-    {
-      "name": "data",
-      "urls": ["https://api.spotify.com/v1"],
-      "cacheConfig": {
-        "maxSize": 10,
-        "maxAge": "1h",
-        "strategy": "freshness",
-        "timeout": "5s"
-      }
-
-    }
   ]
 }
