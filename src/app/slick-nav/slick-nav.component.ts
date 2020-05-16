@@ -16,9 +16,8 @@ export class SlickNavComponent implements OnInit, AfterViewInit {
     slidesToShow: 4,
     centerMode: false,
     focusOnSelect: true,
-    verticalSwiping: true,
+    // verticalSwiping: true,
     swipeToSlide: true,
-    // centerPadding: '23.5%'
   };
 
   constructor(private router: Router) { }
@@ -93,7 +92,8 @@ export class SlickNavComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
+    console.log('slick onInit');
+    
   }
 
   afterChange(event: any) {

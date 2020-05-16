@@ -13,8 +13,7 @@
     .desktop-list {
         display: block;
         width: 100%;
-        max-width: 435px;
-        max-height: 450px;
+        max-height: 515px;
         overflow-y: scroll;
 
     }
@@ -33,11 +32,9 @@
     .type-nav {
         display: block;
         width: auto;
-        top: -3vw;
-        position: relative;
 
         .nav-item {
-            color: white;
+            color: black;
             // font-size: 2vw;
             font-size: 19px;
 
@@ -74,13 +71,16 @@
         height: 100vh;
         justify-content: flex-end;
 
-        .container {
+        .desktop-container {
+            background-color: white;
+            border: black 1px solid;
+            border-radius: 7px;
             margin-top: 0;
             max-width: 950px;
             width: 80%;
             height: 80%;
             display: flex;
-            flex-direction: row-reverse;
+            flex-direction: row;
             justify-content: center;
 
             .left {
@@ -89,19 +89,18 @@
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                height: 100%;
             }
 
             .right {
-                flex-direction: row;
-                justify-content: space-evenly;
-                align-items: center;
-                height: 90%;
                 width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
 
                 .res-container {
-                    position: relative;
-                    top: -10%;
+                    display: flex;
+                    flex-direction: row-reverse;
+
 
                     .img {
                         max-width: 350px;
@@ -114,11 +113,9 @@
 
                     .info {
                         font-size: 22px;
-                        color: white;
+                        color: black;
                         text-transform: capitalize;
-                        width: 160px;
                         line-height: 0.9;
-                        margin-top: 12px;
                         font-weight: 500;
                     }
 
@@ -133,32 +130,20 @@
             }
 
         }
-
-        .bottom-strip {
-            z-index: 1;
-            display: block;
-            width: 100%;
-            height: 5%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: #FDF5F3;
-        }
     }
 
     .bg {
-        width: 42%;
-        height: 40%;
-        // max-height: 298px;
         background-color: #f9ad81;
         position: absolute;
         z-index: -1;
-        top: 25vh;
         left: 0;
+        top: 0;
+        height: 100vh;
+        width: 35%;
     }
 }
 
 ::-webkit-scrollbar {
-    width: 1px;
+    width: 2px;
 }
 

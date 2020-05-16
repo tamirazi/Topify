@@ -21,8 +21,7 @@ export class HomeComponent implements OnInit {
   result: string;
   description: string;
   image: string;
-  list: Artist[] | Track[];
-  playList: Track[];
+  list: Track[];
   userImageUrl: string;
   isError = false;
   errStatus: number;
@@ -35,8 +34,9 @@ export class HomeComponent implements OnInit {
       this.list = [];
       this.type = res.type;
       this.time = res.time;
-      this.spotify.fetch(this.time, this.type);
+      this.spotify.fetch(this.time, this.type, 0);
     });
+
     this.spotify.getUsername().subscribe( (user: User) => {
       console.log(user);
       this.username = user.display_name;
@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
       this.image = res.image_url;
       this.description = res.description;
       this.list = res.list;
-      this.playList = res.playList;
     });
 
     this.spotify.error.subscribe( (err: SpotifyError) => {

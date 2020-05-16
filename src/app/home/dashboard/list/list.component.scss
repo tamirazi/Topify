@@ -5,26 +5,24 @@
     }
 }
 .list-container {
+    background-color: white;
     padding: 0 1.5em;
     .list-item, .first-item {
-        
+        scroll-snap-align: start;
         margin-top: 5px;
         padding: 5px;
         display: flex;
         position: relative;
         min-height: 60px;
-
         a {
             text-decoration: inherit;
             width: 100%;
             color: inherit;
             cursor: auto;
         }
-
         h3 {
             margin: 0;
         }
-
         .img {
             max-width: 50px;
             max-height: 50px;
@@ -73,7 +71,7 @@
     }
     .first-item {
         position: sticky;
-        top: -2px;
+        bottom: -1px;
         z-index: 1;
         // background-color: #FDF5F3;
         background-color: #ffffff;
@@ -90,13 +88,6 @@
 
     }
 
-
-
-    // .list-item {
-    //     &:hover {
-    //         transform: scale(1.03);
-    //     }
-    // }
 }
 
 

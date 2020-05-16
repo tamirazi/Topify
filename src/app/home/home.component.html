@@ -1,5 +1,5 @@
 
-<app-welcome [username]="username" [image]="userImageUrl" [time]="time"></app-welcome>
+<!-- <app-welcome [username]="username" [image]="userImageUrl" [time]="time"></app-welcome> -->
 <button (click)="onHandleAlert()">error</button>
 
 <app-dashboard 
@@ -9,14 +9,9 @@
     [result]="result"
     [description]="description"
     [image]="image"
-    [list]="list"
-    [playList]="playList"></app-dashboard>
+    [list]="list"></app-dashboard>
 <app-alert *ngIf="isError" [status]="errStatus" [message]="errMsg" (alertClose)="onHandleAlert()"></app-alert>
 
-
-
-
-    
 <!-- <div class="footer">
     <h3>footer</h3>
 </div> -->

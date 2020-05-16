@@ -18,37 +18,37 @@ export class SpotifyService {
   error = new Subject<SpotifyError>();
   constructor(private http: HttpClient) { }
 
-  fetch(time: string, type: string) {
+  fetch(time: string, type: string, index: number) {
     switch (time) {
       case CONSTS.TOP:
         switch (type) {
           case CONSTS.ARTIST:
-            this.fetchMyTopArtists();
+            this.getMyTopArtist(index);
             break;
           case CONSTS.TRACK:
-            this.fetchMyTopTracks();
+            this.getMyTopTrack(index);
             break;
           case CONSTS.ALBUM:
-            this.fetchMyTopAlbum();
+            this.getMyTopAlbum(index);
             break;
           case CONSTS.GENRE:
-            this.fetchMyTopGenre();
+            this.getMyTopGenre(index);
             break;
         }
         break;
       case CONSTS.RECENT:
         switch (type) {
           case CONSTS.ARTIST:
-            this.fetchMyRecentTopArtist();
+            this.getMyRecentTopArtist(index);
             break;
           case CONSTS.TRACK:
-            this.fetchMyRecentTopTracks();
+            this.getMyRecentTopTracks(index);
             break;
           case CONSTS.ALBUM:
-            this.fetchMyRecentTopAlbum();
+            this.getMyRecentTopAlbum(index);
             break;
           case CONSTS.GENRE:
-            this.fetchMyRecentTopGenre();
+            this.getMyRecentTopGenre(index);
             break;
         }
         break;
@@ -62,54 +62,55 @@ export class SpotifyService {
     return this.api('/me');
   }
 
-  private fetchMyTopTracks(limit?: number) {
-    if (!limit) {
-      limit = 50;
-    }
-    this.api('/me/top/tracks?limit=' + limit).subscribe((res: TopTracks) => {
-      this.appData.next({
-        result: res.items[0].name,
-        description: res.items[0].artists[0].name,
-        image_url: res.items[0].album.images[0].url,
-        list: res.items,
-        playList: res.items
+  getPlaylist(artistId?: string[], trackId?: string[],  genre?: string[]){
+    return this.api('/recommendations?limit=20&seed_genres=' + genre.join(',') + '&seed_artists=' + artistId.join(',') + '&seed_tracks=' + trackId.join(','));
+  }
+
+  private getMyTopTrack(index: number) {
+    this.api('/me/top/tracks?limit=3').subscribe((res: TopTracks) => {
+      this.getPlaylist([res.items[index].artists[0].id], [res.items[index].id], [])
+      .subscribe( (recomendations: any) => {
+        this.appData.next({
+          result: res.items[index].name,
+          description: res.items[index].artists[0].name,
+          image_url: res.items[index].album.images[0].url,
+          list: recomendations.tracks,
+        });
+      })
+    }, err => {
+      this.error.next(err);
+    });
+  }
+
+  private getMyTopArtist(index: number) {
+    this.api('/me/top/artists?limit=3').subscribe((res: TopArtists) => {
+      this.getPlaylist([res.items[index].id], [], res.items[0].genres.slice(0,3))
+      .subscribe( (recomendations: any) => {
+        this.appData.next({
+          result: res.items[0].name,
+          description: res.items[0].genres[0],
+          image_url: res.items[0].images[0].url,
+          list: recomendations.tracks,
+        });
       });
     }, err => {
       this.error.next(err);
     });
   }
 
-  private fetchMyTopArtists(limit?: number) {
-    if (!limit) {
-      limit = 20;
-    }
-    this.api('/me/top/artists?limit=' + limit).subscribe((res: TopArtists) => {
-      this.appData.next({
-        result: res.items[0].name,
-        // description: res.items[0].followers.total.toString(),
-        description: res.items[0].genres[0],
-        image_url: res.items[0].images[0].url,
-        list: res.items,
-        playList: null
-      });
-    }, err => {
-      this.error.next(err);
-    });
-  }
-
-  private fetchMyTopAlbum() {
-    this.api('/me/top/tracks').subscribe((tracks: TopTracks) => {
+  private getMyTopAlbum(index: number) {
+    this.api('/me/top/tracks?limit=50').subscribe((tracks: TopTracks) => {
       const albumsIds = [];
       tracks.items.forEach(track => {
         albumsIds.push(track.album.id);
       });
-      this.api('/albums/' + this.topElementInArray(albumsIds)).subscribe((res: Album) => {
+      const topThreeAlbums = this.getTopThreeFromArray(albumsIds);
+      this.api('/albums/' + topThreeAlbums[index][0]).subscribe((res: Album) => {
         this.appData.next({
           result: res.name,
           description: res.artists[0].name,
           image_url: res.images[0].url,
           list: res.tracks.items,
-          playList: res.tracks.items
         });
       });
     }, err => {
@@ -117,149 +118,113 @@ export class SpotifyService {
     });
   }
 
-  private fetchMyTopGenre() {
+  private getMyTopGenre(index: number) {
     this.api('/me/top/artists?limit=50').subscribe((artists: TopArtists) => {
       const genres = [];
-      const artistsIds = [];
       artists.items.forEach(artist => {
         artist.genres.forEach(genre => genres.push(genre));
-        artistsIds.push(artist.id);
       });
-      const topArtist = this.topElementInArray(artistsIds);
-      const topGenre = this.topElementInArray(genres);
-      this.api('/recommendations?seed_genres=' + topGenre + ',' + genres.find(genre => genre !== topGenre) + ',seed_artists=' + topArtist)
-      .pipe( map( (res: any) => res.tracks))
-      .subscribe( (tracks: Track[]) => {
+      const topThreeGenre = this.getTopThreeFromArray(genres);
+      this.getPlaylist([artists.items[0].id], [], [topThreeGenre[index][0]])
+      .subscribe( (recomendations: any) => {
         this.appData.next({
-          result: topGenre,
+          result: topThreeGenre[index][0],
           description: '',
           image_url: artists.items[0].images[0].url,
-          list: tracks,
-          playList: tracks
+          list: recomendations.tracks,
         });
-      });
+      })
+
     }, err => {
       this.error.next(err);
     });
   }
 
-
-  private fetchMyRecentTopTracks() {
-    this.api('/me/player/recently-played?limit=50').pipe(map((res: TopTracks) => {
-      const list: Track[] = [];
-      const tracksNames = [];
+  private getMyRecentTopTracks(index: number) {
+    this.api('/me/player/recently-played?limit=50').subscribe( (res: TopTracks) => {
+      const tracksId = [];
       res.items.forEach(track => {
-        list.push(track.track);
-        tracksNames.push(track.track.name);
+        tracksId.push(track.track.id);
       });
-      const topTrackName = this.topElementInArray(tracksNames);
-      const img = list.filter(track => track.name === topTrackName)[0].album.images[0].url;
-      return new AppDataObject(
-        img,
-        topTrackName,
-        list.find( track => track.name === topTrackName).artists[0].name,
-        list,
-        list
-      );
+      const topRecentTracksIds = this.getTopThreeFromArray(tracksId);
+      const topTrack = res.items.find( track => track.track.id === topRecentTracksIds[index][0]);
 
-    })).subscribe((res: AppDataObject) => {
-      this.appData.next(res);
-    }, err => {
-      this.error.next(err);
-    });
+      this.getPlaylist([topTrack.track.artists[0].id], [topRecentTracksIds[index][0]], [])
+      .subscribe((recomendations: any) => {
+        this.appData.next({
+          result: topTrack.track.name,
+          description: topTrack.track.artists[0].name,
+          image_url: topTrack.track.album.images[0].url,
+          list: recomendations.tracks
+        });
+      })
+    })
   }
 
-  private fetchMyRecentTopArtist() {
-    this.api('/me/player/recently-played?limit=50').subscribe((res: TopTracks) => {
+  private getMyRecentTopArtist(index: number) {
+    this.api('/me/player/recently-played?limit=50').subscribe( (res: TopTracks) => {
       const artistsIds = [];
       res.items.forEach(track => {
         artistsIds.push(track.track.artists[0].id);
       });
-      this.api('/artists?ids=' + [...new Set(artistsIds)].join(','))
-        .pipe(map((al: any) => al.artists)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
-        .subscribe((artists: Artist[]) => {
-          const topArtistId = this.topElementInArray(artistsIds);
-          const topArtist: Artist = artists.find(artist => artist.id === topArtistId);
-          this.appData.next(new AppDataObject(
-            topArtist.images[0].url,
-            topArtist.name,
-            topArtist.genres[0],
-            artists,
-            null
-          ));
+      const topRecentArtistIds = this.getTopThreeFromArray(artistsIds);
+      const topTrack = res.items.find( track => track.track.artists[0].id === topRecentArtistIds[index][0]);
+
+      this.getPlaylist([topTrack.track.artists[0].id], [topTrack.track.id], [])
+      .subscribe((recomendations: any) => {
+        this.appData.next({
+          result: topTrack.track.artists[0].name,
+          description: '',
+          image_url: topTrack.track.album.images[0].url,
+          list: recomendations.tracks
         });
-    }, err => {
-      this.error.next(err);
-    });
+      })
+    })
 
   }
 
-  private fetchMyRecentTopAlbum() {
-    this.api('/me/player/recently-played?limit=20').subscribe((res: TopTracks) => {
+  private getMyRecentTopAlbum(index: number) {
+    this.api('/me/player/recently-played?limit=50').subscribe( (res: TopTracks) => {
       const albumsIds = [];
       res.items.forEach(track => {
         albumsIds.push(track.track.album.id);
       });
-      this.api('/albums?ids=' + [...new Set(albumsIds)].join(','))
-        .pipe(map((al: any) => al.albums)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
+      const topRecentAlbumsIds = this.getTopThreeFromArray(albumsIds);
+      this.api('/albums?ids=' + topRecentAlbumsIds[index][0])
+        .pipe(map((al: any) => al.albums))
         .subscribe((albums: Album[]) => {
-          const topAlbumId = this.topElementInArray(albumsIds);
-          const topAlbum: Album = albums.find(album => album.id === topAlbumId);
+          const topAlbum: Album = albums.find(album => album.id === topRecentAlbumsIds[index][0]);
           this.appData.next(new AppDataObject(
             topAlbum.images[0].url,
             topAlbum.name,
             topAlbum.artists[0].name,
-            topAlbum.tracks.items,
             topAlbum.tracks.items
           ));
         });
-    }, err => {
-      this.error.next(err);
-    });
+    })
+
   }
 
-  private fetchMyRecentTopGenre() {
-    this.api('/me/player/recently-played?limit=50').subscribe((res: TopTracks) => {
+  private getMyRecentTopGenre(index: number) {
+    this.api('/me/player/recently-played?limit=50').subscribe( (res: TopTracks) => {
       const artistsIds = [];
       res.items.forEach(track => {
         artistsIds.push(track.track.artists[0].id);
       });
-      const topArtistId = this.topElementInArray(artistsIds);
-      this.api('/artists/' + topArtistId ).subscribe( (artist: Artist) => {
-        this.api('/recommendations?seed_genres=' + artist.genres[0] + '&seed_artists=' + topArtistId)
-        .pipe(map((al: any) => al.tracks)) // the api return 'artists: {artists: Artist[]}' convert to artists: Artist[]
-        .subscribe((tracks: Track[]) => {
+      const topRecentArtistIds = this.getTopThreeFromArray(artistsIds);
+      this.api('/artists/' + topRecentArtistIds[index][0] ).subscribe( (artist: Artist) => {
+        this.getPlaylist([artist.id], [] , artist.genres.slice(0,3))
+        .subscribe((recomendations: any) => {
           this.appData.next({
             result: artist.genres[0],
             description: '',
             image_url: artist.images[0].url,
-            list: tracks,
-            playList: tracks
+            list: recomendations.tracks
           });
-        });
-      });
-    }, err => {
-      this.error.next(err);
-    });
-  }
+        })
+      });  
+    })
 
-  private topElementInArray(array: string[]): string {
-    const modeMap = {};
-    let maxEl = array[0];
-    let maxCount = 1;
-    array.forEach(id => {
-      if (!modeMap[id]) {
-        modeMap[id] = 1;
-      } else {
-        modeMap[id]++;
-      }
-      if (modeMap[id] > maxCount) {
-        maxEl = id;
-        maxCount = modeMap[id];
-      }
-    });
-    // console.log(modeMap);
-    return maxEl;
   }
 
   private api(endpoint: string) {
@@ -274,6 +239,15 @@ export class SpotifyService {
 
     const todayStr = mm + '/' + dd + '/' + yyyy;
     return todayStr;
+  }
+
+  private getTopThreeFromArray(arr) {
+    const map = new Map();
+    arr.forEach(elm => {
+      map.has(elm)? map.set(elm, map.get(elm) + 1) : map.set(elm ,1);
+    })
+
+    return Array.from(map).sort( (a ,b)=>  b[1] - a[1]).slice(0, 3)
   }
 
   createPlaylistFromTracks(userId: string, playListName: string, tracks: Track[]) {

@@ -1,56 +1,15 @@
 <div class="loading flex-col-center" *ngIf="list.length === 0 || !list">Loading</div>
 
-<div class="list-container" *ngIf="type==='artist'">
-    <div (click)="savePlayList()"  class="first-item" *ngIf="list.length > 0">
-        <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
-        <div class="info">
-            <div class="text">
-                <h3>Top artists playlist: </h3>
-                <p>Make a playlist from random track from each artist</p>
-                <br>
-            </div>
-        </div>
-        <hr>
-    </div>
-    <div class="list-item" *ngFor="let artist of list">
-        <div class="img" [lazyLoad]="artist.images[0].url"></div>
-        <div class="info">
-            <a [href]="artist.uri | safeUrl">
-                <div class="text">
-                    <h3 class="artist-name">{{artist.name}}</h3>
-                    <h3 class="track-name">{{artist.genres.slice(0, 2).join(', ')}}</h3>
-                    <br>
-                </div>
-            </a>
-            <div class="duration">
-                <h3 class="track-duration">{{artist.followers.total | followers}}</h3>
-            </div>
-        </div>
-        <hr>
-    </div>
-</div>
 
+<div class="list-container" *ngIf="type=='track' || type==='genre' || type==='artist'">
 
-
-<div class="list-container" *ngIf="type==='track' || type==='genre'">
-    <div (click)="savePlayList()" class="first-item" *ngIf="list.length > 0">
-        <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
-        <div class="info">
-            <div class="text">
-                <h3>Playlist time: {{totalDuration | duration}}</h3>
-                <p>Make a playlist from this list</p>
-                <br>
-            </div>
-        </div>
-        <hr>
-    </div>
     <div class="list-item" *ngFor="let track of list">
         <div class="img" [lazyLoad]="track.album.images[0].url"></div>
         <div class="info">
             <a [href]="track.uri | safeUrl">
                 <div class="text">
-                    <h3 class="artist-name">{{track.name}}</h3>
-                    <h3 class="track-name">{{track.artists[0].name}}</h3>
+                    <h3 class="artist-name">{{track.artists[0].name}}</h3>
+                    <h3 class="track-name">{{track.name}}</h3>
                     <br>
                 </div>
             </a>
@@ -59,6 +18,15 @@
             </div>
         </div>
         <hr>
+    </div>
+    <div (click)="savePlayList()" class="first-item" *ngIf="list.length > 0">
+        <div class="info">
+            <div class="text">
+                <h3>Playlist time: {{totalDuration | duration}}</h3>
+                <p>Make a playlist from this list</p>
+                <br>
+            </div>
+        </div>
     </div>
 </div>
 

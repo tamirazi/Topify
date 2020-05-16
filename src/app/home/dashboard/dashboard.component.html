@@ -9,18 +9,13 @@
         
         <div class="logo"></div>
     </div>
-    <div class="container">
+    <div *ngIf="!isMobile" class="desktop-container">
         <div class="left">
-            <div class="user" *ngIf="isMobile">
-                <h3>Hello,</h3>
-                <h1>{{username}}</h1>
-            </div>
-            <app-slick-nav *ngIf="isMobile" [type]="type" [time]="time"></app-slick-nav>
-            <app-list *ngIf="!isMobile" class="desktop-list" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
+            <app-list class="desktop-list" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
         </div>
     
         <div class="right">
-            <ul class="type-nav" *ngIf="!isMobile">
+            <ul class="type-nav" >
                 <li class="nav-item active" [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Top Artist</li>
                 <li class="nav-item" [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Top Track</li>
                 <li class="nav-item" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Top Album</li>
@@ -37,23 +32,25 @@
         </div>
 
     </div>
+
+    <div *ngIf="isMobile" class="mobile-container">
+        <div class="left">
+            <div *ngIf="image" class="img" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
+        </div>
+        <div class="right">
+            <app-slick-nav [type]="type" [time]="time"></app-slick-nav>
+            <div class="info">
+                <div class="h3">{{result}}</div>
+                <div class="h3-description">{{description}}</div>
+            </div>
+        </div>
+    </div>
     <div class="time-nav-container">
         <ul class="time-nav">
-            <li class="nav-item active" (click)="scrollToBottom()" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
-            <li class="nav-item" (click)="scrollToBottom()" [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
+            <li class="nav-item active" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
+            <li class="nav-item"  [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
         </ul>
     </div>
     <app-list class="mobile-list" *ngIf="isMobile" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
-    
-    <div class="bottom-strip"></div>
     <div class="bg"></div>
-
 </div>
-
-
-
-
-
-
-
-
