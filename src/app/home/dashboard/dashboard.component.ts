@@ -65,10 +65,14 @@ export class DashboardComponent implements OnInit {
   }
 
   downIndex() {
-    this.indexHandler.emit(--this.index);
+    if ( this.index > 0) {
+      this.indexHandler.emit(--this.index);
+    }
   }
   upIndex() {
-    this.indexHandler.emit(++this.index);
+    if ( this.index < 2) {
+      this.indexHandler.emit(++this.index);
+    } 
   }
   resetIndex() {
     this.indexHandler.emit(this.index);
