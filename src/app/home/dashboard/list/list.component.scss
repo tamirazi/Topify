@@ -2,9 +2,10 @@
 .list-container {
     background-color: white;
     padding: 0 1.5em;
+
     .list-item, .first-item {
         scroll-snap-align: start;
-        margin-top: 5px;
+        margin-bottom: 6px;
         display: flex;
         position: relative;
         min-height: 60px;
