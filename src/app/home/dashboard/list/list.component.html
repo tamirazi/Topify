@@ -4,7 +4,7 @@
 <div class="list-container" *ngIf="type=='track' || type==='genre' || type==='artist'">
 
     <div class="list-item" *ngFor="let track of list">
-        <div class="img" [lazyLoad]="track.album.images[0].url"></div>
+        <div *ngIf="track.album" class="img" [lazyLoad]="track.album.images[0].url"></div>
         <div class="info">
             <a [href]="track.uri | safeUrl">
                 <div class="text">

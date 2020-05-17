@@ -16,10 +16,10 @@
     
         <div class="right">
             <ul class="type-nav" >
-                <li class="nav-item active" [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Top Artist</li>
-                <li class="nav-item" [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Top Track</li>
-                <li class="nav-item" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Top Album</li>
-                <li class="nav-item" [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Top Genre</li>
+                <li class="nav-item active" (click)="resetIndex()" [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Top Artist</li>
+                <li class="nav-item" (click)="resetIndex()" [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Top Track</li>
+                <li class="nav-item" (click)="resetIndex()" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Top Album</li>
+                <li class="nav-item" (click)="resetIndex()" [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Top Genre</li>
             </ul>
             <div class="res-container">
                 <div class="index-buttons">
@@ -59,8 +59,8 @@
     </div>
     <div class="time-nav-container">
         <ul class="time-nav">
-            <li class="nav-item active" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
-            <li class="nav-item"  [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
+            <li class="nav-item active" (click)="resetIndex()" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
+            <li class="nav-item" (click)="resetIndex()"  [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
         </ul>
     </div>
     <app-list class="mobile-list" *ngIf="isMobile" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>

@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   isMobile: boolean;
   index = 0;
 
-  constructor(private authService: AuthService, private router: Router, private spotify: SpotifyService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.isMobile =  window.innerWidth < 768;
@@ -69,5 +69,8 @@ export class DashboardComponent implements OnInit {
   }
   upIndex() {
     this.indexHandler.emit(++this.index);
+  }
+  resetIndex() {
+    this.indexHandler.emit(this.index);
   }
 }

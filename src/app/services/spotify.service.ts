@@ -63,7 +63,8 @@ export class SpotifyService {
   }
 
   getPlaylist(artistId?: string[], trackId?: string[],  genre?: string[]){
-    return this.api('/recommendations?limit=20&seed_genres=' + genre.join(',') + '&seed_artists=' + artistId.join(',') + '&seed_tracks=' + trackId.join(','));
+    return this.api('/recommendations?limit=20&seed_genres=' + genre.join(',')
+    + '&seed_artists=' + artistId.join(',') + '&seed_tracks=' + trackId.join(','));
   }
 
   private getMyTopTrack(index: number) {
@@ -76,7 +77,7 @@ export class SpotifyService {
           image_url: res.items[index].album.images[0].url,
           list: recomendations.tracks,
         });
-      })
+      });
     }, err => {
       this.error.next(err);
     });
@@ -84,12 +85,12 @@ export class SpotifyService {
 
   private getMyTopArtist(index: number) {
     this.api('/me/top/artists?limit=3').subscribe((res: TopArtists) => {
-      this.getPlaylist([res.items[index].id], [], res.items[0].genres.slice(0,3))
+      this.getPlaylist([res.items[index].id], [], res.items[0].genres.slice(0, 3))
       .subscribe( (recomendations: any) => {
         this.appData.next({
-          result: res.items[0].name,
-          description: res.items[0].genres[0],
-          image_url: res.items[0].images[0].url,
+          result: res.items[index].name,
+          description: res.items[index].genres[0],
+          image_url: res.items[index].images[0].url,
           list: recomendations.tracks,
         });
       });
@@ -125,15 +126,16 @@ export class SpotifyService {
         artist.genres.forEach(genre => genres.push(genre));
       });
       const topThreeGenre = this.getTopThreeFromArray(genres);
+      const topArtist = artists.items.find( artist => artist.genres[0] === topThreeGenre[index][0]);
       this.getPlaylist([artists.items[0].id], [], [topThreeGenre[index][0]])
       .subscribe( (recomendations: any) => {
         this.appData.next({
           result: topThreeGenre[index][0],
           description: '',
-          image_url: artists.items[0].images[0].url,
+          image_url: topArtist.images[0].url,
           list: recomendations.tracks,
         });
-      })
+      });
 
     }, err => {
       this.error.next(err);
@@ -157,8 +159,8 @@ export class SpotifyService {
           image_url: topTrack.track.album.images[0].url,
           list: recomendations.tracks
         });
-      })
-    })
+      });
+    });
   }
 
   private getMyRecentTopArtist(index: number) {
@@ -178,8 +180,8 @@ export class SpotifyService {
           image_url: topTrack.track.album.images[0].url,
           list: recomendations.tracks
         });
-      })
-    })
+      });
+    });
 
   }
 
@@ -201,7 +203,7 @@ export class SpotifyService {
             topAlbum.tracks.items
           ));
         });
-    })
+    });
 
   }
 
@@ -213,7 +215,7 @@ export class SpotifyService {
       });
       const topRecentArtistIds = this.getTopThreeFromArray(artistsIds);
       this.api('/artists/' + topRecentArtistIds[index][0] ).subscribe( (artist: Artist) => {
-        this.getPlaylist([artist.id], [] , artist.genres.slice(0,3))
+        this.getPlaylist([artist.id], [] , artist.genres.slice(0, 3))
         .subscribe((recomendations: any) => {
           this.appData.next({
             result: artist.genres[0],
@@ -221,9 +223,9 @@ export class SpotifyService {
             image_url: artist.images[0].url,
             list: recomendations.tracks
           });
-        })
-      });  
-    })
+        });
+      });
+    });
 
   }
 
@@ -242,12 +244,12 @@ export class SpotifyService {
   }
 
   private getTopThreeFromArray(arr) {
-    const map = new Map();
+    const myMap = new Map();
     arr.forEach(elm => {
-      map.has(elm)? map.set(elm, map.get(elm) + 1) : map.set(elm ,1);
-    })
+      myMap.has(elm) ? myMap.set(elm, myMap.get(elm) + 1) : myMap.set(elm , 1);
+    });
 
-    return Array.from(map).sort( (a ,b)=>  b[1] - a[1]).slice(0, 3)
+    return Array.from(myMap).sort( (a , b) =>  b[1] - a[1]).slice(0, 3);
   }
 
   createPlaylistFromTracks(userId: string, playListName: string, tracks: Track[]) {

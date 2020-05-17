@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute } from '@angular/router';
 
 import { SpotifyService } from '../services/spotify.service';
@@ -26,16 +26,19 @@ export class HomeComponent implements OnInit {
   isError = false;
   errStatus: number;
   errMsg: string;
-  index: number;
+  index = 0;
 
   constructor(private activadetRoute: ActivatedRoute, private spotify: SpotifyService) { }
 
+
+
   ngOnInit(): void {
+    this.index = 0;
     this.activadetRoute.params.subscribe( (res: any) => {
       this.list = [];
       this.type = res.type;
       this.time = res.time;
-      this.spotify.fetch(this.time, this.type, 0);
+      this.spotify.fetch(this.time, this.type, this.index);
     });
 
     this.spotify.getUsername().subscribe( (user: User) => {
@@ -68,7 +71,10 @@ export class HomeComponent implements OnInit {
   }
 
   setIndex(elm) {
-    this.index = elm % 3;
+    if (this.index !== elm % 3) {
+      this.index = elm % 3;
+      this.spotify.fetch(this.time, this.type, this.index);
+    }
   }
 
 
