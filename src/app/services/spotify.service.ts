@@ -68,7 +68,7 @@ export class SpotifyService {
   }
 
   private getMyTopTrack(index: number) {
-    this.api('/me/top/tracks?limit=3').subscribe((res: TopTracks) => {
+    this.api('/me/top/tracks?limit=3&time_range=long_term').subscribe((res: TopTracks) => {
       this.getPlaylist([res.items[index].artists[0].id], [res.items[index].id], [])
       .subscribe( (recomendations: any) => {
         this.appData.next({
@@ -84,7 +84,7 @@ export class SpotifyService {
   }
 
   private getMyTopArtist(index: number) {
-    this.api('/me/top/artists?limit=3').subscribe((res: TopArtists) => {
+    this.api('/me/top/artists?limit=3&time_range=long_term').subscribe((res: TopArtists) => {
       this.getPlaylist([res.items[index].id], [], res.items[0].genres.slice(0, 3))
       .subscribe( (recomendations: any) => {
         this.appData.next({
@@ -100,7 +100,7 @@ export class SpotifyService {
   }
 
   private getMyTopAlbum(index: number) {
-    this.api('/me/top/tracks?limit=50').subscribe((tracks: TopTracks) => {
+    this.api('/me/top/tracks?limit=50&time_range=long_term').subscribe((tracks: TopTracks) => {
       const albumsIds = [];
       tracks.items.forEach(track => {
         albumsIds.push(track.album.id);
@@ -120,7 +120,7 @@ export class SpotifyService {
   }
 
   private getMyTopGenre(index: number) {
-    this.api('/me/top/artists?limit=50').subscribe((artists: TopArtists) => {
+    this.api('/me/top/artists?limit=50&time_range=long_term').subscribe((artists: TopArtists) => {
       const genres = [];
       artists.items.forEach(artist => {
         artist.genres.forEach(genre => genres.push(genre));

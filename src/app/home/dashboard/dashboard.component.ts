@@ -24,7 +24,6 @@ export class DashboardComponent implements OnInit {
 
   @Output() indexHandler = new EventEmitter<number>();
 
-  showMenu = false;
   isMobile: boolean;
   index = 0;
 
@@ -53,10 +52,6 @@ export class DashboardComponent implements OnInit {
     // }else {
     //   this.spotify.createPlaylistFromArtist(this.userId, playListName, this.list as Artist[]);
     // }
-  }
-
-  toggleMenu() {
-    this.showMenu = !this.showMenu;
   }
 
   @HostListener('window:resize', ['$event'])

@@ -1,17 +1,13 @@
 <div class="page">
-    <app-menu *ngIf="showMenu" (closeMenuEvent)="showMenu = false;"></app-menu>
     <div class="header">
-        <ul (click)="toggleMenu()" class="menu">
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <app-menu></app-menu>
+
         
         <div class="logo"></div>
     </div>
     <div *ngIf="!isMobile" class="desktop-container">
         <div class="left">
-            <app-list class="desktop-list" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
+            <app-list class="desktop-list" [time]="time" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
         </div>
     
         <div class="right">
@@ -21,7 +17,14 @@
                 <li class="nav-item" (click)="resetIndex()" [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Top Album</li>
                 <li class="nav-item" (click)="resetIndex()" [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Top Genre</li>
             </ul>
+
             <div class="res-container">
+                <div class="time-nav-container">
+                    <ul class="time-nav">
+                        <li class="nav-item active" (click)="resetIndex()" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
+                        <li class="nav-item" (click)="resetIndex()"  [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
+                    </ul>
+                </div>
                 <div class="index-buttons">
                     <div class="down" (click)="downIndex()">&#9664;</div>
                     <div class="up" (click)="upIndex()">&#9654;</div>
@@ -58,12 +61,12 @@
         </div>
     </div>
 
-    <div class="time-nav-container">
+    <!-- <div class="time-nav-container">
         <ul class="time-nav">
             <li class="nav-item active" (click)="resetIndex()" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
             <li class="nav-item" (click)="resetIndex()"  [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
         </ul>
-    </div>
-    <app-list class="mobile-list" *ngIf="isMobile" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
+    </div> -->
+    <app-list class="mobile-list" *ngIf="isMobile" [time]="time"  [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
     <div class="bg"></div>
 </div>

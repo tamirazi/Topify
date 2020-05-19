@@ -1,7 +1,7 @@
 
 .list-container {
     background-color: white;
-    padding: 0 1.5em;
+    padding: 5px;
 
     .list-item, .first-item {
         scroll-snap-align: start;
@@ -16,6 +16,7 @@
             cursor: auto;
         }
         h3 {
+            font-weight: 600;
             margin: 0;
         }
         .img {
@@ -75,11 +76,16 @@
         // background-color: #FDF5F3;
         background-color: #ffffff;
 
+        .img {
+            transform: scale(.7);
+            position: relative;
+            left: 140px;
+        }
+
         .text {
-            margin: 0;
+            margin-top: 10px;
+
             text-align: center;
-
-
             p {
                 margin: 0;
              }
@@ -89,12 +95,6 @@
 
 }
 
-
-@media only screen and (min-width: 1300px) { 
-    .list-container {
-        padding: 0 3.5em;
-    }
-}
 
 
 

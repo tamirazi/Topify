@@ -10,6 +10,8 @@ export class ListComponent implements OnInit, OnChanges {
   @Input() list: Track[] | Artist[];
   @Input() imageUrlToAllListItem: string = null;
   @Input() type: string;
+  @Input() time: string;
+  
   @Output() savePlaylistEmitter = new EventEmitter();
 
   totalDuration = 0;
@@ -17,11 +19,11 @@ export class ListComponent implements OnInit, OnChanges {
   constructor() {}
   ngOnChanges(changes): void {
     this.totalDuration = 0;
-    if ( this.type === 'track' || this.type === 'genre' || this.type === 'album') {
-      this.list.forEach( (element: any) => {
-        this.totalDuration += element.duration_ms;
-      });
-    }
+    
+    this.list.forEach( (element: any) => {
+      this.totalDuration += element.duration_ms;
+    });
+    
   }
 
   ngOnInit(): void {

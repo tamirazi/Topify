@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MenuComponent implements OnInit {
 
-  @Output() closeMenuEvent = new EventEmitter();
+  showMenu = false;
   
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -23,6 +23,10 @@ export class MenuComponent implements OnInit {
   }
 
   closeMenu() {
-    this.closeMenuEvent.emit();
+    this.showMenu = false;
+  }
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
   }
 }
