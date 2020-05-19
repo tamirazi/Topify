@@ -10,5 +10,5 @@
     [image]="image"
     [list]="list"
     (indexHandler)="setIndex($event)"></app-dashboard>
-<app-alert *ngIf="isError" [status]="errStatus" [message]="errMsg" (alertClose)="onHandleAlert()"></app-alert>
+<app-alert *ngIf="isError" [message]="errMsg" (alertClose)="onHandleAlert()"></app-alert>
 

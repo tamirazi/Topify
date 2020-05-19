@@ -230,7 +230,7 @@ export class SpotifyService {
   }
 
   private api(endpoint: string) {
-    return this.http.get(environment.API_URL + endpoint );
+    return this.http.get(environment.API_URL + endpoint);
   }
 
   private getTodayDate() {
@@ -281,22 +281,5 @@ export class SpotifyService {
     });
   }
 
-  createPlaylistFromArtist(userId: string, playListName: string, artists: Artist[]){
-    const playList: Track[] = [];
-    const requests = [];
-    artists.forEach(artist => {
-      requests.push(this.api('/artists/' + artist.id + '/top-tracks?country=IL'));
-    });
-    forkJoin(requests).subscribe( (artistsTopTracks: ArtistTopTracks[]) => {
-      artistsTopTracks.forEach(artist => {
-        const tracksIndex = Math.floor(Math.random() * artist.tracks.length);
-        playList.push(artist.tracks[tracksIndex]);
-      });
-
-      this.createPlaylistFromTracks(userId, playListName, playList);
-    }, err => {
-      this.error.next(err);
-    });
-  }
 
 }

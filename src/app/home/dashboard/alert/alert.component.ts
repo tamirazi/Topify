@@ -6,7 +6,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent implements OnInit {
-  @Input() status: number;
   @Input() message: string;
   @Output() alertClose = new EventEmitter<void>();
   constructor() { }

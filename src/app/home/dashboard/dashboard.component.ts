@@ -19,15 +19,14 @@ export class DashboardComponent implements OnInit {
   @Input() image: string;
   @Input() username: string;
   @Input() userId: string;
-  @Input() list: Artist[] | Track[];
-  @Input() playList: Track[];
+  @Input() list: Track[];
 
   @Output() indexHandler = new EventEmitter<number>();
 
   isMobile: boolean;
   index = 0;
 
-  constructor() { }
+  constructor(private spotify: SpotifyService) { }
 
   ngOnInit(): void {
     this.isMobile =  window.innerWidth < 768;
@@ -47,11 +46,8 @@ export class DashboardComponent implements OnInit {
   createPlaylist(event) {
     console.log('dashboard working on new playlist...');
     const playListName = `${this.time.toLocaleUpperCase()} ${this.type.toLocaleUpperCase()} Topify`;
-    // if (this.playList) {
-    //   this.spotify.createPlaylistFromTracks(this.userId, playListName, this.list as Track[]);
-    // }else {
-    //   this.spotify.createPlaylistFromArtist(this.userId, playListName, this.list as Artist[]);
-    // }
+    this.spotify.createPlaylistFromTracks(this.userId, playListName, this.list);
+
   }
 
   @HostListener('window:resize', ['$event'])

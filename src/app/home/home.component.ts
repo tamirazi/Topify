@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
   list: Track[];
   userImageUrl: string;
   isError = false;
-  errStatus: number;
   errMsg: string;
   index = 0;
 
@@ -58,7 +57,6 @@ export class HomeComponent implements OnInit {
     this.spotify.error.subscribe( (err: SpotifyError) => {
       this.isError = true;
       if (err.error) {
-        this.errStatus = err.error.error.status;
         this.errMsg = err.error.error.message;
       }
     });

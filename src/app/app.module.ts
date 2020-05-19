@@ -23,6 +23,7 @@ import { MenuComponent } from './home/dashboard/menu/menu.component';
 import { AlertComponent } from './home/dashboard/alert/alert.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SpotifyService } from './services/spotify.service';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { environment } from '../environments/environment';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
-      multi: true
+      multi: true,
+      deps: [SpotifyService]
     }
   ],
   bootstrap: [AppComponent]
