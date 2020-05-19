@@ -43,13 +43,24 @@
                     <li class="index-check-item" [ngClass]="{active: index % 3 == 2}"></li>
                 </ul>
             </div>
-
         </div>
 
     </div>
 
     <div *ngIf="isMobile" class="mobile-container">
         <div class="left">
+            <div class="index-buttons">
+                <div class="down" (click)="downIndex()">&#9664;</div>
+                <div class="up" (click)="upIndex()">&#9654;</div>
+            </div>
+            <div class="index-bg">
+                <h1 class="index">0{{index % 3 + 1}}</h1>
+                <ul class="index-check">
+                    <li class="index-check-item" [ngClass]="{active: index % 3 == 0}"></li>
+                    <li class="index-check-item" [ngClass]="{active: index % 3 == 1}"></li>
+                    <li class="index-check-item" [ngClass]="{active: index % 3 == 2}"></li>
+                </ul>
+            </div>
             <div *ngIf="image" class="img" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
         </div>
         <div class="right">
@@ -60,13 +71,12 @@
             </div>
         </div>
     </div>
-
-    <!-- <div class="time-nav-container">
+    <div class="time-nav-container">
         <ul class="time-nav">
             <li class="nav-item active" (click)="resetIndex()" [routerLink]="['/home', 'top', type]" [ngClass]="{active: time === 'top'}">All Time</li>
             <li class="nav-item" (click)="resetIndex()"  [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
         </ul>
-    </div> -->
+    </div>
     <app-list class="mobile-list" *ngIf="isMobile" [time]="time"  [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
     <div class="bg"></div>
 </div>

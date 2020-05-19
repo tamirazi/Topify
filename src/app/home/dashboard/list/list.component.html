@@ -53,11 +53,11 @@
     </div>
 
     <div (click)="savePlayList()" class="first-item" *ngIf="list.length > 0">
-        <!-- <div class="img" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}"></div> -->
+        <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
         <div class="info">
             <div class="text">
+                <p>Save this playlist based on your {{time}} {{type}}</p>
                 <h3>Playlist time: {{totalDuration | duration}}</h3>
-                <p>Make a playlist from this list</p>
                 <br>
             </div>
         </div>

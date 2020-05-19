@@ -16,7 +16,7 @@ export class SlickNavComponent implements OnInit, AfterViewInit {
     slidesToShow: 4,
     centerMode: false,
     focusOnSelect: true,
-    // verticalSwiping: true,
+    verticalSwiping: true,
     swipeToSlide: true,
   };
 

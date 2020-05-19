@@ -25,7 +25,9 @@
         top: -3vw;
         right: 5.1vw;
         .time-nav {
+            width: 20vw;
             .nav-item {
+                 font-size: 1.5vw;
                 &.active {
                     padding-bottom: 0;
                 }
