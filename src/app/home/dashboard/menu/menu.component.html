@@ -1,9 +1,9 @@
 <div class="menu-container">
-    <div class="menu-item">
-        <a [routerLink]="['/about']">About</a>
-        
+    <div (click)="closeMenu()" class="close">&#10006;</div>
+    <div class="menu-item" [routerLink]="['/about']">
+        About  
     </div>
-    <div class="menu-item">
-        <a href=""  (click)="logout()">Logout</a>
+    <div class="menu-item" (click)="logout()">
+        Logout
     </div>
 </div>

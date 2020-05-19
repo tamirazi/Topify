@@ -247,3 +247,11 @@
     width: 2px;
 }
 
+.ng-lazyloaded {
+    animation: fadein .8s;
+  }
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
