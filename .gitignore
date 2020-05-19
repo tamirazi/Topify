@@ -46,3 +46,7 @@ testem.log
 Thumbs.db
 
 env.ts
+
+manifest.webmanifest
+ngsw-config.json
+assets/icons
