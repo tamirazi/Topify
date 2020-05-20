@@ -25,16 +25,11 @@ export class DashboardComponent implements OnInit {
 
   isMobile: boolean;
   index = 0;
-  playlistCreated = false;
 
   constructor(private spotify: SpotifyService) { }
 
   ngOnInit(): void {
     this.isMobile =  window.innerWidth < 768;
-    this.spotify.playlistCreated.subscribe( playlist => {
-      console.log(playlist);
-      this.playlistCreated = true;
-    })
   }
 
   scrollToBottom() {
@@ -68,7 +63,7 @@ export class DashboardComponent implements OnInit {
   upIndex() {
     if ( this.index < 2) {
       this.indexHandler.emit(++this.index);
-    } 
+    }
   }
   resetIndex() {
     this.indexHandler.emit(this.index);

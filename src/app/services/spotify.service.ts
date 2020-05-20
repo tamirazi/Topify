@@ -275,7 +275,7 @@ export class SpotifyService {
         uris
       };
       this.http.post( res.tracks.href, addTracksBody, httpOptions).subscribe( (playlist: any) => {
-        this.playlistCreated.next(playlist)
+        this.playlistCreated.next(res);
       });
     }, err => {
       this.error.next(err);
