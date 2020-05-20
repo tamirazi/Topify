@@ -16,7 +16,7 @@
     <div class="duration">
         <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
         <span *ngIf="!isPlaying" (click)="preview(track.preview_url)">🎧</span>
-        <span *ngIf="isPlaying" (click)="stop()" >⬜️</span>
+        <span *ngIf="isPlaying" (click)="stop()" >⬛️</span>
     </div>
 </div>
 <hr>
