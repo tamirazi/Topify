@@ -28,6 +28,7 @@ export class NodeComponent implements OnInit {
     }else {
       this.player.play(url);
       this.isPlaying = true;
+      setTimeout( () => this.isPlaying = false, 30000);
     }
   }
 
