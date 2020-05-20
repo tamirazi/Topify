@@ -2,10 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +23,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SpotifyService } from './services/spotify.service';
 import { NodeComponent } from './home/dashboard/list/node/node.component';
-
 
 @NgModule({
   declarations: [
@@ -49,16 +46,18 @@ import { NodeComponent } from './home/dashboard/list/node/node.component';
     HttpClientModule,
     SlickCarouselModule,
     LazyLoadImageModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true,
-      deps: [SpotifyService]
-    }
+      deps: [SpotifyService],
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

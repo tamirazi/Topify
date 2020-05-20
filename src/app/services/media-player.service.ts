@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MediaPlayerService {
   audio: any;
   stopAllNodes = new Subject();
-  constructor() { }
+  constructor() {}
 
   play(url: string) {
     if (this.audio && !this.audio.paused) {
@@ -17,8 +17,6 @@ export class MediaPlayerService {
       this.audio = new Audio(url);
       this.audio.play();
     }
-
-
   }
 
   stop() {

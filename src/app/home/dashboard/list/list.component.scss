@@ -1,77 +1,69 @@
-
 .list-container {
-    background-color: white;
-    padding: 5px;
+  background-color: white;
+  padding: 5px;
 
-    .list-item {
-        scroll-snap-align: start;
-        margin-bottom: 6px;
-        display: flex;
-        position: relative;
-        min-height: 60px;
-        width: 100%;
+  .list-item {
+    scroll-snap-align: start;
+    margin-bottom: 6px;
+    display: flex;
+    position: relative;
+    min-height: 60px;
+    width: 100%;
 
-        app-node {
-            display: flex;
-            width: 100%;
-        }
-
-
+    app-node {
+      display: flex;
+      width: 100%;
     }
-    .last-item {
-        display: flex;
-        overflow: hidden;
-        position: sticky;
-        bottom: -1px;
-        z-index: 1;
-        background-color: #ffffff;
-        min-height: 60px;
-        width: 100%;
-        
-        .img {
-            transform: scale(.7);
-            height: 50px;
-            width: 50px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
-        .text {
-            margin-top: 10px;
-            text-align: center;
-            p {
-                margin: 0;
-             }
-        }
-        h3 {
-            font-weight: 600;
-            margin: 0;
-        }
+  }
+  .last-item {
+    display: flex;
+    overflow: hidden;
+    position: sticky;
+    bottom: -1px;
+    z-index: 1;
+    background-color: #ffffff;
+    min-height: 60px;
+    width: 100%;
 
-        .info {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-
-            font-family: 'Montserrat', sans-serif;
-            font-size: .7em;
-        }
+    .img {
+      transform: scale(0.7);
+      height: 50px;
+      width: 50px;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
+    .text {
+      margin-top: 10px;
+      text-align: center;
+      p {
+        margin: 0;
+      }
+    }
+    h3 {
+      font-weight: 600;
+      margin: 0;
+    }
+    .info {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.7em;
+    }
+  }
 }
 @media only screen and (max-width: 768px) {
-    .last-item {
-        .img {
-            transform: scale(0.4) !important;
-            left: 0px !important;
-            width: 100%;
-        }
+  .last-item {
+    .img {
+      transform: scale(0.4) !important;
+      left: 0px !important;
+      width: 100%;
     }
+  }
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
-
-
-
-

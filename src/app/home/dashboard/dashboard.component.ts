@@ -1,15 +1,24 @@
-import { Component, OnInit, Input, HostListener, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  HostListener,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Artist, Track } from '../../models/spotify.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss', './dashboardDesktop.component.scss']
+  styleUrls: [
+    './dashboard.component.scss',
+    './dashboardDesktop.component.scss',
+  ],
 })
 export class DashboardComponent implements OnInit {
   @Input() type: string;
@@ -26,10 +35,10 @@ export class DashboardComponent implements OnInit {
   isMobile: boolean;
   index = 0;
 
-  constructor(private spotify: SpotifyService) { }
+  constructor(private spotify: SpotifyService) {}
 
   ngOnInit(): void {
-    this.isMobile =  window.innerWidth < 768;
+    this.isMobile = window.innerWidth < 768;
   }
 
   scrollToBottom() {
@@ -37,17 +46,15 @@ export class DashboardComponent implements OnInit {
     if (window.innerWidth > 768) {
       window.scrollTo({
         top: 1000,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   }
-
 
   createPlaylist(event) {
     console.log('dashboard working on new playlist...');
     const playListName = `${this.time.toLocaleUpperCase()} ${this.type.toLocaleUpperCase()} Topify`;
     this.spotify.createPlaylistFromTracks(this.userId, playListName, this.list);
-
   }
 
   @HostListener('window:resize', ['$event'])
@@ -56,12 +63,12 @@ export class DashboardComponent implements OnInit {
   }
 
   downIndex() {
-    if ( this.index > 0) {
+    if (this.index > 0) {
       this.indexHandler.emit(--this.index);
     }
   }
   upIndex() {
-    if ( this.index < 2) {
+    if (this.index < 2) {
       this.indexHandler.emit(++this.index);
     }
   }

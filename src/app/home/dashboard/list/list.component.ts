@@ -1,11 +1,18 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { Track, Artist, Album } from '../../../models/spotify.model';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { Track } from '../../../models/spotify.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit, OnChanges {
   @Input() list: Track[];
@@ -21,10 +28,9 @@ export class ListComponent implements OnInit, OnChanges {
 
   constructor(private spotify: SpotifyService) {}
 
-
   ngOnInit(): void {
     console.log('list oninit');
-    this.spotify.playlistCreated.subscribe( res => {
+    this.spotify.playlistCreated.subscribe((res) => {
       this.creatingPlaylist = false;
       this.playlistCreated = true;
       this.playlistURI = res.uri;
@@ -35,18 +41,15 @@ export class ListComponent implements OnInit, OnChanges {
   ngOnChanges(changes): void {
     this.totalDuration = 0;
     this.playlistCreated = false;
-    this.list.forEach( (element: any) => {
+    this.list.forEach((element: any) => {
       this.totalDuration += element.duration_ms;
     });
   }
 
   savePlayList() {
-    if (!this.playlistCreated){
+    if (!this.playlistCreated) {
       this.creatingPlaylist = true;
       this.savePlaylistEmitter.emit('new Playlist');
     }
   }
-
-
-
 }

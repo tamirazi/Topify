@@ -1,90 +1,90 @@
 export interface User {
-    display_name: string;
-    images: Image[];
-    country: string;
-    email: string;
-    id: string;
-    followers: {
-        total: number;
-    };
+  display_name: string;
+  images: Image[];
+  country: string;
+  email: string;
+  id: string;
+  followers: {
+    total: number;
+  };
 }
 
 export interface Image {
-    url: string;
-    width: number;
-    height: number;
+  url: string;
+  width: number;
+  height: number;
 }
 
 export interface TopArtists {
-    items: Artist[];
+  items: Artist[];
 }
 
 export interface Artist {
-    followers: {
-        total: number;
-    };
-    genres: string[];
-    images: Image[];
-    name: string;
-    href: string;
-    popularity: number;
-    external_urls: {
-        spotify: string;
-    };
-    id: string;
-    artists?: Artist[];
+  followers: {
+    total: number;
+  };
+  genres: string[];
+  images: Image[];
+  name: string;
+  href: string;
+  popularity: number;
+  external_urls: {
+    spotify: string;
+  };
+  id: string;
+  artists?: Artist[];
 }
 
 export interface TopTracks {
-    items: Track[];
+  items: Track[];
 }
 
 export interface ArtistTopTracks {
-    tracks: Track[];
+  tracks: Track[];
 }
 
 export interface Track {
-    album: Album;
-    artists: Artist[];
-    duration_ms: number;
-    popularity: number;
-    name: string;
-    external_urls: {
-        spotify: string;
-    };
-    uri: string;
-    href: string;
-    track?: Track;
-    id: string;
-    preview_url: string;
+  album: Album;
+  artists: Artist[];
+  duration_ms: number;
+  popularity: number;
+  name: string;
+  external_urls: {
+    spotify: string;
+  };
+  uri: string;
+  href: string;
+  track?: Track;
+  id: string;
+  preview_url: string;
 }
 
 export interface Album {
-    id: string;
-    href: string;
-    album_type: string;
-    artists: Artist[];
-    genres: string[];
-    images: Image[];
-    label: string;
-    name: string;
-    external_urls: {
-        spotify: string;
-    };
-    popularity: number;
-    release_date: string;
-    tracks: {
-        items: Track[];
-    };
+  id: string;
+  href: string;
+  album_type: string;
+  artists: Artist[];
+  genres: string[];
+  images: Image[];
+  label: string;
+  name: string;
+  external_urls: {
+    spotify: string;
+  };
+  popularity: number;
+  release_date: string;
+  tracks: {
+    items: Track[];
+  };
 }
 
 export interface SpotifyError {
-    status: number;
-    message: string;
+  status: number;
+  message: string;
+  error: {
     error: {
-        error: {
-            status: number;
-            message: string;
-        }
+      status: number;
+      message: string;
     };
+  };
 }

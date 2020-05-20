@@ -1,39 +1,62 @@
-<div class="loading flex-col-center" *ngIf="list.length === 0 || !list">Loading</div>
-
-
-<div class="list-container" *ngIf="type=='track' || type==='genre' || type==='artist'">
-    <div class="list-item" *ngFor="let track of list">
-        <app-node [track]="track"></app-node>
-    </div>
-    <div (click)="savePlayList()" class="last-item" *ngIf="list.length > 0" [ngClass]="{pointer: !playlistCreated}">
-        <div class="info">
-            <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
-            <div class="text">
-                <p *ngIf="!playlistCreated && !creatingPlaylist">Save this playlist based on your {{time}} {{type}}</p>
-                <p *ngIf="creatingPlaylist">Creating your new Playlist...</p>
-                <p *ngIf="playlistCreated">Done! open in <a [href]="playlistURI | safeUrl">Spotify App</a> or <a [href]="playlistWebLink | safeUrl" target="_blank">Website</a></p>
-                <h3>Playlist time: {{totalDuration | duration}}</h3>
-                <br>
-            </div>
-        </div>
-    </div>
+<div class="loading flex-col-center" *ngIf="list.length === 0 || !list">
+  Loading
 </div>
 
+<div
+  class="list-container"
+  *ngIf="type == 'track' || type === 'genre' || type === 'artist'"
+>
+  <div class="list-item" *ngFor="let track of list">
+    <app-node [track]="track"></app-node>
+  </div>
+  <div
+    (click)="savePlayList()"
+    class="last-item"
+    *ngIf="list.length > 0"
+    [ngClass]="{ pointer: !playlistCreated }"
+  >
+    <div class="info">
+      <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
+      <div class="text">
+        <p *ngIf="!playlistCreated && !creatingPlaylist">
+          Save this playlist based on your {{ time }} {{ type }}
+        </p>
+        <p *ngIf="creatingPlaylist">Creating your new Playlist...</p>
+        <p *ngIf="playlistCreated">
+          Done! open in <a [href]="playlistURI | safeUrl">Spotify App</a> or
+          <a [href]="playlistWebLink | safeUrl" target="_blank">Website</a>
+        </p>
+        <h3>Playlist time: {{ totalDuration | duration }}</h3>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="list-container" *ngIf="type==='album'">
-    <div class="list-item" *ngFor="let track of list;index as i">
-        <app-node [track]="track" [index]="i"></app-node>
+<div class="list-container" *ngIf="type === 'album'">
+  <div class="list-item" *ngFor="let track of list; index as i">
+    <app-node [track]="track" [index]="i"></app-node>
+  </div>
+  <div
+    (click)="savePlayList()"
+    class="last-item"
+    *ngIf="list.length > 0"
+    [ngClass]="{ pointer: !playlistCreated }"
+  >
+    <div class="info">
+      <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
+      <div class="text">
+        <p *ngIf="!playlistCreated && !creatingPlaylist">
+          Save this playlist based on your {{ time }} {{ type }}
+        </p>
+        <p *ngIf="creatingPlaylist">Creating your new Playlist...</p>
+        <p *ngIf="playlistCreated">
+          Done! open in <a [href]="playlistURI | safeUrl">Spotify App</a> or
+          <a [href]="playlistWebLink | safeUrl" target="_blank">Website</a>
+        </p>
+        <h3>Playlist time: {{ totalDuration | duration }}</h3>
+        <br />
+      </div>
     </div>
-    <div (click)="savePlayList()" class="last-item" *ngIf="list.length > 0" [ngClass]="{pointer: !playlistCreated}">
-        <div class="info">
-            <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
-            <div class="text">
-                <p *ngIf="!playlistCreated && !creatingPlaylist">Save this playlist based on your {{time}} {{type}}</p>
-                <p *ngIf="creatingPlaylist">Creating your new Playlist...</p>
-                <p *ngIf="playlistCreated">Done! open in <a [href]="playlistURI | safeUrl">Spotify App</a> or <a [href]="playlistWebLink | safeUrl" target="_blank">Website</a></p>
-                <h3>Playlist time: {{totalDuration | duration}}</h3>
-                <br>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

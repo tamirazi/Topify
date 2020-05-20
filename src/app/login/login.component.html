@@ -1,13 +1,14 @@
 <div class="container flex-col-center">
-    <div class="logo"></div>
-    <h1>Welcome To Topify</h1>
-    <h3 class="description">Re-Visit your favourite</h3>    
-    <h3 class="description">artists & tracks</h3> 
-    <a [routerLink]="['/about']" >Learn more...</a>
+  <div class="logo"></div>
+  <h1>Welcome To Topify</h1>
+  <h3 class="description">Re-Visit your favourite</h3>
+  <h3 class="description">artists & tracks</h3>
+  <a [routerLink]="['/about']">Learn more...</a>
 
-    <button (click)="login()">LOG IN with Spotify</button>
-    <h3 *ngIf="deniedPermision">We need your permisions to do our job sorry...</h3>
-
+  <button (click)="login()">LOG IN with Spotify</button>
+  <h3 *ngIf="deniedPermision">
+    We need your permisions to do our job sorry...
+  </h3>
 </div>
 
 <div class="bg"></div>

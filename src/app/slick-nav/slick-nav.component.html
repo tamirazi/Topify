@@ -1,28 +1,74 @@
 <div class="slick-container">
-    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (afterChange)="afterChange($event)" (init)="slickInit($event)">
-        <div ngxSlickItem class="slide">
-            <h1 [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Top Artist</h1>
-        </div>
-        <div ngxSlickItem class="slide">
-            <h1 [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Top Track</h1>
-        </div>
-        <div ngxSlickItem class="slide">
-            <h1 [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Top Album</h1>
-        </div>
-        <div ngxSlickItem class="slide">
-            <h1 [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Top Genre</h1>
-        </div>
-        <div ngxSlickItem class="slide">
-            <h1 [routerLink]="['/home', time, 'artist']" [ngClass]="{active: type === 'artist'}">Top Artist</h1>
-        </div>
-        <div ngxSlickItem class="slide">
-            <h1 [routerLink]="['/home', time, 'track']" [ngClass]="{active: type === 'track'}">Top Track</h1>
-        </div>
-        <div ngxSlickItem class="slide">
-            <h1 [routerLink]="['/home', time, 'album']" [ngClass]="{active: type === 'album'}">Top Album</h1>
-        </div>
-        <div ngxSlickItem class="slide">
-            <h1 [routerLink]="['/home', time, 'genre']" [ngClass]="{active: type === 'genre'}">Top Genre</h1>
-        </div>
-    </ngx-slick-carousel>
+  <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+    (afterChange)="afterChange($event)"
+    (init)="slickInit($event)"
+  >
+    <div ngxSlickItem class="slide">
+      <h1
+        [routerLink]="['/home', time, 'artist']"
+        [ngClass]="{ active: type === 'artist' }"
+      >
+        Top Artist
+      </h1>
+    </div>
+    <div ngxSlickItem class="slide">
+      <h1
+        [routerLink]="['/home', time, 'track']"
+        [ngClass]="{ active: type === 'track' }"
+      >
+        Top Track
+      </h1>
+    </div>
+    <div ngxSlickItem class="slide">
+      <h1
+        [routerLink]="['/home', time, 'album']"
+        [ngClass]="{ active: type === 'album' }"
+      >
+        Top Album
+      </h1>
+    </div>
+    <div ngxSlickItem class="slide">
+      <h1
+        [routerLink]="['/home', time, 'genre']"
+        [ngClass]="{ active: type === 'genre' }"
+      >
+        Top Genre
+      </h1>
+    </div>
+    <div ngxSlickItem class="slide">
+      <h1
+        [routerLink]="['/home', time, 'artist']"
+        [ngClass]="{ active: type === 'artist' }"
+      >
+        Top Artist
+      </h1>
+    </div>
+    <div ngxSlickItem class="slide">
+      <h1
+        [routerLink]="['/home', time, 'track']"
+        [ngClass]="{ active: type === 'track' }"
+      >
+        Top Track
+      </h1>
+    </div>
+    <div ngxSlickItem class="slide">
+      <h1
+        [routerLink]="['/home', time, 'album']"
+        [ngClass]="{ active: type === 'album' }"
+      >
+        Top Album
+      </h1>
+    </div>
+    <div ngxSlickItem class="slide">
+      <h1
+        [routerLink]="['/home', time, 'genre']"
+        [ngClass]="{ active: type === 'genre' }"
+      >
+        Top Genre
+      </h1>
+    </div>
+  </ngx-slick-carousel>
 </div>

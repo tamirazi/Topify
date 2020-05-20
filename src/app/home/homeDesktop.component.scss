@@ -1,20 +1,19 @@
 @media only screen and (min-width: 768px) {
-    app-list {
-        max-height: 520px;
-        width: 40vw;
-        position: absolute;
-        top: 100vh;
-        left: 50vw;
-        overflow-y: scroll;
-        
+  app-list {
+    max-height: 520px;
+    width: 40vw;
+    position: absolute;
+    top: 100vh;
+    left: 50vw;
+    overflow-y: scroll;
+  }
 
-    }
+  .menu,
+  .logo {
+    position: fixed;
+  }
 
-    .menu, .logo {
-        position: fixed;
-    }
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }

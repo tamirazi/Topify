@@ -1,14 +1,18 @@
-
 <button (click)="onHandleAlert()">error</button>
 
-<app-dashboard 
-    [username]="username"
-    [userId]="userId"
-    [time]="time" [type]="type" 
-    [result]="result"
-    [description]="description"
-    [image]="image"
-    [list]="list"
-    (indexHandler)="setIndex($event)"></app-dashboard>
-<app-alert *ngIf="isError" [message]="errMsg" (alertClose)="onHandleAlert()"></app-alert>
-
+<app-dashboard
+  [username]="username"
+  [userId]="userId"
+  [time]="time"
+  [type]="type"
+  [result]="result"
+  [description]="description"
+  [image]="image"
+  [list]="list"
+  (indexHandler)="setIndex($event)"
+></app-dashboard>
+<app-alert
+  *ngIf="isError"
+  [message]="errMsg"
+  (alertClose)="onHandleAlert()"
+></app-alert>

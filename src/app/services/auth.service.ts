@@ -1,18 +1,8 @@
-import {
-  Injectable
-} from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders
-} from '@angular/common/http';
-import {
-  authUrl,
-  environment
-} from 'src/environments/environment';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { authUrl, environment } from 'src/environments/environment';
 
-import {
-  AuthUser
-} from '../models/authuser.model';
+import { AuthUser } from '../models/authuser.model';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -21,14 +11,12 @@ export interface AuthResponseData {
   token_type: string;
   expires_in: number;
   state: string;
-  error ?: string;
+  error?: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
 export class AuthService {
   user = new BehaviorSubject<AuthUser>(null);
   private tokenExpirationTimer: any;
@@ -48,18 +36,20 @@ export class AuthService {
   }
 
   autoLogin() {
-
     const userData: {
       // tslint:disable-next-line:variable-name
-       _token: string,
+      _token: string;
       // tslint:disable-next-line:variable-name
-       _tokenExpirationDate: Date,
+      _tokenExpirationDate: Date;
     } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       return;
     }
 
-    const loadedUser = new AuthUser(userData._token, userData._tokenExpirationDate);
+    const loadedUser = new AuthUser(
+      userData._token,
+      userData._tokenExpirationDate
+    );
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
@@ -68,7 +58,6 @@ export class AuthService {
         new Date().getTime();
       this.autoLogout(expirationDuration);
     }
-
   }
 
   autoLogout(expirationDuration: number) {
@@ -90,11 +79,8 @@ export class AuthService {
     const userData = JSON.parse(localStorage.getItem('userData'));
     return this.http.get(environment.API_URL + endpoint, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + userData._token
-      })
+        Authorization: 'Bearer ' + userData._token,
+      }),
     });
-
   }
-
-
 }

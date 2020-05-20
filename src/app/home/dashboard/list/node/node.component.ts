@@ -5,30 +5,29 @@ import { MediaPlayerService } from 'src/app/services/media-player.service';
 @Component({
   selector: 'app-node',
   templateUrl: './node.component.html',
-  styleUrls: ['./node.component.scss']
+  styleUrls: ['./node.component.scss'],
 })
 export class NodeComponent implements OnInit {
-
   @Input() track: Track;
   @Input() index: number;
 
   isPlaying = false;
   isPreview = true;
 
-  constructor(private player: MediaPlayerService) { }
+  constructor(private player: MediaPlayerService) {}
 
   ngOnInit(): void {
-    this.player.stopAllNodes.subscribe( res => this.isPlaying = false);
+    this.player.stopAllNodes.subscribe((res) => (this.isPlaying = false));
   }
 
   preview(url) {
     if (!url) {
       this.isPreview = false;
-      setTimeout( () => this.isPreview = true, 2000);
-    }else {
+      setTimeout(() => (this.isPreview = true), 2000);
+    } else {
       this.player.play(url);
       this.isPlaying = true;
-      setTimeout( () => this.isPlaying = false, 30000);
+      setTimeout(() => (this.isPlaying = false), 30000);
     }
   }
 
@@ -36,5 +35,4 @@ export class NodeComponent implements OnInit {
     this.player.stop();
     this.isPlaying = false;
   }
-
 }
