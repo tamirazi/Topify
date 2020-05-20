@@ -1,5 +1,8 @@
 
-<div *ngIf="track.album" class="img" [lazyLoad]="track.album.images[0].url"></div>
+<div *ngIf="track.album" class="img" [lazyLoad]="track.album.images[0].url">
+    <span *ngIf="track.preview_url && !isPlaying" (click)="preview(track.preview_url)">&#9658;</span>
+    <span *ngIf="isPlaying" (click)="stop()" >&#9724;</span>
+</div>
 <div *ngIf="!track.album" class="img">{{index + 1}}.</div>
 <div class="info">
     <a [href]="track.uri | safeUrl">
@@ -10,8 +13,8 @@
         </div>
     </a>
     <div class="duration">
-        <span *ngIf="track.preview_url && !isPlaying" (click)="preview(track.preview_url)">&#9658;</span>
-        <span *ngIf="isPlaying" (click)="stop()" >&#9632;</span>
+        <!-- <span *ngIf="track.preview_url && !isPlaying" (click)="preview(track.preview_url)">&#9658;</span>
+        <span *ngIf="isPlaying" (click)="stop()" >&#9632;</span> -->
         <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
     </div>
 </div>

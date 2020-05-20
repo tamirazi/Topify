@@ -75,7 +75,7 @@
                 width: min-content;
                 position: absolute;
                 z-index: 2;
-                left: 20px;
+                left: 6vw;
                 top: 55%;
                 .down, .up {
                     display: grid;
@@ -99,8 +99,8 @@
             .index-bg {
                 min-width: 180px;
                 position: absolute;
-                bottom: 25vw;
-                left: 20px;
+                bottom: 90px;
+                left: 6vw;
                 z-index: 1;
                 .index {
                     color: #EFEEEC;
@@ -161,11 +161,31 @@
 
             app-slick-nav {
                 width: 150px;
+                position: relative;
+                margin-left: 5px;
+
+                &::before {
+                    content: '\21D2';
+                    height: 10px;
+                    width: 10px;
+                    position: absolute;
+                    color: black;
+                    top: 4px;
+                    // background-color: black;
+                }
             }
 
             .info {
                 margin-left: 10px;
                 font-family: 'Teko', sans-serif;
+                margin-left: 10px;
+                margin-top: 10px;
+                font-family: "Teko", sans-serif;
+                font-size: 32px;
+
+                .h3-description{
+                    display: none;
+                }
             }
         }
 
