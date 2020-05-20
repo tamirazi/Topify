@@ -7,7 +7,7 @@
     </div>
     <div *ngIf="!isMobile" class="desktop-container">
         <div class="left">
-            <app-list class="desktop-list" [time]="time" [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
+            <app-list class="desktop-list" [time]="time" [type]="type" [list]="list" [playlistCreated]="playlistCreated" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
         </div>
     
         <div class="right">
@@ -77,6 +77,6 @@
             <li class="nav-item" (click)="resetIndex()"  [routerLink]="['/home', 'recent', type]" [ngClass]="{active: time === 'recent'}">Recent</li>
         </ul>
     </div>
-    <app-list class="mobile-list" *ngIf="isMobile" [time]="time"  [type]="type" [list]="list" [imageUrlToAllListItem]="image" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
+    <app-list class="mobile-list" *ngIf="isMobile" [time]="time"  [type]="type" [list]="list"  [playlistCreated]="playlistCreated" (savePlaylistEmitter)="createPlaylist($event)"></app-list>
     <div class="bg"></div>
 </div>

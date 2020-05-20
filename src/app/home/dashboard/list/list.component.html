@@ -25,8 +25,13 @@
     <div (click)="savePlayList()" class="last-item" *ngIf="list.length > 0">
         <div class="info">
             <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
-            <div class="text">
+            <div class="text" *ngIf="!playlistCreated">
                 <p>Save this playlist based on your {{time}} {{type}}</p>
+                <h3>Playlist time: {{totalDuration | duration}}</h3>
+                <br>
+            </div>
+            <div class="text" *ngIf="playlistCreated">
+                <p>Done</p>
                 <h3>Playlist time: {{totalDuration | duration}}</h3>
                 <br>
             </div>

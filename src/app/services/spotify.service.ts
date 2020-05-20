@@ -16,6 +16,7 @@ export class SpotifyService {
 
   appData = new Subject<AppData>();
   error = new Subject<SpotifyError>();
+  playlistCreated = new Subject<any>();
   constructor(private http: HttpClient) { }
 
   fetch(time: string, type: string, index: number) {
@@ -274,7 +275,7 @@ export class SpotifyService {
         uris
       };
       this.http.post( res.tracks.href, addTracksBody, httpOptions).subscribe( (playlist: any) => {
-        console.log(playlist);
+        this.playlistCreated.next(playlist)
       });
     }, err => {
       this.error.next(err);

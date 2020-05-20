@@ -8,9 +8,9 @@ import { Track, Artist, Album } from '../../../models/spotify.model';
 })
 export class ListComponent implements OnInit, OnChanges {
   @Input() list: Track[];
-  @Input() imageUrlToAllListItem: string = null;
   @Input() type: string;
   @Input() time: string;
+  @Input() playlistCreated: boolean;
   
   @Output() savePlaylistEmitter = new EventEmitter();
 
@@ -33,7 +33,10 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   savePlayList() {
-    this.savePlaylistEmitter.emit('new Playlist');
+    if(!this.playlistCreated){
+      this.savePlaylistEmitter.emit('new Playlist');
+    }
+    
   }
 
 
