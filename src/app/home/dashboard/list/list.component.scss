@@ -3,117 +3,70 @@
     background-color: white;
     padding: 5px;
 
-    .list-item, .first-item {
+    .list-item {
         scroll-snap-align: start;
         margin-bottom: 6px;
         display: flex;
         position: relative;
         min-height: 60px;
-        a {
-            text-decoration: inherit;
-            width: 100%;
-            color: inherit;
-            cursor: auto;
-        }
-        h3 {
-            font-weight: 600;
-            margin: 0;
-        }
-        .img {
-            font-family: 'Montserrat';
-            display: grid;
-            justify-content: center;
-            align-items: center;
-            max-width: 50px;
-            max-height: 50px;
-            width: 100%;
-            border-radius: 10px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+        width: 100%;
 
-        .info {
+        app-node {
             display: flex;
             width: 100%;
-            margin-left: 20px;
-            align-items: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: .7em;
-            .text {      
-                cursor: pointer;  
-                width: 100%;
-                .track-name, a {
-                    font-weight: 300;
-                    display: inline;
-                }
-
-            }
-            .duration {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
         }
 
-        hr{
-            position: absolute;
-            height: 1px;
-            bottom: 0;
-            left: 30px;
-            width: calc(100% - 60px);
-            margin: 0;
-            border: none;
-            background-color: #7F7F7F;
-            opacity: .5;
-        }
 
     }
-    .first-item {
+    .last-item {
+        display: flex;
+        overflow: hidden;
         position: sticky;
         bottom: -1px;
         z-index: 1;
-        // background-color: #FDF5F3;
         background-color: #ffffff;
-
+        min-height: 60px;
+        width: 100%;
         .img {
             transform: scale(.7);
-            position: absolute;
-            left: 90px;
-            height: 100%;
+            height: 50px;
+            width: 50px;
+            background-repeat: no-repeat;
+            background-size: contain;
         }
-
         .text {
             margin-top: 10px;
-
             text-align: center;
             p {
                 margin: 0;
              }
         }
+        h3 {
+            font-weight: 600;
+            margin: 0;
+        }
 
+        .info {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+
+            font-family: 'Montserrat', sans-serif;
+            font-size: .7em;
+        }
     }
-
 }
-
 @media only screen and (max-width: 768px) {
-    .first-item {
-
+    .last-item {
         .img {
             transform: scale(0.4) !important;
             left: 0px !important;
+            width: 100%;
         }
-
     }
 }
 
 
 
 
-.ng-lazyloaded {
-    animation: fadein .5s;
-  }
-  @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }

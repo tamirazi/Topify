@@ -1,0 +1,67 @@
+a {
+    text-decoration: inherit;
+    width: 100%;
+    color: inherit;
+    cursor: auto;
+}
+h3 {
+    font-weight: 600;
+    margin: 0;
+}
+.img {
+    font-family: 'Montserrat';
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    max-width: 50px;
+    max-height: 50px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.info {
+    display: flex;
+    width: 100%;
+    margin-left: 20px;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .7em;
+    .text {      
+        cursor: pointer;  
+        width: 100%;
+        .track-name, a {
+            font-weight: 300;
+            display: inline;
+        }
+
+    }
+    .duration {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+hr{
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: 30px;
+    width: calc(100% - 60px);
+    margin: 0;
+    border: none;
+    background-color: #7F7F7F;
+    opacity: .5;
+}
+
+.ng-lazyloaded {
+    animation: fadein .5s;
+  }
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }

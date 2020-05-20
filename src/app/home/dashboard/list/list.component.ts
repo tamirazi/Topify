@@ -7,7 +7,7 @@ import { Track, Artist, Album } from '../../../models/spotify.model';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnChanges {
-  @Input() list: Track[] | Artist[];
+  @Input() list: Track[];
   @Input() imageUrlToAllListItem: string = null;
   @Input() type: string;
   @Input() time: string;
@@ -15,6 +15,7 @@ export class ListComponent implements OnInit, OnChanges {
   @Output() savePlaylistEmitter = new EventEmitter();
 
   totalDuration = 0;
+  isPlaying = false;
 
   constructor() {}
   ngOnChanges(changes): void {
@@ -34,5 +35,7 @@ export class ListComponent implements OnInit, OnChanges {
   savePlayList() {
     this.savePlaylistEmitter.emit('new Playlist');
   }
+
+
 
 }

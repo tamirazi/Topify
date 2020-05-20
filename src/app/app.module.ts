@@ -24,6 +24,7 @@ import { AlertComponent } from './home/dashboard/alert/alert.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SpotifyService } from './services/spotify.service';
+import { NodeComponent } from './home/dashboard/list/node/node.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { SpotifyService } from './services/spotify.service';
     AboutComponent,
     MenuComponent,
     AlertComponent,
+    NodeComponent,
   ],
   imports: [
     BrowserModule,

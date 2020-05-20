@@ -56,6 +56,7 @@ export interface Track {
     href: string;
     track?: Track;
     id: string;
+    preview_url: string;
 }
 
 export interface Album {

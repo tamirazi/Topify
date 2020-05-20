@@ -2,28 +2,13 @@
 
 
 <div class="list-container" *ngIf="type=='track' || type==='genre' || type==='artist'">
-
     <div class="list-item" *ngFor="let track of list">
-        <div *ngIf="track.album" class="img" [lazyLoad]="track.album.images[0].url"></div>
-        <div class="info">
-            <a [href]="track.uri | safeUrl">
-                <div class="text">
-                    <h3 class="artist-name">{{track.artists[0].name}}</h3>
-                    <h3 class="track-name">{{track.name}}</h3>
-                    <br>
-                </div>
-            </a>
-            <div class="duration">
-                <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
-            </div>
-        </div>
-        <hr>
+        <app-node [track]="track"></app-node>
     </div>
-    <div (click)="savePlayList()" class="first-item" *ngIf="list.length > 0">
-        <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
+    <div (click)="savePlayList()" class="last-item" *ngIf="list.length > 0">
         <div class="info">
+            <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
             <div class="text">
-                
                 <p>Save this playlist based on your {{time}} {{type}}</p>
                 <h3>Playlist time: {{totalDuration | duration}}</h3>
                 <br>
@@ -34,27 +19,12 @@
 
 
 <div class="list-container" *ngIf="type==='album'">
-
     <div class="list-item" *ngFor="let track of list;index as i">
-        <div class="img">{{i + 1}}.</div>
-        <div class="info">
-            <a [href]="track.uri | safeUrl">
-                <div class="text">
-                    <h3 class="artist-name">{{track.name}}</h3>
-                    <h3 class="track-name">{{track.artists[0].name}}</h3>
-                    <br>
-                </div>
-            </a>
-            <div class="duration">
-                <h3 class="track-duration">{{track.duration_ms | duration}}</h3>
-            </div>
-        </div>
-        <hr>
+        <app-node [track]="track" [index]="i"></app-node>
     </div>
-
-    <div (click)="savePlayList()" class="first-item" *ngIf="list.length > 0">
-        <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
+    <div (click)="savePlayList()" class="last-item" *ngIf="list.length > 0">
         <div class="info">
+            <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
             <div class="text">
                 <p>Save this playlist based on your {{time}} {{type}}</p>
                 <h3>Playlist time: {{totalDuration | duration}}</h3>
