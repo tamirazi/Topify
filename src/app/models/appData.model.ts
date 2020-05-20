@@ -1,4 +1,4 @@
-import { Track, Artist } from '../models/spotify.model';
+import { Track } from '../models/spotify.model';
 export const CONSTS = {
   ARTIST: 'artist',
   TRACK: 'track',
@@ -9,8 +9,6 @@ export const CONSTS = {
 };
 
 export interface AppData {
-  // time: string;
-  // type: string;
   image_url: string;
   result: string;
   description: string;
