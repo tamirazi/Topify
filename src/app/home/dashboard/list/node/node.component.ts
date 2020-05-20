@@ -24,7 +24,7 @@ export class NodeComponent implements OnInit {
   preview(url) {
     if (!url) {
       this.isPreview = false;
-      setTimeout( () => this.isPreview = true, 3000);
+      setTimeout( () => this.isPreview = true, 2000);
     }else {
       this.player.play(url);
       this.isPlaying = true;
