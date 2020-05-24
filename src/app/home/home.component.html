@@ -1,4 +1,4 @@
-<button (click)="onHandleAlert()">error</button>
+<!-- <button (click)="onHandleAlert()">error</button> -->
 
 <app-dashboard
   [username]="username"
@@ -9,6 +9,7 @@
   [description]="description"
   [image]="image"
   [list]="list"
+  [index]="index"
   (indexHandler)="setIndex($event)"
 ></app-dashboard>
 <app-alert

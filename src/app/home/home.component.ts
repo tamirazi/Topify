@@ -35,7 +35,8 @@ export class HomeComponent implements OnInit {
       this.list = [];
       this.type = res.type;
       this.time = res.time;
-      this.spotify.fetch(this.time, this.type, this.index);
+      this.index = 0;
+      this.spotify.fetch(this.time, this.type, 0);
     });
 
     this.spotify.getUsername().subscribe((user: User) => {
@@ -43,7 +44,6 @@ export class HomeComponent implements OnInit {
       this.userId = user.id;
     });
     this.spotify.appData.subscribe((res: AppData) => {
-      console.log(res);
       this.result = res.result;
       this.image = res.image_url;
       this.description = res.description;

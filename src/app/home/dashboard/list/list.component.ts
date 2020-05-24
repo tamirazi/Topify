@@ -29,7 +29,6 @@ export class ListComponent implements OnInit, OnChanges {
   constructor(private spotify: SpotifyService) {}
 
   ngOnInit(): void {
-    console.log('list oninit');
     this.spotify.playlistCreated.subscribe((res) => {
       this.creatingPlaylist = false;
       this.playlistCreated = true;

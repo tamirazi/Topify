@@ -6,10 +6,8 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { Artist, Track } from '../../models/spotify.model';
-import { AuthService } from 'src/app/services/auth.service';
+import { Track } from '../../models/spotify.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -29,27 +27,18 @@ export class DashboardComponent implements OnInit {
   @Input() username: string;
   @Input() userId: string;
   @Input() list: Track[];
+  @Input() index: number;
 
   @Output() indexHandler = new EventEmitter<number>();
 
   isMobile: boolean;
-  index = 0;
 
   constructor(private spotify: SpotifyService) {}
 
   ngOnInit(): void {
     this.isMobile = window.innerWidth < 768;
-  }
-
-  scrollToBottom() {
-    // do scroll only on desktop
-    if (window.innerWidth > 768) {
-      window.scrollTo({
-        top: 1000,
-        behavior: 'smooth',
-      });
     }
-  }
+
 
   createPlaylist(event) {
     console.log('dashboard working on new playlist...');
@@ -71,8 +60,5 @@ export class DashboardComponent implements OnInit {
     if (this.index < 2) {
       this.indexHandler.emit(++this.index);
     }
-  }
-  resetIndex() {
-    this.indexHandler.emit(this.index);
   }
 }
