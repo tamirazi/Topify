@@ -50,3 +50,4 @@ env.ts
 manifest.webmanifest
 ngsw-config.json
 assets/icons
+firebase-debug.log
