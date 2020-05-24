@@ -1,38 +1,47 @@
 .logo {
   z-index: 1;
-  min-width: 50px;
-  min-height: 50px;
-  background-color: black;
+  min-width: 100px;
+  min-height: 100px;
+  background-image: url('/assets/Topify-logo-black.svg');
   border-radius: 50%;
   margin-bottom: 1em;
+  transition: transform .5s;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: transform .5s;
+  }
 }
 
 button {
   margin-top: 1em;
-  border-radius: 8px;
+  border-radius: 50px;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-weight: 100;
-  padding: 25px;
+  padding: 15px;
   background-color: #191414;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
   text-align: center;
   border: none;
+  transition: background .3s;
 }
 
 button:hover {
   background: #1db954;
-  border-radius: 8px;
+  border-radius: 50px;
   text-decoration: none;
+  transition: background .3s;
 }
 
 h1,
 h3 {
   font-family: "Montserrat", sans-serif;
   margin: 0;
+  font-weight: 100;
 }
 
 h1 {
@@ -40,7 +49,7 @@ h1 {
 }
 
 h3 {
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .bg {

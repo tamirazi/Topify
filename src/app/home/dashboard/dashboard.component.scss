@@ -5,11 +5,11 @@
   position: absolute;
   left: 0;
   top: 0;
-  background-color: black;
+  transform: scale(1.5);
+  background-image: url('/assets/Topify-logo-black.svg');
   margin-left: 15px;
   margin-top: 15px;
   cursor: pointer;
-  border-radius: 50%;
 }
 
 .time-nav-container {
@@ -155,16 +155,6 @@
         width: 150px;
         position: relative;
         margin-left: 5px;
-
-        // &::before {
-        //   content: "\21D2";
-        //   height: 10px;
-        //   width: 10px;
-        //   position: absolute;
-        //   color: black;
-        //   top: 4px;
-        //   // background-color: black;
-        // }
       }
 
       .info {
