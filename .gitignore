@@ -51,3 +51,7 @@ manifest.webmanifest
 ngsw-config.json
 assets/icons
 firebase-debug.log
+
+.firebaserc
+firebase.json
+.firebase
