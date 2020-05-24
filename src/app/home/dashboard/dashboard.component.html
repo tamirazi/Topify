@@ -137,7 +137,6 @@
     <ul class="time-nav">
       <li
         class="nav-item active"
-        (click)="resetIndex()"
         [routerLink]="['/home', 'top', type]"
         [ngClass]="{ active: time === 'top' }"
       >
@@ -145,7 +144,6 @@
       </li>
       <li
         class="nav-item"
-        (click)="resetIndex()"
         [routerLink]="['/home', 'recent', type]"
         [ngClass]="{ active: time === 'recent' }"
       >
