@@ -157,7 +157,8 @@ export class SpotifyService {
         });
         const topThreeGenre = this.getTopThreeFromArray(genres);
         const topArtist = artists.items.find(
-          (artist) => artist.genres[0] === topThreeGenre[index][0]
+          // (artist) => artist.genres[0] === topThreeGenre[index][0]
+          (artist) => artist.genres.find( genre => genre === topThreeGenre[index][0])
         );
         this.getPlaylist(
           [artists.items[0].id],
