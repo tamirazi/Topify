@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
@@ -46,6 +47,7 @@ import { NodeComponent } from './home/dashboard/list/node/node.component';
     HttpClientModule,
     SlickCarouselModule,
     LazyLoadImageModule,
+    BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

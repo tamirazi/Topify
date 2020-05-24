@@ -6,7 +6,7 @@
   </ul>
   <!-- <div (click)="closeMenu()" class="close">&#10006;</div> -->
 
-  <div *ngIf="showMenu" class="menu-container">
+  <div *ngIf="showMenu" class="menu-container" [@inOutAnimation]>
     <div class="menu-item" [routerLink]="['/about']">
       About
     </div>
