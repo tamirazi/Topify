@@ -7,6 +7,7 @@ a {
 h3 {
   font-weight: 600;
   margin: 0;
+  margin-top: -6px;
 }
 .img {
   font-family: "Montserrat";
@@ -17,10 +18,11 @@ h3 {
   max-height: 50px;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 7px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  margin-top: 1px;
 }
 
 .info {
@@ -33,10 +35,13 @@ h3 {
   .text {
     cursor: pointer;
     width: 75%;
+    margin-top: -8px;
     .track-name,
     a {
       font-weight: 300;
       display: inline;
+      color: #2a2a2a;
+      font-size: 1.1em;
     }
   }
   .duration {
@@ -50,8 +55,8 @@ hr {
   position: absolute;
   height: 1px;
   bottom: 0;
-  left: 30px;
-  width: calc(100% - 60px);
+  left: 70px;
+  width: calc(100% - 108px);
   margin: 0;
   border: none;
   background-color: #7f7f7f;
@@ -73,8 +78,7 @@ hr {
 span {
   cursor: pointer;
   //   margin-right: 20px;
-  font-size: 14px;
-  color: black;
-  margin: 0 12px;
-  opacity: 0.7;
+  font-size: 12px;
+  color: #2a2a2a;
+  margin: -6px 12px 0px 12px;
 }

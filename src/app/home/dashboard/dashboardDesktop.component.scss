@@ -1,9 +1,9 @@
 @media only screen and (min-width: 768px) {
   .header {
-    width: 80%;
+    width: 78%;
     max-width: 1500px;
     position: relative;
-    top: -65px;
+    top: -75px;
     app-menu {
       z-index: 30;
     }
@@ -16,6 +16,7 @@
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
     overflow-y: scroll;
+    margin-left: 3px;
   }
   .time-nav-container {
     height: 10%;
@@ -23,11 +24,14 @@
     top: -3vw;
     right: 5.1vw;
     .time-nav {
-      width: 20vw;
+      width: 38vh;
       .nav-item {
-        font-size: 1.5vw;
+        font-size: 16px;
+        color: #2a2a2a;
+        padding-bottom: 4px;
         &.active {
-          padding-bottom: 0;
+          
+          color: black;
         }
       }
     }
@@ -36,7 +40,7 @@
     list-style: none;
     display: block;
     width: auto;
-    border-left: black 3px solid;
+    border-left: black 2px solid;
     margin-left: 40px;
     padding: 0;
     padding-left: 15px;
@@ -44,9 +48,9 @@
 
     .nav-item {
       cursor: pointer;
-      color: black;
+      color: #2a2a2a;
       // font-size: 2vw;
-      font-size: 19px;
+      font-size: 17px;
       margin-bottom: 5px;
       font-family: "Montserrat", sans-serif;
       font-weight: 300;
@@ -60,6 +64,7 @@
         border-bottom: 0;
         padding-bottom: 0;
         font-weight: 600;
+        color: black;
         opacity: 1;
         transition: opacity 0.3s;
       }
@@ -80,15 +85,15 @@
 
     .desktop-container {
       background-color: rgba(255, 255, 255, 0.5);
-      box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.10);
       border-radius: 20px;
       margin-top: 0;
-      margin-bottom: 75px;
+      margin-bottom: 25px;
       max-width: 1500px;
       max-height: 700px;
       min-height: 450px;
       // min-width: 850px;
-      width: 80%;
+      width: 79%;
       height: 67vh;
       display: flex;
       flex-direction: row;
@@ -101,16 +106,16 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        height: 94%;
-        padding: 2em;
+        width: 85%;
+        height: 95%;
+        padding: 2.5em 2.5em 1em 2.5em;
         background-color: white;
-        min-height: 450px;
+        min-height: 455px;
       }
 
       .right {
         // max-width: 640px;
-        width: 100%;
+        width: 110%;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -119,18 +124,17 @@
           display: flex;
           flex-direction: row-reverse;
           align-self: center;
-          justify-content: space-around;
+          justify-content: space-between;
           width: 100%;
           position: relative;
           bottom: -20%;
 
           .img {
-            position: relative;
-            right: 25px;
+            margin-right: 70px;
             max-width: 350px;
             max-height: 350px;
-            width: 20vw;
-            height: 20vw;
+            width: 37vh;
+            height: 37vh;
             border-radius: 6px;
             background-position: center;
             background-size: cover;
@@ -148,6 +152,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-left: 40px;
           }
 
           .h3-description {
@@ -155,6 +160,7 @@
             max-width: 170px;
             font-family: montserrat;
             font-weight: 300;
+            color: #2a2a2a;
           }
 
           .index-buttons {
@@ -192,15 +198,15 @@
         .index-bg {
           min-width: 180px;
           position: absolute;
-          bottom: -7vw;
-          left: 20px;
+          bottom: -8vw;
+          left: 8px;
           z-index: -1;
           .index {
             color: #efeeec;
             font-family: "Montserrat", serif;
             font-weight: 900;
             margin: 0;
-            font-size: 10vw;
+            font-size: 12vw;
           }
 
           .index-check {
@@ -210,7 +216,7 @@
             height: min-content;
             position: relative;
             bottom: 3vw;
-            margin-left: 1vw;
+            margin-left: 2vw;
             padding: 0;
             .index-check-item {
               width: 100%;
