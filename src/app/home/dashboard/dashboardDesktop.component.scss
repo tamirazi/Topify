@@ -24,9 +24,9 @@
     top: -3vw;
     right: 5.1vw;
     .time-nav {
-      width: 38vh;
+      width: 36vh;
       .nav-item {
-        font-size: 16px;
+        font-size: 13px;
         color: #2a2a2a;
         padding-bottom: 4px;
         &.active {
@@ -50,7 +50,7 @@
       cursor: pointer;
       color: #2a2a2a;
       // font-size: 2vw;
-      font-size: 17px;
+      font-size: 13px;
       margin-bottom: 5px;
       font-family: "Montserrat", sans-serif;
       font-weight: 300;
@@ -85,7 +85,7 @@
 
     .desktop-container {
       background-color: rgba(255, 255, 255, 0.5);
-      box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.10);
+      box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
       border-radius: 20px;
       margin-top: 0;
       margin-bottom: 25px;
@@ -127,7 +127,7 @@
           justify-content: space-between;
           width: 100%;
           position: relative;
-          bottom: -20%;
+          bottom: -15vh;
 
           .img {
             margin-right: 70px;
@@ -169,7 +169,7 @@
             position: absolute;
             z-index: 1;
             right: 28px;
-            top: 36%;
+            top: 43%;
             .down,
             .up {
               display: grid;
@@ -198,7 +198,7 @@
         .index-bg {
           min-width: 180px;
           position: absolute;
-          bottom: -8vw;
+          bottom: -6vw;
           left: 8px;
           z-index: -1;
           .index {
@@ -206,7 +206,7 @@
             font-family: "Montserrat", serif;
             font-weight: 900;
             margin: 0;
-            font-size: 12vw;
+            font-size: 15vw;
           }
 
           .index-check {
