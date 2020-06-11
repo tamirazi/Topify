@@ -1,12 +1,13 @@
 <div class="loading flex-col-center" *ngIf="list.length === 0 || !list">
-  <img src="../../../../assets/Topify-logo-black.svg" alt="" srcset="">
+  <h1>Loading...</h1>
 </div>
 
-<div
-  class="list-container"
->
+<div class="list-container">
   <div class="list-item" *ngFor="let track of list; index as i">
-    <app-node [track]="track" *ngIf="type == 'track' || type === 'genre' || type === 'artist'"></app-node>
+    <app-node
+      [track]="track"
+      *ngIf="type == 'track' || type === 'genre' || type === 'artist'"
+    ></app-node>
     <app-node [track]="track" [index]="i" *ngIf="type === 'album'"></app-node>
   </div>
   <div
