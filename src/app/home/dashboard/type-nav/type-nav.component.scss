@@ -1,0 +1,40 @@
+.type-nav {
+  animation: fadeIn 0.5s ease-in-out;
+  list-style: none;
+  display: block;
+  width: auto;
+  border-left: black 2px solid;
+  margin-left: 40px;
+  padding: 0;
+  padding-left: 15px;
+  margin-top: 45px;
+
+  .nav-item {
+    cursor: pointer;
+    color: #2a2a2a;
+    // font-size: 2vw;
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    &:focus {
+      outline: none;
+    }
+
+    &.active {
+      border-bottom: 0;
+      padding-bottom: 0;
+      font-weight: 600;
+      color: black;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+
+    &:hover {
+      opacity: 1;
+      transition: opacity 0.2s;
+    }
+  }
+}

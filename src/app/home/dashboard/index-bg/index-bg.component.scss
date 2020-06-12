@@ -1,0 +1,57 @@
+.index-bg {
+  min-width: 180px;
+  position: absolute;
+  bottom: 90px;
+  left: 6vw;
+  z-index: 1;
+  .index {
+    color: #efeeec;
+    font-family: "Montserrat", serif;
+    font-weight: 900;
+    margin: 0;
+    font-size: 10vw;
+  }
+  .index-check {
+    display: flex;
+    list-style: none;
+    width: auto;
+    height: min-content;
+    position: relative;
+    bottom: 3vw;
+    margin-left: 1vw;
+    padding: 0;
+    .index-check-item {
+      width: 7%;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 3vw;
+        height: 3px;
+        background-color: #efeeec;
+      }
+      &.active {
+        &::before {
+          background-color: black;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .index-bg {
+    bottom: -6vw;
+    left: 8px;
+    z-index: -1;
+    .index {
+      font-size: 15vw;
+    }
+    .index-check {
+      margin-left: 2vw;
+      .index-check-item {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -37,11 +37,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.isMobile = window.innerWidth < 768;
-    }
-
+  }
 
   createPlaylist(event) {
-    console.log('dashboard working on new playlist...');
     const playListName = `${this.time.toLocaleUpperCase()} ${this.type.toLocaleUpperCase()} Topify`;
     this.spotify.createPlaylistFromTracks(this.userId, playListName, this.list);
   }
@@ -51,16 +49,9 @@ export class DashboardComponent implements OnInit {
     this.isMobile = event.target.innerWidth < 768;
   }
 
-  downIndex() {
-    if (this.index > 0) {
-      this.indexHandler.emit(--this.index);
-      this.list = [];
-    }
-  }
-  upIndex() {
-    if (this.index < 2) {
-      this.indexHandler.emit(++this.index);
-      this.list = [];
-    }
+  onIndexChanged(num) {
+    this.index += num;
+    this.list = [];
+    this.indexHandler.emit(this.index);
   }
 }

@@ -24,6 +24,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SpotifyService } from './services/spotify.service';
 import { NodeComponent } from './home/dashboard/list/node/node.component';
+import { TypeNavComponent } from './home/dashboard/type-nav/type-nav.component';
+import { TimeNavComponent } from './home/dashboard/time-nav/time-nav.component';
+import { IndexBgComponent } from './home/dashboard/index-bg/index-bg.component';
+import { IndexBtnsComponent } from './home/dashboard/index-btns/index-btns.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { NodeComponent } from './home/dashboard/list/node/node.component';
     MenuComponent,
     AlertComponent,
     NodeComponent,
+    TypeNavComponent,
+    TimeNavComponent,
+    IndexBgComponent,
+    IndexBtnsComponent,
   ],
   imports: [
     BrowserModule,

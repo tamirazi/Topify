@@ -1,7 +1,6 @@
 <div class="page">
   <div class="header">
     <app-menu></app-menu>
-
     <div class="logo"></div>
   </div>
   <div *ngIf="!isMobile" class="desktop-container">
@@ -16,108 +15,29 @@
     </div>
 
     <div class="right">
-      <ul class="type-nav">
-        <li
-          class="nav-item active"
-          [routerLink]="['/home', time, 'artist']"
-          [ngClass]="{ active: type === 'artist' }"
-        >
-          Top Artist
-        </li>
-        <li
-          class="nav-item"
-          [routerLink]="['/home', time, 'track']"
-          [ngClass]="{ active: type === 'track' }"
-        >
-          Top Track
-        </li>
-        <li
-          class="nav-item"
-          [routerLink]="['/home', time, 'album']"
-          [ngClass]="{ active: type === 'album' }"
-        >
-          Top Album
-        </li>
-        <li
-          class="nav-item"
-          [routerLink]="['/home', time, 'genre']"
-          [ngClass]="{ active: type === 'genre' }"
-        >
-          Top Genre
-        </li>
-      </ul>
-
+      <app-type-nav></app-type-nav>
       <div class="res-container">
-        <div class="time-nav-container">
-          <ul class="time-nav">
-            <li
-              class="nav-item active"
-                  [routerLink]="['/home', 'top', type]"
-              [ngClass]="{ active: time === 'top' }"
-            >
-              All Time
-            </li>
-            <li
-              class="nav-item"
-                  [routerLink]="['/home', 'recent', type]"
-              [ngClass]="{ active: time === 'recent' }"
-            >
-              Recent
-            </li>
-          </ul>
-        </div>
-        <div class="index-buttons">
-          <div class="down" (click)="downIndex()">&#9664;</div>
-          <div class="up" (click)="upIndex()">&#9654;</div>
-        </div>
+        <app-time-nav></app-time-nav>
+        <app-index-btns
+          [index]="index"
+          (indexChanged)="onIndexChanged($event)"
+        ></app-index-btns>
         <div *ngIf="image" class="img" [lazyLoad]="image"></div>
         <div class="info">
           <div class="h3">{{ result }}</div>
           <div class="h3-description">{{ description }}</div>
         </div>
       </div>
-      <div class="index-bg">
-        <h1 class="index">0{{ (index % 3) + 1 }}</h1>
-        <ul class="index-check">
-          <li
-            class="index-check-item"
-            [ngClass]="{ active: index % 3 == 0 }"
-          ></li>
-          <li
-            class="index-check-item"
-            [ngClass]="{ active: index % 3 == 1 }"
-          ></li>
-          <li
-            class="index-check-item"
-            [ngClass]="{ active: index % 3 == 2 }"
-          ></li>
-        </ul>
-      </div>
+      <app-index-bg [index]="index"></app-index-bg>
     </div>
   </div>
   <div *ngIf="isMobile" class="mobile-container">
     <div class="left">
-      <div class="index-buttons">
-        <div class="down" (click)="downIndex()">&#9664;</div>
-        <div class="up" (click)="upIndex()">&#9654;</div>
-      </div>
-      <div class="index-bg">
-        <h1 class="index">0{{ (index % 3) + 1 }}</h1>
-        <ul class="index-check">
-          <li
-            class="index-check-item"
-            [ngClass]="{ active: index % 3 == 0 }"
-          ></li>
-          <li
-            class="index-check-item"
-            [ngClass]="{ active: index % 3 == 1 }"
-          ></li>
-          <li
-            class="index-check-item"
-            [ngClass]="{ active: index % 3 == 2 }"
-          ></li>
-        </ul>
-      </div>
+      <app-index-btns
+        [index]="index"
+        (indexChanged)="onIndexChanged($event)"
+      ></app-index-btns>
+      <app-index-bg [index]="index"></app-index-bg>
       <div
         *ngIf="image"
         class="img"
@@ -131,24 +51,10 @@
         <div class="h3-description">{{ description }}</div>
       </div>
     </div>
+    <!-- <app-time-nav></app-time-nav> -->
   </div>
   <div *ngIf="isMobile" class="time-nav-container">
-    <ul class="time-nav">
-      <li
-        class="nav-item active"
-        [routerLink]="['/home', 'top', type]"
-        [ngClass]="{ active: time === 'top' }"
-      >
-        All Time
-      </li>
-      <li
-        class="nav-item"
-        [routerLink]="['/home', 'recent', type]"
-        [ngClass]="{ active: time === 'recent' }"
-      >
-        Recent
-      </li>
-    </ul>
+    <app-time-nav></app-time-nav>
   </div>
   <app-list
     class="mobile-list"

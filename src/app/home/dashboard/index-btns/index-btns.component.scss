@@ -1,0 +1,45 @@
+.index-buttons {
+  display: flex;
+  position: absolute;
+  width: min-content;
+  left: 6vw;
+  top: 55%;
+  z-index: 2;
+  opacity: 0.8;
+  .down,
+  .up {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 35px;
+    background-color: #f3cf54;
+    color: rgba(254, 254, 254, 0.9);
+    cursor: pointer;
+    &:hover {
+      font-size: 1.3em;
+    }
+  }
+  .up {
+    border-radius: 0 5px 5px 0;
+  }
+  .down {
+    border-radius: 5px 0 0 5px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .index-buttons {
+    opacity: 0.8;
+    z-index: 1;
+    right: 28px;
+    left: unset;
+    top: 43%;
+    .down,
+    .up {
+      font-size: 1em;
+      &:hover {
+        font-size: 1.3em;
+      }
+    }
+  }
+}

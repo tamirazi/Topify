@@ -1,0 +1,30 @@
+<ul class="type-nav">
+  <li
+    class="nav-item active"
+    [routerLink]="['/home', time, 'artist']"
+    [ngClass]="{ active: type === 'artist' }"
+  >
+    Top Artist
+  </li>
+  <li
+    class="nav-item"
+    [routerLink]="['/home', time, 'track']"
+    [ngClass]="{ active: type === 'track' }"
+  >
+    Top Track
+  </li>
+  <li
+    class="nav-item"
+    [routerLink]="['/home', time, 'album']"
+    [ngClass]="{ active: type === 'album' }"
+  >
+    Top Album
+  </li>
+  <li
+    class="nav-item"
+    [routerLink]="['/home', time, 'genre']"
+    [ngClass]="{ active: type === 'genre' }"
+  >
+    Top Genre
+  </li>
+</ul>
