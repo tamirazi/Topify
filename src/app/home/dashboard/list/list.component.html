@@ -19,10 +19,12 @@
     <div class="info">
       <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
       <div class="text">
-        <h3>Playlist time: {{ totalDuration | duration }}</h3>
         <p *ngIf="!playlistCreated && !creatingPlaylist">
-          Save this playlist based on your {{ time }} {{ type }}
+          <u>Save this playlist based on your</u>
+          <strong> {{ time }} top {{ type }}</strong>
         </p>
+        <h3>Playlist time: {{ totalDuration | duration }}</h3>
+
         <p *ngIf="creatingPlaylist">Creating your new Playlist...</p>
         <p *ngIf="playlistCreated">
           Done! open in <a [href]="playlistURI | safeUrl">Spotify App</a> or

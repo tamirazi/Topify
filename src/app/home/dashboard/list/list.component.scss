@@ -1,6 +1,11 @@
 .list-container {
   background-color: white;
-  padding: 5px;
+  padding-right: 5px;
+  padding-left: 10px;
+
+  strong {
+    font-weight: 600;
+  }
 
   .list-item {
     animation: fadeInLeft 1s ease-in-out;
@@ -33,10 +38,10 @@
       width: 41px;
       background-repeat: no-repeat;
       background-size: contain;
-      // margin: 0px 3px -12px -14px;
+      margin-left: -18px;
     }
     .text {
-      margin-top: 12px;
+      margin-top: 28px;
       text-align: center;
       p {
         margin: 0;
@@ -46,7 +51,6 @@
       font-weight: 600;
       font-size: 12px;
       margin: 0;
-      padding-bottom: 1px;
     }
     .info {
       display: flex;
