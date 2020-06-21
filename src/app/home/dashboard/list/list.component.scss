@@ -8,7 +8,6 @@
   }
 
   .list-item {
-    animation: fadeInLeft 1s ease-in-out;
     scroll-snap-align: start;
     margin-bottom: 6px;
     display: flex;
@@ -17,12 +16,12 @@
     width: 100%;
 
     app-node {
+      animation: fadeInLeft 1s ease-in-out;
       display: flex;
       width: 100%;
     }
   }
   .last-item {
-    animation: fromLeft 1s ease-in-out;
     display: flex;
     overflow: hidden;
     position: sticky;
@@ -31,7 +30,9 @@
     background-color: #ffffff;
     min-height: 59px;
     width: 100%;
-
+    .info {
+      animation: fadeInUp 1s ease-in-out;
+    }
     .img {
       transform: scale(0.7);
       height: 41px;
@@ -118,11 +119,14 @@
     opacity: 1;
   }
 }
-@keyframes fromLeft {
+
+@keyframes fadeInUp {
   from {
-    transform: translateX(-10px);
+    transform: translateY(10px);
+    opacity: 0;
   }
   to {
-    transform: translateX(0px);
+    transform: translateY(0px);
+    opacity: 1;
   }
 }

@@ -7,6 +7,10 @@
   <!-- <div (click)="closeMenu()" class="close">&#10006;</div> -->
 
   <div *ngIf="showMenu" class="menu-container" [@inOutAnimation]>
+    <div class="menu-item" (click)="install()">
+      Install
+    </div>
+    <hr />
     <div class="menu-item" [routerLink]="['/about']">
       About
     </div>
