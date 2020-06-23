@@ -13,13 +13,14 @@
     .nav-item {
       cursor: pointer;
       font-family: "Montserrat", sans-serif;
-      font-size: 1em;
-
+      font-size: 12px;
       font-weight: 400;
+      opacity: 0.5;
       &.active {
-        border-bottom: 2px solid #2e2e2e;
+        border-bottom: 1px solid #2e2e2e;
         padding-bottom: 3px;
         font-weight: 600;
+        opacity: 1;
       }
       &:focus {
         outline: none;

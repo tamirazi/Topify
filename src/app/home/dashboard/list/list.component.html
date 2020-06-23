@@ -21,7 +21,7 @@
       <div class="text">
         <p *ngIf="!playlistCreated && !creatingPlaylist">
           <u>Save this playlist based on your</u>
-          <strong> {{ time }} top {{ type }}</strong>
+          <strong> {{ time }} {{ type }}</strong>
         </p>
         <h3>Playlist time: {{ totalDuration | duration }}</h3>
 

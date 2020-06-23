@@ -1,8 +1,8 @@
 .index-bg {
   min-width: 180px;
   position: absolute;
-  top: 25%;
-  left: 6vw;
+  top: 30%;
+  left: 7vw;
   z-index: 1;
   .index {
     color: white;
@@ -21,18 +21,19 @@
     margin-left: 1vw;
     padding: 0;
     .index-check-item {
-      width: 7%;
+      width: 9%;
       &::before {
         content: "";
         position: absolute;
         width: 3vw;
-        height: 3px;
-        background-color: #efeeec;
+        height: 2px;
+        background-color: white;
+        opacity: 0.5;
       }
       &.active {
         &::before {
-          background-color: black;
-          opacity: 0.8;
+          background-color: white;
+          opacity: 1;
         }
       }
     }
