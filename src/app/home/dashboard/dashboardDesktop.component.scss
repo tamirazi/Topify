@@ -20,26 +20,21 @@
   }
 
   .page {
-    height: 100vh;
-    min-height: 780px;
-    justify-content: center;
+    height: 80%;
+    justify-content: space-evenly;
+    padding: 30px;
 
     .desktop-container {
       background-color: rgba(255, 255, 255, 0.5);
       box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
       border-radius: 20px;
-      margin-top: 0;
-      margin-bottom: 25px;
       min-width: 1130px;
-      max-width: 1500px;
-      min-height: 577px;
-      max-height: 700px;
+      min-height: 480px;
       width: 80%;
       // height: 67vh;
       display: flex;
       flex-direction: row;
       justify-content: center;
-      white-space: nowrap;
 
       .left {
         border: #f3cf54 5px solid;
@@ -120,7 +115,7 @@
     z-index: -1;
     left: 0;
     top: 0;
-    min-height: 780px;
+    min-height: 600px;
     height: 100%;
     width: 35%;
   }
