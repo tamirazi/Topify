@@ -2,7 +2,7 @@
   <h1>Loading...</h1>
 </div>
 
-<div class="list-container">
+<div class="list-container" *ngIf="list.length > 0">
   <div class="list-item" *ngFor="let track of list; index as i">
     <app-node
       [track]="track"
@@ -10,28 +10,28 @@
     ></app-node>
     <app-node [track]="track" [index]="i" *ngIf="type === 'album'"></app-node>
   </div>
-  <div
-    (click)="savePlayList()"
-    class="last-item"
-    *ngIf="list.length > 0"
-    [ngClass]="{ pointer: !playlistCreated }"
-  >
-    <div class="info">
-      <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
-      <div class="text">
-        <p *ngIf="!playlistCreated && !creatingPlaylist">
-          <u>Save this playlist based on your</u>
-          <strong> {{ time }} {{ type }}</strong>
-        </p>
-        <h3>Playlist time: {{ totalDuration | duration }}</h3>
+</div>
+<div
+  (click)="savePlayList()"
+  class="last-item"
+  *ngIf="list.length > 0"
+  [ngClass]="{ pointer: !playlistCreated }"
+>
+  <div class="info">
+    <div class="img" [lazyLoad]="'assets/Spotify_Icon_RGB_Black.png'"></div>
+    <div class="text">
+      <p *ngIf="!playlistCreated && !creatingPlaylist">
+        <u>Save this playlist based on your</u>
+        <strong> {{ time }} {{ type }}</strong>
+      </p>
+      <h3>Playlist time: {{ totalDuration | duration }}</h3>
 
-        <p *ngIf="creatingPlaylist">Creating your new Playlist...</p>
-        <p *ngIf="playlistCreated">
-          Done! open in <a [href]="playlistURI | safeUrl">Spotify App</a> or
-          <a [href]="playlistWebLink | safeUrl" target="_blank">Website</a>
-        </p>
-        <br />
-      </div>
+      <p *ngIf="creatingPlaylist">Creating your new Playlist...</p>
+      <p *ngIf="playlistCreated">
+        Done! open in <a [href]="playlistURI | safeUrl">Spotify App</a> or
+        <a [href]="playlistWebLink | safeUrl" target="_blank">Website</a>
+      </p>
+      <br />
     </div>
   </div>
 </div>
