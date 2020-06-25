@@ -8,11 +8,16 @@
   justify-content: space-around;
   margin: 0 30px;
   width: 90%;
+  max-width: 700px;
   font-family: "Montserrat", sans-serif;
-  font-size: 13px;
-  h3,
+  font-size: 12px;
+  font-weight: 300;
+  opacity: 0.8;
+  h3 {
+    margin: 0px 0px 5px 0px !important;
+  }
   p {
-    margin: 5px 0;
+    margin: 0px 0px 15px 0px;
     width: 80%;
   }
   .about-context,
@@ -21,7 +26,7 @@
     padding-left: 30px;
     position: relative;
     &.active {
-      border-left: grey 1px solid;
+      border-left: black 1px solid;
     }
   }
   .logout-context {

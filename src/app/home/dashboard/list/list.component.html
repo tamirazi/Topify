@@ -22,7 +22,14 @@
     <div class="text">
       <p *ngIf="!playlistCreated && !creatingPlaylist">
         <u>Save this playlist based on your</u>
-        <strong> {{ time }} {{ type }}</strong>
+        <span
+          style="
+            font-weight: 600;
+            text-transform: capitalize;
+            margin-left: 4px;
+          "
+          >{{ time }} Top {{ type }}</span
+        >
       </p>
       <h3>Playlist time: {{ totalDuration | duration }}</h3>
 
