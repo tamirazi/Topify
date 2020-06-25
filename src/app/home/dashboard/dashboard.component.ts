@@ -4,7 +4,7 @@ import {
   Input,
   HostListener,
   Output,
-  EventEmitter,
+  EventEmitter
 } from '@angular/core';
 
 import { Track } from '../../models/spotify.model';
@@ -46,7 +46,8 @@ export class DashboardComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.isMobile = event.target.innerWidth < 768;
+    this.isMobile = event.target.innerWidth < 768;    
+    
   }
 
   onIndexChanged(num) {

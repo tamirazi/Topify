@@ -1,7 +1,7 @@
 <div class="page">
   <div class="header">
-    <app-menu></app-menu>
     <div class="logo"></div>
+    <app-menu></app-menu>
   </div>
   <div *ngIf="!isMobile" class="desktop-container">
     <div class="left">
@@ -64,5 +64,5 @@
     [list]="list"
     (savePlaylistEmitter)="createPlaylist($event)"
   ></app-list>
-  <div class="bg"></div>
+  <div class="bg" #bg></div>
 </div>
