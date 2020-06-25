@@ -26,13 +26,14 @@ export class DashboardComponent implements OnInit {
   @Input() image: string;
   @Input() username: string;
   @Input() userId: string;
+  @Input() userImgUrl: string;
   @Input() list: Track[];
   @Input() index: number;
 
   @Output() indexHandler = new EventEmitter<number>();
 
   isMobile: boolean;
-  showAbout = true;
+  showAbout = false;
   aboutOption: string;
 
   constructor(private spotify: SpotifyService) {}

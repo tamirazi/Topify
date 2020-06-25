@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
     this.spotify.getUsername().subscribe((user: User) => {
       this.username = user.display_name;
       this.userId = user.id;
+      this.userImageUrl = user.images[0].url;
     });
     this.spotify.appData.subscribe((res: AppData) => {
       this.result = res.result;

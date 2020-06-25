@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-about',
@@ -9,9 +8,10 @@ import { Location } from '@angular/common';
 export class AboutComponent implements OnInit {
   isUser = false;
   @Input() option: string;
+  @Input() userImgUrl: string;
   @Output() onCloseEmmiter = new EventEmitter();
 
-  constructor(private location: Location) {}
+  constructor() {}
 
   ngOnInit(): void {
     console.log(this.option);
