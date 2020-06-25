@@ -14,7 +14,7 @@
       display: flex;
       flex-wrap: nowrap;
       height: 67vh;
-      max-width: 1300px;
+      max-width: 1400px;
       width: 100%;
       margin: auto;
 
@@ -64,8 +64,8 @@
             height: 20vw;
             max-width: 340px;
             max-height: 340px;
-            transition: width .2s;
-            transition: height .2s;
+            transition: width 0.2s;
+            transition: height 0.2s;
             position: absolute;
             bottom: -50px;
             right: 50px;
