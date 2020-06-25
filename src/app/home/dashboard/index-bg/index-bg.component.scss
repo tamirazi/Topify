@@ -16,7 +16,7 @@
   .index-check {
     display: flex;
     list-style: none;
-    width: auto;
+    width: 12vw;
     height: min-content;
     // position: absolute;
     bottom: 3vw;
@@ -44,12 +44,13 @@
 
 @media only screen and (min-width: 768px) {
   .index-bg {
-    left: 40px;
-    top: 60%;
+    left: 30px;
+    bottom: -55px;
+    top: unset;
     z-index: -1;
     .index {
       font-size: 12vw;
-      top: 40px;
+      top: 30px;
       position: relative;
     }
     .index-check {

@@ -1,5 +1,5 @@
 .time-nav-container {
-  height: 5vh;
+  // height: 5vh;
   margin-top: -10px;
   margin-bottom: 10px;
   .time-nav {
@@ -36,10 +36,10 @@
     animation: fadeIn 0.5s ease-in-out;
     height: 10%;
     position: absolute;
-    top: 50px;
+    bottom: 16vw;
     right: 50px;
     .time-nav {
-      width: 300px;
+      width: 20vw;
       .nav-item {
         font-size: 13px;
         color: #2a2a2a;

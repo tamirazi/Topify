@@ -1,6 +1,6 @@
 @media only screen and (min-width: 768px) {
   .header {
-    width: 100%;
+    width: 95%;
     top: 20px;
   }
   .page {
@@ -8,6 +8,7 @@
     flex-direction: column;
     height: 100vh;
     width: 100%;
+    overflow: unset;
 
     .desktop-container {
       display: flex;
@@ -54,29 +55,24 @@
         .res-container {
           display: flex;
           flex-direction: row-reverse;
-          align-self: center;
           width: 100%;
           position: relative;
-          // bottom: -15vh;
+          flex: 1;
 
           .img {
-            width: 300px;
-            height: 300px;
-            transition: width 1s;
-            transition: height 1s;
-            position: relative;
-            top: 90px;
+            width: 20vw;
+            height: 20vw;
+            max-width: 340px;
+            max-height: 340px;
+            transition: width .2s;
+            transition: height .2s;
+            position: absolute;
+            bottom: -50px;
             right: 50px;
             border-radius: 6px;
             background-position: center;
             background-size: cover;
             filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.05));
-            @media only screen and (max-width: 980px) {
-              width: 250px;
-              height: 250px;
-              transition: width 1s;
-              transition: height 1s;
-            }
           }
 
           .info {
@@ -90,9 +86,11 @@
             flex-direction: column;
             justify-content: center;
             flex: auto;
-            @media only screen and (max-width: 980px) {
-              justify-content: unset;
-            }
+            width: min-content;
+            height: max-content;
+            position: absolute;
+            bottom: 6vw;
+            left: 0;
           }
           .h3 {
             animation: fadeIn 0.5s ease-in-out;
