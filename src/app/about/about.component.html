@@ -1,30 +1,39 @@
 <div class="about-container">
-  <h1>Topify</h1>
-  <p class="description">
-    Topify is a PWA built with Angular & Spotify’s web api. designed with a
-    clean UI & an intuitive UX, the application displays the user’s top artists,
-    tracks, albums & genres and suggests playlists based on them.
-  </p>
+  <div class="close" (click)="close()">X</div>
+  <div class="about-context" [ngClass]="{ active: option === 'about' }">
+    <p class="description">
+      Topify is a PWA built with Angular & Spotify’s web api. designed with a
+      clean UI & an intuitive UX, the application displays the user’s top
+      artists, tracks, albums & genres and suggests playlists based on them.
+    </p>
 
-  <h3>Privacy & Terms of use</h3>
-  <p>
-    Topify is open source and works as a client side application. it requires a
-    Spotify account and a granted acsses to your Spotify information. Topify
-    does not save or make any use of your data & information.
-  </p>
-  <h3>Credits</h3>
-  <p>
-    Topify was built for learning popurses and practice. were sure it can be
-    batter, any sugesttions for improvement will be more then welcome.
-  </p>
+    <h3>Privacy & Terms of use</h3>
+    <p>
+      Topify is open source and works as a client side application. it requires
+      a Spotify account and a granted acsses to your Spotify information. Topify
+      does not save or make any use of your data & information.
+    </p>
+    <h3>Credits</h3>
+    <p>
+      Topify was built for learning popurses and practice. were sure it can be
+      batter, any sugesttions for improvement will be more then welcome.
+    </p>
 
-  <span>UI/UX: Ben Ben Harush</span>
-  <span>Developement: Tamir Azizi</span>
-  <!-- <a href="" (click)="goBack()">Back</a> -->
-  <div class="icons-con">
+    <span>UI/UX: Ben Ben Harush</span>
+    <span>Developement: Tamir Azizi</span>
+  </div>
+  <div class="logout-context" [ngClass]="{ active: option === 'logout' }">
+    <h3>Logout</h3>
+    <p>
+      Topify was built for learning popurses and practice. were sure it can be
+      batter, any sugesttions for improvement will be more then welcome.
+    </p>
+  </div>
+
+  <!-- <div class="icons-con">
     <div (click)="goBack()" class="logo"></div>
     <a href="https://github.com/tamirazi/Topify" target="_blank"
       ><div class="github"></div
     ></a>
-  </div>
+  </div> -->
 </div>

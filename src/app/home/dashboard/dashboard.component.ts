@@ -4,7 +4,7 @@ import {
   Input,
   HostListener,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 
 import { Track } from '../../models/spotify.model';
@@ -32,6 +32,8 @@ export class DashboardComponent implements OnInit {
   @Output() indexHandler = new EventEmitter<number>();
 
   isMobile: boolean;
+  showAbout = true;
+  aboutOption: string;
 
   constructor(private spotify: SpotifyService) {}
 
@@ -46,13 +48,21 @@ export class DashboardComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.isMobile = event.target.innerWidth < 768;    
-    
+    this.isMobile = event.target.innerWidth < 768;
   }
 
   onIndexChanged(num) {
     this.index += num;
     this.list = [];
     this.indexHandler.emit(this.index);
+  }
+
+  toggleAbout(e) {
+    this.showAbout = true;
+    this.aboutOption = e.srcElement.className;
+  }
+
+  closeAbout() {
+    this.showAbout = false;
   }
 }

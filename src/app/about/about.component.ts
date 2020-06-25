@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -8,12 +8,16 @@ import { Location } from '@angular/common';
 })
 export class AboutComponent implements OnInit {
   isUser = false;
+  @Input() option: string;
+  @Output() onCloseEmmiter = new EventEmitter();
 
   constructor(private location: Location) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.option);
+  }
 
-  goBack() {
-    this.location.back();
+  close() {
+    this.onCloseEmmiter.emit();
   }
 }

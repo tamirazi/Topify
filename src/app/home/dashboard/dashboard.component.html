@@ -1,34 +1,48 @@
 <div class="page">
   <div class="header">
     <div class="logo"></div>
-    <app-menu></app-menu>
+    <app-menu *ngIf="isMobile"></app-menu>
+    <div *ngIf="!isMobile" class="right-panel">
+      <h3 (click)="toggleAbout($event)" class="about">About</h3>
+      <h3>{{ username }}</h3>
+      <div (click)="toggleAbout($event)" class="logout"></div>
+    </div>
   </div>
   <div *ngIf="!isMobile" class="desktop-container">
-    <div class="left">
+    <div class="left" [ngClass]="{ fill: showAbout }">
       <app-list
+        *ngIf="!showAbout"
         class="desktop-list"
         [time]="time"
         [type]="type"
         [list]="list"
         (savePlaylistEmitter)="createPlaylist($event)"
       ></app-list>
+      <h1 *ngIf="showAbout">About</h1>
     </div>
 
-    <div class="right">
-      <app-type-nav></app-type-nav>
-      <div class="res-container">
-        <app-time-nav></app-time-nav>
-        <app-index-btns
-          [index]="index"
-          (indexChanged)="onIndexChanged($event)"
-        ></app-index-btns>
-        <div *ngIf="image" class="img" [lazyLoad]="image"></div>
-        <div class="info">
-          <div class="h3">{{ result }}</div>
-          <div class="h3-description">{{ description }}</div>
+    <div class="right" [ngClass]="{ about: showAbout }">
+      <div class="context" *ngIf="!showAbout">
+        <app-type-nav></app-type-nav>
+        <div class="res-container">
+          <app-time-nav></app-time-nav>
+          <app-index-btns
+            [index]="index"
+            (indexChanged)="onIndexChanged($event)"
+          ></app-index-btns>
+          <div *ngIf="image" class="img" [lazyLoad]="image"></div>
+          <div class="info">
+            <div class="h3">{{ result }}</div>
+            <div class="h3-description">{{ description }}</div>
+          </div>
         </div>
+        <app-index-bg [index]="index"></app-index-bg>
       </div>
-      <app-index-bg [index]="index"></app-index-bg>
+      <app-about
+        *ngIf="showAbout"
+        (onCloseEmmiter)="closeAbout()"
+        [option]="aboutOption"
+      ></app-about>
     </div>
   </div>
   <div *ngIf="isMobile" class="mobile-container">
