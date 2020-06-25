@@ -12,7 +12,7 @@
   font-size: 13px;
   h3,
   p {
-    margin: 0;
+    margin: 5px 0;
     width: 80%;
   }
   .about-context,
@@ -24,6 +24,18 @@
       border-left: grey 1px solid;
     }
   }
+  .logout-context {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: min-content 100px;
+    gap: 1px 1px;
+    grid-template-areas: ". .";
+    h3,
+    p {
+      grid-column: 1;
+      width: 100%;
+    }
+  }
   .close {
     cursor: pointer;
     text-align: end;
@@ -32,12 +44,11 @@
     right: 20px;
   }
   .img {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     background-size: contain;
-    position: absolute;
-    top: 0;
-    right: 0;
+    border-radius: 5px;
+    grid-column: 2;
   }
 
   .icons-con {
