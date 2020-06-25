@@ -32,11 +32,10 @@
   .logout-context {
     display: grid;
     grid-template-columns: 1fr 100px;
-    grid-template-rows: min-content 100px;
+    grid-template-rows: 100px;
     gap: 1px 1px;
     grid-template-areas: ". .";
-    h3,
-    p {
+    .text {
       grid-column: 1;
       width: 100%;
     }
