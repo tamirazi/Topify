@@ -1,6 +1,8 @@
 # Topify
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+Topify is a progressive web application built with Angular & Spotify’s web api.
+designed with a clean UI & an intuitive UX,
+the application displays the user’s top artists, tracks, albums & genres and suggests playlists based on them.
 
 ## Development server
 

@@ -3,5 +3,30 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin: auto;
+  width: 80%;
+  font-family: "Montserrat", sans-serif;
+
+  .icons-con{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    .logo,.github {
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+    }
+    .logo {
+      background-image: url(/assets/Topify-logo-black.svg);
+    }
+    .github {
+      background-image: url(/assets/GitHub-Mark-64px.png);
+    }
+  }
 }
+
+
