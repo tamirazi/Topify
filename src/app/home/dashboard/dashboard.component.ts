@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
     this.indexHandler.emit(this.index);
   }
 
-  toggleAbout(e) {
+  openAbout(e) {
     this.showAbout = true;
     this.aboutOption = e.srcElement.className;
   }

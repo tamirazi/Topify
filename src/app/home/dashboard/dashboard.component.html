@@ -3,9 +3,9 @@
     <div class="logo"></div>
     <app-menu *ngIf="isMobile"></app-menu>
     <div *ngIf="!isMobile" class="right-panel">
-      <h3 (click)="toggleAbout($event)" class="about">About</h3>
+      <h3 (click)="openAbout($event)" class="about">About</h3>
       <h3>{{ username }}</h3>
-      <div (click)="toggleAbout($event)" class="logout"></div>
+      <div (click)="openAbout($event)" class="logout"></div>
     </div>
   </div>
   <div *ngIf="!isMobile" class="desktop-container">
