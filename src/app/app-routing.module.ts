@@ -11,10 +11,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'home', redirectTo: 'home/top/artist', canActivate: [AuthGuard] },
+  { path: 'home', redirectTo: 'home/recent/artist', canActivate: [AuthGuard] },
   {
     path: 'home/:time',
-    redirectTo: 'home/top/artist',
+    redirectTo: 'home/recent/artist',
     canActivate: [AuthGuard],
   },
   {
