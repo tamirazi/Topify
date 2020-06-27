@@ -25,7 +25,7 @@ export class SpotifyService {
 
   fetch(time: string, type: string, index: number) {
     console.log('fetch...');
-    
+
     switch (time) {
       case CONSTS.TOP:
         switch (type) {
@@ -111,7 +111,7 @@ export class SpotifyService {
         ).subscribe((recomendations: any) => {
           this.appData.next({
             result: res.items[index].name,
-            description: res.items[index].genres[0],
+            description: res.items[index].followers.total,
             image_url: res.items[index].images[0].url,
             list: recomendations.tracks,
           });
@@ -158,7 +158,8 @@ export class SpotifyService {
         const topThreeGenre = this.getTopThreeFromArray(genres);
         const topArtist = artists.items.find(
           // (artist) => artist.genres[0] === topThreeGenre[index][0]
-          (artist) => artist.genres.find( genre => genre === topThreeGenre[index][0])
+          (artist) =>
+            artist.genres.find((genre) => genre === topThreeGenre[index][0])
         );
         this.getPlaylist(
           [artists.items[0].id],
@@ -224,12 +225,16 @@ export class SpotifyService {
           [topTrack.track.id],
           []
         ).subscribe((recomendations: any) => {
-          this.appData.next({
-            result: topTrack.track.artists[0].name,
-            description: '',
-            image_url: topTrack.track.album.images[0].url,
-            list: recomendations.tracks,
-          });
+          this.http
+            .get(topTrack.track.artists[0].href)
+            .subscribe((artist: Artist) => {
+              this.appData.next({
+                result: topTrack.track.artists[0].name,
+                description: artist.followers.total,
+                image_url: topTrack.track.album.images[0].url,
+                list: recomendations.tracks,
+              });
+            });
         });
       }
     );

@@ -6,13 +6,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FollowersPipe implements PipeTransform {
   transform(value: number, ...args: unknown[]): unknown {
     let followers: string;
-    followers = value.toString();
-    if (value >= 1000000) {
-      followers = (value / 1000000).toFixed(1).toString() + 'M';
-    } else if (value >= 1000) {
-      followers = (value / 1000).toFixed(1).toString() + 'K';
+
+    if (typeof value === 'number') {
+      followers = value.toString();
+      if (value >= 1000000) {
+        followers = (value / 1000000).toFixed(1).toString() + 'M';
+      } else if (value >= 1000) {
+        followers = (value / 1000).toFixed(1).toString() + 'K';
+      }
+      return followers;
     }
-    return followers;
+    return value;
   }
 
   float2int(value: number) {

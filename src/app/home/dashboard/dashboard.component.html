@@ -44,7 +44,7 @@
               [ngClass]="{ pulsing: pulsing }"
               (animationend)="pulsing = false"
             >
-              {{ description }}
+              {{ description | followers }}
             </div>
           </div>
         </div>
