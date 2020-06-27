@@ -63,11 +63,12 @@
           left: 0;
           right: 0;
           border-radius: 20px;
-          border: #f3cf54 5px solid;
+          border: var(--second-color) 5px solid;
+          transition: border 0.5s;
         }
 
         &.fill {
-          background-color: #f3cf54;
+          background-color: var(--second-color);
           transition: background-color 0.5s;
           align-items: flex-end;
           h1 {
@@ -164,7 +165,7 @@
   }
 
   .bg {
-    background-color: #f5d976;
+    background-color: var(--first-color);
     position: absolute;
     z-index: -1;
     left: 0;
@@ -172,6 +173,7 @@
     min-height: 600px;
     height: 100%;
     width: 40%;
+    transition: background-color 0.5s;
   }
 }
 
