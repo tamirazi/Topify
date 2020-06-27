@@ -11,7 +11,7 @@ export const CONSTS = {
 export interface AppData {
   image_url: string;
   result: string;
-  description: string | number;
+  description: string;
   list: Track[];
 }
 export class AppDataObject implements AppData {

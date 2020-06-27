@@ -4,15 +4,15 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'followers',
 })
 export class FollowersPipe implements PipeTransform {
-  transform(value: number, ...args: unknown[]): unknown {
+  transform(value: string, ...args: unknown[]): unknown {
     let followers: string;
-
-    if (typeof value === 'number') {
-      followers = value.toString();
-      if (value >= 1000000) {
-        followers = (value / 1000000).toFixed(1).toString() + ' M';
-      } else if (value >= 1000) {
-        followers = (value / 1000).toFixed(1).toString() + ' K';
+    let intV = parseInt(value);
+    if (intV) {
+      followers = value;
+      if (intV >= 1000000) {
+        followers = (intV / 1000000).toFixed(1).toString() + ' M';
+      } else if (intV >= 1000) {
+        followers = (intV / 1000).toFixed(1).toString() + ' K';
       }
       return followers;
     }

@@ -109,7 +109,7 @@ export class SpotifyService {
         ).subscribe((recomendations: any) => {
           this.appData.next({
             result: res.items[index].name,
-            description: res.items[index].followers.total,
+            description: res.items[index].followers.total.toString(),
             image_url: res.items[index].images[0].url,
             list: recomendations.tracks,
           });
@@ -228,7 +228,7 @@ export class SpotifyService {
             .subscribe((artist: Artist) => {
               this.appData.next({
                 result: topTrack.track.artists[0].name,
-                description: artist.followers.total,
+                description: artist.followers.total.toString(),
                 image_url: topTrack.track.album.images[0].url,
                 list: recomendations.tracks,
               });
