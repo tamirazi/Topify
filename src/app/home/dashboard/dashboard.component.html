@@ -74,8 +74,20 @@
     <div class="right">
       <app-slick-nav [type]="type" [time]="time"></app-slick-nav>
       <div class="info">
-        <div class="h3">{{ result }}</div>
-        <div class="h3-description">{{ description }}</div>
+        <div
+          class="h3"
+          [ngClass]="{ pulsing: pulsing }"
+          (animationend)="pulsing = false"
+        >
+          {{ result }}
+        </div>
+        <div
+          class="h3-description"
+          [ngClass]="{ pulsing: pulsing }"
+          (animationend)="pulsing = false"
+        >
+          {{ description | followers }}
+        </div>
       </div>
     </div>
     <!-- <app-time-nav></app-time-nav> -->
