@@ -5,6 +5,8 @@ import {
   HostListener,
   Output,
   EventEmitter,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 
 import { Track } from '../../models/spotify.model';
@@ -18,7 +20,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
     './dashboardDesktop.component.scss',
   ],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnChanges {
   @Input() type: string;
   @Input() time: string;
   @Input() result: string;
@@ -35,13 +37,16 @@ export class DashboardComponent implements OnInit {
   isMobile: boolean;
   showAbout = false;
   aboutOption: string;
-
+  pulsing = false;
   constructor(private spotify: SpotifyService) {}
 
   ngOnInit(): void {
     this.isMobile = window.innerWidth < 768;
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.pulsing = true;
+  }
   createPlaylist(event) {
     const playListName = `${this.time.toLocaleUpperCase()} ${this.type.toLocaleUpperCase()} Topify`;
     this.spotify.createPlaylistFromTracks(this.userId, playListName, this.list);

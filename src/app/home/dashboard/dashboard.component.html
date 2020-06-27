@@ -1,6 +1,6 @@
 <div class="page">
   <div class="header">
-    <div class="logo"></div>
+    <div class="logo" [routerLink]="['/']"></div>
     <app-menu *ngIf="isMobile"></app-menu>
     <div *ngIf="!isMobile" class="right-panel">
       <h3 (click)="openAbout($event)" class="about">About</h3>
@@ -32,8 +32,20 @@
           ></app-index-btns>
           <div *ngIf="image" class="img" [lazyLoad]="image"></div>
           <div class="info">
-            <div class="h3">{{ result }}</div>
-            <div class="h3-description">{{ description }}</div>
+            <div
+              class="h3"
+              [ngClass]="{ pulsing: pulsing }"
+              (animationend)="pulsing = false"
+            >
+              {{ result }}
+            </div>
+            <div
+              class="h3-description"
+              [ngClass]="{ pulsing: pulsing }"
+              (animationend)="pulsing = false"
+            >
+              {{ description }}
+            </div>
           </div>
         </div>
         <app-index-bg [index]="index"></app-index-bg>
