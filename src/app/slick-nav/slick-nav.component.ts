@@ -95,9 +95,7 @@ export class SlickNavComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log('slick onInit');
-  }
+  ngOnInit(): void {}
 
   afterChange(event: any) {
     switch (event.currentSlide % 4) {
