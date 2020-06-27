@@ -7,18 +7,13 @@ import { Router } from '@angular/router';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
   isUser = false;
   @Input() option: string;
   @Input() userImgUrl: string;
   @Output() onCloseEmmiter = new EventEmitter();
 
   constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {
-    console.log(this.option);
-  }
-
   close() {
     this.onCloseEmmiter.emit();
   }

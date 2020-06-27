@@ -24,8 +24,6 @@ export class SpotifyService {
   constructor(private http: HttpClient) {}
 
   fetch(time: string, type: string, index: number) {
-    console.log('fetch...');
-
     switch (time) {
       case CONSTS.TOP:
         switch (type) {
