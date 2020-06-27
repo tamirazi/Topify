@@ -53,6 +53,7 @@
     right: 20px;
     font-size: 20px;
     transition: transform 0.3s;
+    z-index: 5;
     &:hover {
       transform: rotateZ(-90deg);
       transition: transform 0.3s;
