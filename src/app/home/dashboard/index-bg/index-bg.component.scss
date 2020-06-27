@@ -13,6 +13,22 @@
     margin-block-start: 0;
     margin-block-end: 0;
     font-size: 10vw;
+    &.pulsing {
+      animation-iteration-count: 1;
+      animation: pulse 0.5s;
+      animation-direction: alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.7;
+        color: #f3cf54;
+      }
+      100% {
+        opacity: 0.13;
+        color: black;
+      }
+    }
   }
   .index-check {
     display: flex;
