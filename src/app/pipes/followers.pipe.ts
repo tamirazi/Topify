@@ -10,9 +10,9 @@ export class FollowersPipe implements PipeTransform {
     if (intV) {
       followers = value;
       if (intV >= 1000000) {
-        followers = (intV / 1000000).toFixed(1).toString() + ' M';
+        followers = (intV / 1000000).toFixed(1).toString() + 'M Followers';
       } else if (intV >= 1000) {
-        followers = (intV / 1000).toFixed(1).toString() + ' K';
+        followers = (intV / 1000).toFixed(1).toString() + 'K Followers';
       }
       return followers;
     }

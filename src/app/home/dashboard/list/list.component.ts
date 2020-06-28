@@ -38,6 +38,12 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes): void {
+    if (this.time === 'top') {
+      this.time = 'All Time';
+    }
+    if (this.time === 'recent') {
+      this.time = 'Recent';
+    }
     this.totalDuration = 0;
     this.playlistCreated = false;
     this.list.forEach((element: any) => {
