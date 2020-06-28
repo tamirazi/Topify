@@ -26,7 +26,7 @@
     <div class="text">
       <div class="row">
         <h3>{{ userName }}</h3>
-        <div (click)="logout()" class="logout"></div>
+        <div *ngIf="userName" (click)="logout()" class="logout"></div>
       </div>
 
       <p>

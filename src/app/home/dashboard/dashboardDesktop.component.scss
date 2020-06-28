@@ -2,9 +2,7 @@
   .header {
     position: unset;
     width: 90%;
-    // top: 65px;
     align-items: flex-end;
-    // margin: auto auto 0 auto;
     margin: auto 0 0 0;
     .right-panel {
       font-family: "Montserrat", sans-serif;
@@ -27,6 +25,9 @@
         background-image: url(/assets/logout.png);
         background-size: contain;
       }
+    }
+    &.about {
+      display: flex;
     }
   }
   .page {
@@ -114,8 +115,7 @@
             height: 20vw;
             max-width: 340px;
             max-height: 340px;
-            transition: width 0.2s;
-            transition: height 0.2s;
+            transition: width 0.2s, height 0.2s;
             position: absolute;
             bottom: -50px;
             right: 50px;
@@ -175,7 +175,12 @@
     min-height: 600px;
     height: 100%;
     width: 40%;
-    transition: background-color 0.5s;
+
+    &.about {
+      opacity: 1;
+      height: 100%;
+      width: 40%;
+    }
   }
 }
 

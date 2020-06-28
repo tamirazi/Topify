@@ -1,7 +1,10 @@
 <div class="page">
-  <div class="header">
+  <div class="header" [ngClass]="{ about: showAbout }">
     <div class="logo" [routerLink]="['/']"></div>
-    <app-menu *ngIf="isMobile"></app-menu>
+    <app-menu
+      *ngIf="isMobile && !showAbout"
+      (click)="openAbout($event)"
+    ></app-menu>
     <div *ngIf="!isMobile" class="right-panel">
       <h3 (click)="openAbout($event)" class="about">About</h3>
       <h3>{{ username }}</h3>
@@ -55,12 +58,11 @@
         (onCloseEmmiter)="closeAbout()"
         [option]="aboutOption"
         [userImgUrl]="userImgUrl"
-        [isMobile]="isMobile"
         [userName]="username"
       ></app-about>
     </div>
   </div>
-  <div *ngIf="isMobile" class="mobile-container">
+  <div *ngIf="isMobile && !showAbout" class="mobile-container">
     <div class="left">
       <app-index-btns
         [index]="index"
@@ -92,18 +94,25 @@
         </div>
       </div>
     </div>
-    <!-- <app-time-nav></app-time-nav> -->
   </div>
-  <div *ngIf="isMobile" class="time-nav-container">
+  <div *ngIf="isMobile && !showAbout" class="time-nav-container">
     <app-time-nav></app-time-nav>
   </div>
+  <app-about
+    *ngIf="isMobile && showAbout"
+    (onCloseEmmiter)="closeAbout()"
+    [option]="aboutOption"
+    [userImgUrl]="userImgUrl"
+    [userName]="username"
+  ></app-about>
   <app-list
     class="mobile-list"
-    *ngIf="isMobile"
+    *ngIf="isMobile && !showAbout"
     [time]="time"
     [type]="type"
     [list]="list"
     (savePlaylistEmitter)="createPlaylist($event)"
   ></app-list>
-  <div class="bg" #bg></div>
+
+  <div class="bg" [ngClass]="{ about: showAbout }"></div>
 </div>

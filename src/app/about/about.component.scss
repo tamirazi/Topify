@@ -1,4 +1,5 @@
 :host {
+  animation: fadeInLeft 0.8s ease-in-out;
   height: 100%;
 
   .row {
@@ -30,8 +31,9 @@
     // margin-top: 20px;
     padding-left: 30px;
     position: relative;
+    border-left: #00000000 1px solid;
     &.active {
-      border-left: black 1px solid;
+      border-left: #000000ff 1px solid;
     }
   }
   .logout-context {
@@ -83,5 +85,27 @@
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(/assets/GitHub-Mark-64px.png);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-container {
+    margin: 0;
+    width: 100%;
+  }
+  .about-context,
+  .logout-context {
+    padding: 0 30px;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
   }
 }

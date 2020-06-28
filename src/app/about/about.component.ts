@@ -12,14 +12,12 @@ export class AboutComponent {
   @Input() option: string;
   @Input() userImgUrl: string;
   @Input() userName: string;
-  @Input() isMobile: boolean;
   @Output() onCloseEmmiter = new EventEmitter();
 
   constructor(private authService: AuthService, private router: Router) {}
   close() {
-    if (this.isMobile === false) {
-      this.onCloseEmmiter.emit();
-    } else {
+    this.onCloseEmmiter.emit();
+    if (!this.userName) {
       this.router.navigate(['/']);
     }
   }

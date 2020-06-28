@@ -17,6 +17,9 @@
   app-menu {
     z-index: 30;
   }
+  &.about {
+    display: none;
+  }
 }
 .page {
   display: flex;
@@ -101,6 +104,7 @@
 }
 
 .bg {
+  transition: background-color 0.5s, height 0.5s, width 0.7s;
   height: 30%;
   width: 47%;
   background-color: var(--first-color);
@@ -108,6 +112,11 @@
   z-index: -1;
   top: 0;
   left: 0;
+  &.about {
+    height: 15px;
+    width: 100%;
+    transition: height 0.5s, width 0.7s;
+  }
 }
 
 ::-webkit-scrollbar {
