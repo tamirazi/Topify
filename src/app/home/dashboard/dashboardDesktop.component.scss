@@ -1,7 +1,7 @@
 @media only screen and (min-width: 768px) {
   .header {
     position: unset;
-    width: 87%;
+    width: 84%;
     height: 12%;
     margin: auto 0 0 0;
     .right-panel {
@@ -9,11 +9,11 @@
       width: 180px;
       display: flex;
       justify-content: space-around;
-      margin-bottom: -12px;
+      margin-bottom: -25px;
       h3 {
         font-weight: 300;
-        font-size: 0.8vw;
-        margin: 0 0 0 20px;
+        font-size: 12px;
+        margin: 0;
         color: #2a2a2a;
       }
       .about,
@@ -23,9 +23,11 @@
       .logout {
         width: 0.9rem;
         height: 0.9rem;
+        margin-left: -25px;
+        margin-top: 1px;
+        opacity: 0.6;
         background-image: url(/assets/logout.png);
         background-size: contain;
-        margin: auto auto auto 5px;
       }
     }
     &.about {
@@ -43,7 +45,7 @@
       display: flex;
       flex-wrap: nowrap;
       max-width: 1400px;
-      width: 90%;
+      width: 87%;
       height: 88%;
       margin: auto;
 
@@ -116,8 +118,8 @@
           flex: 1;
 
           .img {
-            width: 19vw;
-            height: 19vw;
+            width: 20vw;
+            height: 20vw;
             max-width: 340px;
             max-height: 340px;
             transition: width 0.2s, height 0.2s;
@@ -144,7 +146,7 @@
             width: 35%;
             height: max-content;
             position: absolute;
-            bottom: 5vw;
+            bottom: 6vw;
             left: 0;
           }
           .h3 {
