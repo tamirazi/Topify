@@ -1,7 +1,7 @@
 @media only screen and (min-width: 768px) {
   .header {
     position: unset;
-    width: 87%;
+    width: 84%;
     height: 12%;
     margin: auto 0 0 0;
     .right-panel {
@@ -9,7 +9,7 @@
       width: 180px;
       display: flex;
       justify-content: space-around;
-      margin-bottom: -12px;
+      margin-bottom: -25px;
       h3 {
         font-weight: 300;
         font-size: 12px;
@@ -45,7 +45,7 @@
       display: flex;
       flex-wrap: nowrap;
       max-width: 1400px;
-      width: 90%;
+      width: 87%;
       height: 88%;
       margin: auto;
 
@@ -53,14 +53,14 @@
         padding: 3em 2.6em 1em 2.8em;
         display: flex;
         flex-grow: 1;
-        flex-basis: 435px;
+        flex-basis: 420px;
         z-index: 100;
         min-height: 500px;
         height: 85%;
         position: relative;
         background-color: white;
         border-radius: 20px 20px 20px 20px;
-        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
         &::after {
           content: "";
           display: block;
@@ -103,7 +103,7 @@
         height: 85%;
         background-color: rgba(255, 255, 255, 0.5);
         border-radius: 0 20px 20px 0;
-        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
         &.about {
           flex-basis: 1150px;
           transition: flex-basis 0.5s;
