@@ -1,7 +1,7 @@
 .index-bg {
   min-width: 180px;
   position: absolute;
-  top: 30%;
+  top: 32%;
   left: 7vw;
   z-index: 1;
   .index {
@@ -34,13 +34,7 @@
     }
   }
   .index-check {
-    display: flex;
-    list-style: none;
-    width: 12vw;
-    height: min-content;
-    bottom: 3vw;
-    margin-left: 1vw;
-    padding: 0;
+    display: none;
     .index-check-item {
       width: 9%;
       &::before {
@@ -73,7 +67,13 @@
       position: relative;
     }
     .index-check {
-      margin-left: 1.6vw;
+      margin-left: 1vw;
+      display: flex;
+      list-style: none;
+      width: 12vw;
+      height: min-content;
+      bottom: 3vw;
+      padding: 0;
       .index-check-item {
         width: 100%;
       }

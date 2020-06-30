@@ -7,8 +7,8 @@
 <div class="info">
   <a [href]="track.uri | safeUrl">
     <div class="text">
-      <h3 *ngIf="isPreview" class="artist-name">{{ track.artists[0].name }}</h3>
-      <h3 *ngIf="isPreview" class="track-name">{{ track.name }}</h3>
+      <h3 *ngIf="isPreview" class="artist-name">{{ track.name }}</h3>
+      <h3 *ngIf="isPreview" class="track-name">{{ track.artists[0].name }}</h3>
       <h3 *ngIf="!isPreview" class="artist-name">No preview</h3>
       <br />
     </div>

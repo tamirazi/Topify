@@ -1,7 +1,6 @@
 .time-nav-container {
-  // height: 5vh;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  margin-bottom: 6%;
+  margin-top: -5%;
   .time-nav {
     list-style: none;
     display: flex;
@@ -35,12 +34,11 @@
 @media only screen and (min-width: 768px) {
   .time-nav-container {
     animation: fadeIn 0.5s ease-in-out;
-    height: 10%;
     position: absolute;
     bottom: 15.5vw;
     right: 50px;
     .time-nav {
-      width: 20vw;
+      width: 19vw;
       .nav-item {
         font-size: 13px;
         color: #2a2a2a;
