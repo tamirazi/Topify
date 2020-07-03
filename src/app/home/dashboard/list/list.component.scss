@@ -78,7 +78,11 @@
     }
   }
   @media only screen and (max-width: 768px) {
+    
     .last-item {
+      position: absolute;
+      bottom: 0;
+      left: 0;
       .img {
         transform: scale(0.6) !important;
         left: 0px !important;
