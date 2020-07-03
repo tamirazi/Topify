@@ -7,7 +7,8 @@
   .list-container {
     background-color: white;
     padding-left: 7px;
-    max-height: 86%;
+    max-height: 88%;
+    min-height: 88%;
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
     overflow-y: scroll;
@@ -36,10 +37,8 @@
   .last-item {
     display: flex;
     overflow: hidden;
-    bottom: -1px;
     z-index: 1;
     background-color: #ffffff;
-    min-height: 59px;
     width: 100%;
 
     .info {
@@ -54,34 +53,34 @@
       background-repeat: no-repeat;
       background-size: contain;
       margin-left: -18px;
+      align-self: center;
+      margin-top: -25px;
     }
     .text {
-      margin-top: 28px;
       text-align: center;
+
       p {
-        margin: 0;
+        margin: 0px;
       }
     }
     h3 {
       font-weight: 500;
       font-size: 11px;
-      margin: 0;
-      margin-top: 3px;
+      margin: 0px;
     }
     .info {
       display: flex;
       width: 100%;
-      align-items: center;
       justify-content: center;
-
       font-family: "Montserrat", sans-serif;
       font-size: 0.7em;
+      padding-top: 3vh;
     }
   }
   @media only screen and (max-width: 768px) {
     .last-item {
       .img {
-        transform: scale(0.4) !important;
+        transform: scale(0.6) !important;
         left: 0px !important;
       }
     }

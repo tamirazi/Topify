@@ -31,11 +31,11 @@
           >{{ time }} Top {{ type }}</span
         >
       </p>
-      <h3>Playlist time: {{ totalDuration | duration }}</h3>
+      <h3>Playlist Time: {{ totalDuration | duration }}</h3>
 
       <p *ngIf="creatingPlaylist">Creating your new Playlist...</p>
       <p *ngIf="playlistCreated">
-        Done! open in <a [href]="playlistURI | safeUrl">Spotify App</a> or
+        Done! Open in <a [href]="playlistURI | safeUrl">Spotify App</a> or
         <a [href]="playlistWebLink | safeUrl" target="_blank">Website</a>
       </p>
       <br />
