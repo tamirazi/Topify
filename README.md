@@ -1,5 +1,7 @@
+![Image of icon](https://github.com/tamirazi/Topify/blob/master/src/assets/icons/icon-192x192.png)
+
+
 # Topify
-![Image of Yaktocat](https://github.com/tamirazi/Topify/blob/master/src/assets/icons/icon-192x192.png)
 Topify is a progressive web application built with Angular & Spotify’s web api.
 designed with a clean UI & an intuitive UX,
 the application displays the user’s top artists, tracks, albums & genres and suggests playlists based on them.
