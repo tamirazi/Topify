@@ -1,16 +1,17 @@
+.dash {
+  border: var(--second-color) 5px solid;
+  border-radius: 20px;
+  padding: 45px 2%;
+  background-color: white;
+}
 .logo {
   z-index: 1;
   min-width: 100px;
   min-height: 100px;
-  background-image: url('/assets/Topify-logo-black.svg');
+  background-image: url("/assets/Topify-logo-black.svg");
   border-radius: 50%;
   margin-bottom: 1em;
-  transition: transform .5s;
-
-  &:hover {
-    transform: scale(1.2);
-    transition: transform .5s;
-  }
+  transition: transform 0.5s;
 }
 
 button {
@@ -27,14 +28,14 @@ button {
   cursor: pointer;
   text-align: center;
   border: none;
-  transition: background .3s;
+  transition: background 0.3s;
 }
 
 button:hover {
   background: #1db954;
   border-radius: 50px;
   text-decoration: none;
-  transition: background .3s;
+  transition: background 0.3s;
 }
 
 h1,
@@ -57,7 +58,7 @@ h3 {
   z-index: -1;
   bottom: 0;
   left: 0;
-  background-color: #fdf5f3;
-  height: 38vh;
+  background-color: var(--first-color);
+  height: 50vh;
   width: 100%;
 }
