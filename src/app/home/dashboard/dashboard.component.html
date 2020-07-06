@@ -1,10 +1,11 @@
 <div class="page">
   <div class="header" [ngClass]="{ about: showAbout }">
     <div class="logo" [routerLink]="['/']"></div>
-    <app-menu
+    <div
+      class="mobile-menu-icon"
       *ngIf="isMobile && !showAbout"
       (click)="openAbout($event)"
-    ></app-menu>
+    ></div>
     <div *ngIf="!isMobile" class="right-panel">
       <h3 (click)="openAbout($event)" class="about">About</h3>
       <h3>{{ username }}</h3>

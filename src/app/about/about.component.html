@@ -1,5 +1,5 @@
 <div class="about-container">
-  <div class="close" (click)="close()">&#8677;</div>
+  <div class="close" (click)="close()"></div>
   <div class="about-context" [ngClass]="{ active: option === 'about' }">
     <h3>Topify</h3>
     <p class="description">
@@ -21,7 +21,9 @@
       Topify was built for learning popurses and practice. we're sure it can be
       batter, any sugesttions for improvement will be more then welcome.
     </p>
-    <a href="https://github.com/tamirazi/Topify" target="_blank"><div class="github"></div></a>
+    <a href="https://github.com/tamirazi/Topify" target="_blank"
+      ><div class="github"></div
+    ></a>
   </div>
   <div class="logout-context" [ngClass]="{ active: option === 'logout' }">
     <div class="text">

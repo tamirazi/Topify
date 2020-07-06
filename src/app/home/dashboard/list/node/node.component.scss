@@ -67,10 +67,21 @@ hr {
   animation: fadein 0.5s ease-in-out;
 }
 
-span {
+.play-icon,
+.stop-icon {
   cursor: pointer;
   //   margin-right: 20px;
-  font-size: 12px;
   color: #2a2a2a;
   margin: -6px 12px 0px 12px;
+
+  background-position: center;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+}
+.play-icon {
+  background-image: url(/assets/play-button.svg);
+}
+.stop-icon {
+  background-image: url(/assets/pause.svg);
 }

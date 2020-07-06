@@ -13,8 +13,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  app-menu {
+  .mobile-menu-icon {
     z-index: 30;
+    background-image: url(/assets/more.svg);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
   }
   &.about {
     display: none;

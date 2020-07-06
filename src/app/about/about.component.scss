@@ -39,7 +39,7 @@
   }
   .logout-context {
     display: grid;
-    grid-template-columns: 100px 1fr ;
+    grid-template-columns: 100px 1fr;
     grid-template-rows: 100px;
     gap: 1px 1px;
     grid-template-areas: ". .";
@@ -58,6 +58,11 @@
     font-size: 20px;
     transition: transform 0.3s;
     z-index: 5;
+    background-image: url(/assets/right-arrow.svg);
+    background-position: center;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
     &:hover {
       transform: rotateZ(-90deg);
       transition: transform 0.3s;
@@ -75,7 +80,7 @@
     cursor: pointer;
     width: 0.75rem;
     height: 0.75rem;
-    background-image: url(/assets/logout.png);
+    background-image: url(/assets/logout.svg);
     background-size: contain;
     margin-left: 10px;
   }
@@ -101,14 +106,12 @@
     }
     .about-context,
     .logout-context {
-  
       padding: 0 15px;
       &.active {
         border-left: none;
       }
     }
   }
-
 }
 
 @keyframes fadeInLeft {
