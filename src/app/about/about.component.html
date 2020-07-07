@@ -25,7 +25,7 @@
       ><div class="github"></div
     ></a>
   </div>
-  <div class="logout-context" [ngClass]="{ active: option === 'logout' }">
+  <div *ngIf="showLogOut" class="logout-context" [ngClass]="{ active: option === 'logout' }">
     <div class="text">
       <div class="row">
         <h3>{{ userName }}</h3>

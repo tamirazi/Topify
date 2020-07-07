@@ -1,7 +1,5 @@
 .dash {
-  // border: var(--second-color) 3px solid;
-  // background-color: white;
-  // box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
+  position: relative;
   border-radius: 20px;
   padding: 10vh 5%;
   margin-top: -20px;
@@ -49,6 +47,7 @@ a {
   color: white;
   text-align: center;
   margin-top: 15px;
+  cursor: pointer;
 }
 
 h1,

@@ -67,10 +67,6 @@
     background-size: contain;
     width: 16px;
     height: 16px;
-    &:hover {
-      transform: rotateZ(-90deg);
-      transition: transform 0.3s;
-    }
   }
   .img {
     width: 80px;

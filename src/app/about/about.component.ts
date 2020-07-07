@@ -12,7 +12,9 @@ export class AboutComponent {
   @Input() option: string;
   @Input() userImgUrl: string;
   @Input() userName: string;
+  @Input() showLogOut = true;
   @Output() onCloseEmmiter = new EventEmitter();
+  
 
   constructor(private authService: AuthService, private router: Router) {}
   close() {

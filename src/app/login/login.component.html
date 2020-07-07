@@ -1,5 +1,5 @@
-<div class="container flex-col-center">
-  <div class="dash flex-col-center">
+<div  class="container flex-col-center">
+  <div class="dash flex-col-center" *ngIf="!showAbout">
     <div class="logo"></div>
 
     <h3 class="description">
@@ -7,13 +7,16 @@
       from playlists based on them
     </h3>
 
-    <a [routerLink]="['/about']">Learn more...</a>
+    <a (click)="showAbout=true">Learn more...</a>
 
     <button (click)="login()">Log in with Spotify</button>
     <h3 *ngIf="deniedPermision">
       We need your permisions to do our job sorry...
     </h3>
   </div>
+  <app-about *ngIf="showAbout" [showLogOut]=false (onCloseEmmiter)="showAbout=false"></app-about>
+
 </div>
+
 
 <div class="bg"></div>
