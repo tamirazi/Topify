@@ -54,5 +54,6 @@ firebase-debug.log
 
 .firebaserc
 firebase.json
-.firebase
+/.firebase
+*.cache
 .firebase/hosting.ZGlzdFx0b3BpZnk.cache
