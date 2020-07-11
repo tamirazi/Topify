@@ -107,7 +107,8 @@
   }
 }
 
-.bg {
+.bg,
+.bg2 {
   transition: background-color 0.5s, height 0.5s, width 0.7s;
   height: 28%;
   width: 45%;
@@ -121,6 +122,15 @@
     width: 100%;
     transition: height 0.5s, width 0.7s;
   }
+}
+.bg2 {
+  background-color: var(--first-color);
+  opacity: 0.3;
+  z-index: -2;
+}
+.bg {
+  mix-blend-mode: luminosity;
+  opacity: 0.15;
 }
 
 ::-webkit-scrollbar {
