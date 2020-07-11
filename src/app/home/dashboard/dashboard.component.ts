@@ -42,12 +42,6 @@ export class DashboardComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.isMobile = window.innerWidth < 768;
-    console.log(this.image);
-
-    document.documentElement.style.setProperty(
-      '--image',
-      'url(' + this.image + ')'
-    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {

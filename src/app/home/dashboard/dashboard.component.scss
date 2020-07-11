@@ -76,11 +76,13 @@
         font-size: 6vw;
         width: 70%;
         line-height: 1;
+        text-transform: capitalize;
 
         .h3-description {
           font-size: 2.5vw;
           font-weight: 500;
           font-family: "Montserrat", sans-serif;
+
           color: black;
           opacity: 0.5;
         }
@@ -96,7 +98,7 @@
 }
 
 .ng-lazyloaded {
-  animation: fadein 0.8s;
+  animation: fadein 0.5s;
 }
 @keyframes fadein {
   from {

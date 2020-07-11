@@ -202,6 +202,7 @@
 .bg {
   mix-blend-mode: screen;
   opacity: 0.5;
+  animation: bgFade 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -210,5 +211,14 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes bgFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
   }
 }
