@@ -34,11 +34,12 @@
   .about-context,
   .logout-context {
     padding-left: 15px;
-    transition: ease-in-out;
     position: relative;
     border-left: #00000000 1px solid;
     &.active {
       border-left: #7f7f7f 1px solid;
+      transform: translateX(5px);
+      transition: transform 1s;
       padding-left: 30px;
     }
   }
