@@ -125,11 +125,11 @@
 }
 .bg2 {
   background-color: var(--first-color);
-  opacity: 0.3;
+  opacity: 1;
   z-index: -2;
 }
 .bg {
-  mix-blend-mode: luminosity;
+  mix-blend-mode: screen;
   opacity: 0.15;
 }
 
