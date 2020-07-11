@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   deniedPermision = false;
+  showAbout = false;
   constructor(
     private authService: AuthService,
     private router: Router,
