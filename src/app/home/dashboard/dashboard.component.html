@@ -8,7 +8,7 @@
     ></div>
     <div *ngIf="!isMobile" class="right-panel">
       <h3 (click)="openAbout($event)" class="about">About</h3>
-      <h3>{{ username }}</h3>
+      <h3 >{{ username }}</h3>
       <div (click)="openAbout($event)" class="logout"></div>
     </div>
   </div>
@@ -115,6 +115,6 @@
     (savePlaylistEmitter)="createPlaylist($event)"
   ></app-list>
 
-  <div class="bg" [ngClass]="{ about: showAbout }" [lazyLoad]="image"></div>
+  <div class="bg" [ngClass]="{ about: showAbout }" [lazyLoad]="image" *ngIf="!isMobile "></div>
   <div class="bg2" [ngClass]="{ about: showAbout }"></div>
 </div>

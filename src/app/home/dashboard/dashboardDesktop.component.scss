@@ -153,7 +153,7 @@
           .h3 {
             margin-left: 55px;
             &.pulsing {
-              animation: fadeIn 0.5s ease-in-out;
+              animation: fadeIn 1s ease-in-out;
             }
           }
 
@@ -201,7 +201,7 @@
 }
 .bg {
   mix-blend-mode: screen;
-  opacity: 0.5;
+  opacity: 0.6;
   animation: bgFade 0.5s ease-in-out;
 }
 
