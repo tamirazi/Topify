@@ -19,9 +19,9 @@ export class AboutComponent {
   constructor(private authService: AuthService, private router: Router) {}
   close() {
     this.onCloseEmmiter.emit();
-    if (!this.userName) {
-      this.router.navigate(['/']);
-    }
+    // if (!this.userName) {
+    //   this.router.navigate(['/']);
+    // }
   }
 
   logout() {

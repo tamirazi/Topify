@@ -78,4 +78,14 @@ h3 {
   background-color: var(--first-color);
   height: 61vh;
   width: 100%;
+  transition: height .3s , width 1s;
+  &.rev {
+    height: 100%;
+    width: 30%;
+    transition: height .3s , width 1s;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 :host {
-  animation: fadeInLeft 0.8s ease-in-out;
+  animation: fadeInLeft 0.3s;
   height: 100%;
 
   .row {
@@ -21,6 +21,27 @@
   font-weight: 300;
   opacity: 1;
   color: #2a2a2a;
+  
+
+  &.login {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: unset;
+    justify-content: center;
+    width: 100%;
+    padding: 5vh;
+    overflow-y: auto;
+    
+
+    p {
+      width: 100%;
+    }
+  }
+  img {
+    width: auto;
+    height: 50%;
+  }
 
   h3 {
     margin: 0px 0px 2px 0px !important;
@@ -102,6 +123,9 @@
     margin: 0;
     width: 100%;
     padding: 75px 15px;
+    img {
+      display: none;
+    }
     p {
       width: 100%;
     }
@@ -125,3 +149,4 @@
     opacity: 1;
   }
 }
+

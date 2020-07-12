@@ -1,9 +1,11 @@
-<div class="about-container">
+<div class="about-container" [ngClass]="{login: !showLogOut}">
   <div class="close" (click)="close()"></div>
-  <div class="about-context" [ngClass]="{ active: option === 'about' }">
+  <img *ngIf="!showLogOut" src="../../assets/Group 2.png">
+
+  <div class="about-context" [ngClass]="{ active: option === 'about' }" [ngStyle]="{'flex-basis':!showLogOut ? '630px' : 'unset'}">
     <h3>Topify Is</h3>
     <p class="description">
-      A PWA built with Angular & Spotify’s web api. designed with a clean UI &
+      A PWA built with Angular & Spotify’s web api. designed with 
       an intuitive UX, the application displays the user’s top artists, tracks,
       albums & genres and suggests playlists based on them.
     </p>
@@ -25,7 +27,7 @@
       ><div class="github"></div
     ></a>
   </div>
-  <div *ngIf="showLogOut" class="logout-context" [ngClass]="{ active: option === 'logout' }">
+  <div *ngIf="showLogOut" class="logout-context" [ngClass]="{ active: option === 'logout' }" [ngStyle]="{'flex-basis':!showLogOut ? '630px' : 'unset'}">
     <div class="text">
       <div class="row">
         <h3>{{ userName }}</h3>
@@ -43,4 +45,5 @@
     </div>
     <div class="img" [lazyLoad]="userImgUrl"></div>
   </div>
+
 </div>
