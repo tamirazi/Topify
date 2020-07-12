@@ -3,8 +3,8 @@
   border-radius: 20px;
   padding: 10vh 5%;
   margin-top: -20px;
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
-  border: 0 solid var(--second-color);
+  // box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
+  // border: 0 solid var(--second-color);
 }
 .logo {
   z-index: 1;
@@ -75,17 +75,20 @@ h3 {
   z-index: -1;
   bottom: 0;
   left: 0;
-  background-color: var(--first-color);
+  background-color: #ffbea3;
   height: 61vh;
   width: 100%;
-  transition: height .3s , width 1s;
+  transition: height 0.3s, width 1s;
   &.rev {
+    background-color: var(--first-color);
     height: 100%;
     width: 30%;
-    transition: height .3s , width 1s;
+    transition: height 0.3s, width 1s;
     @media screen and (max-width: 768px) {
       width: 100%;
-      height: 100%;
+      height: 8%;
+      top: 0px;
+      left: 0px;
     }
   }
 }
