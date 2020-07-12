@@ -60,6 +60,7 @@
         background-color: white;
         border-radius: 20px 20px 20px 20px;
         box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
+        border: var(--second-color) 4px solid;
         &::after {
           content: "";
           display: block;
@@ -69,7 +70,6 @@
           left: 0;
           right: 0;
           border-radius: 20px;
-          border: var(--second-color) 5px solid;
           transition: border 0.5s;
         }
 

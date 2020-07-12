@@ -22,8 +22,8 @@ export class IndexBtnsComponent implements OnInit, OnChanges {
   @Output() indexChanged = new EventEmitter<number>();
   @Input() index: number;
 
-  first_colors = ['#ffbea3', '#fbd685', '#eda1ab'];
-  second_colors = ['#ffb08f', '#ffd373', '#f598a4'];
+  first_colors = ['#fbd685', '#ffbea3', '#eda1ab'];
+  second_colors = ['#ffd373', '#ffb08f', '#f598a4'];
   constructor() {}
 
   ngOnInit(): void {}
