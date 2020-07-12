@@ -90,5 +90,8 @@ h3 {
       top: 0px;
       left: 0px;
     }
+    @media screen and (max-width: 1396px) {
+      width: 5vh;
+    }
   }
 }
