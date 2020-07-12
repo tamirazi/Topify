@@ -1,7 +1,7 @@
 {
   "name": "Topify",
   "short_name": "Topify",
-  "theme_color": "#F3CF54",
+  "theme_color": "#FFFFFF",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
